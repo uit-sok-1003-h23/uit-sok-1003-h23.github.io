@@ -11,19 +11,19 @@ Kurset tas normalt i første høstsemester, og teller 5 studiepoeng.
 
 ## Faglærerinfo  
 
-[Ole Kristian Aars](https://uit.no/ansatte/person?p_document_id=768566){:target="blank"} (fagansvarlig). Kontor: 02.307
+[Espen Sirnes](https://uit.no/ansatte/espen.sirnes){:target="blank"} (fagansvarlig). Kontor: 02.307
 
-Erlend Sørra er (seminar/studenthjelp,<eso086@post.uit.no>)
+Daniel Groth er seminar/studenthjelp (<danielfabiogroth@gmail.com>)
 
-Erlend har også kontortid, der studentene kan stille spørsmål om de har behov (ikke obligatorisk!). Se timeplan. 
+Daniel har også kontortid, der studentene kan stille spørsmål om de har behov (ikke obligatorisk!). Se timeplan. 
 
 
 ## Pensum  
 
-[Interaktive notater i Jupyter](https://github.com/uit-sok-1003-h22){:target="blank"}  
+[Interaktive notater i Jupyter](https://espensirnes.github.io/notebooks/){:target="blank"}  
 [Kapittel i DataCamp (se kursplan)](https://learn.datacamp.com/){:target="blank"} 
 
-DataCamp blir tilgjengelig mandag 16. august.
+DataCamp blir tilgjengelig snarlig
 
 ## Forkunnskaper  
 Ingen 
