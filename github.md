@@ -1,4 +1,4 @@
-{% include navbar.html %}
+{% include navbar.html %}{% include top-box.html %}
 # Slik leverer du arbeidskrav på github:
 Slik lager du et githubrepositorie, og dyttet arbeidet ditt til github. [Se også video](https://mediasite.uit.no/Mediasite/Play/facdd492ea4b4ceaa239fcfac56cd8941d) 
 
