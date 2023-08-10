@@ -1,4 +1,4 @@
-{% include navbar_open.html %}
+{% include navbar.html %}
 
 <style>
 table {

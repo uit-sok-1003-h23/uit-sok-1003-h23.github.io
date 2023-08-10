@@ -1,4 +1,4 @@
-{% include navbar_open.html %}
+{% include navbar.html %}
 # Installere Python, git og Jupyter på Windows
 
 [Se video her!](https://mediasite.uit.no/Mediasite/Play/636342e259e441ffa5776b2ec3ebf29c1d)

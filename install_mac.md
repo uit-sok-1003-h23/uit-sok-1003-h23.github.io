@@ -1,4 +1,4 @@
-{% include navbar_open.html %}
+{% include navbar.html %}
 # Installere Python, git og Jupyter på Mac
 
 

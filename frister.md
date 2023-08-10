@@ -1,4 +1,4 @@
-{% include navbar_open.html %}
+{% include navbar.html %}
 ## Frister for arbeidskrav og mappe
 
 - Arbeidskrav er obligatoriske. Karakter settes ikke på disse.
