@@ -5,7 +5,9 @@
 
 <p>Seminarene vil dreie seg om gjennomgang av arbeidskravene og eventuelle spørsmål om forrige forelesning. Lenke til Datacamp hvor du finner oppgavene <a href='https://app.datacamp.com/learn/'> finnes her </a>. Trykk deg inn på oppgaven som samsvarer med temaet til seminaret (se tabell under). Se forøvrig <a href='https://uit-sok-1003-h22.github.io/frister.html'> forelsningsplanen </a> for frister og annen informasjon. </p> <br>
 
-<p> <b> NB: for å få tilgang til datacamp må du først lage deg en profil med UiT epost og deretter bruke <a href='https://www.datacamp.com/groups/shared_links/17dc8405ae39e6e7f7f3e9015d5fc91ae856be617820c92eff6838afcbb8af0e'> denne invitasjonslenken </a>.</b> </p>
+<p> <b> NB: for å få tilgang til datacamp må du først lage deg en profil med UiT epost og deretter bruke en invitasjonslenke som vil komme her.</b> </p>
+
+Ukenummerene er foreløpige og kan bli endret
 
 
 | <img width=120/>|  Tema <img width=600/>       |       Innleveringsfrist for tilhørende arbeidskrav        |
