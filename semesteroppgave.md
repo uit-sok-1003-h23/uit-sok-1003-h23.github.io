@@ -3,7 +3,7 @@
 # Mappeinnleveringer/eksamen
 Vurderingsformen i dette kurset er innlevering av to mappeoppgaver. Mappeoppgavene vil omhandle tema som gjennomgås i dette kurset. For hver mappeoppgave vil studentene presentere mappen. Dette er arbeidskrav. Studentene vil da få hint/kommentarer på oppgaven og deretter ha mulighet til å gjøre endringer før endelig innlevering. 
 
-Frister for innleveringer [finnes her](https://uit-sok-1003-h22.github.io/frister.html).
+Frister for innleveringer [finnes her](https://uit-sok-1003-h23.github.io/frister.html).
 
 ## Første mappeoppgave 
 Skal leveres innen 17/10, med presentasjon senere (dato/sted kommer). Presentasjonen innebærer en gjennomgang av koden/besvarelsen av studentene (10-15 min), etterfulgt av kommentarer/spørsmål (5-10 min).  
