@@ -6,35 +6,28 @@ Vurderingsformen i dette kurset er innlevering av to mappeoppgaver. Mappeoppgave
 Frister for innleveringer [finnes her](https://uit-sok-1003-h22.github.io/frister.html).
 
 ## Første mappeoppgave 
-Skal leveres inn 17/10, med presentasjon 19/10. Presentasjonen innebærer en gjennomgang av koden/besvarelsen av studentene (10-15 min), etterfulgt av kommentarer/spørsmål (5-10 min). Gi beskjed om hvem som er på gruppa innen 7/10 til ole.k.aars@uit.no.   
+Skal leveres innen 17/10, med presentasjon senere (dato/sted kommer). Presentasjonen innebærer en gjennomgang av koden/besvarelsen av studentene (10-15 min), etterfulgt av kommentarer/spørsmål (5-10 min).  
 
-Mappeoppgave 1 finner dere [her](https://github.com/uit-sok-1003-h22/mappe) .
+Lenke til Mappeoppgave 1 kommer her.
 
-Første innlevering av PDF'en i første mappeoppgave gjøres på canvas [her:](https://uit.instructure.com/courses/26947/assignments)
-
-MERK: Studentene vil ha mulighet til å gjøre endringer i mappen frem til endelig innlevering 6/12. Mappen skal likevel være i relativt ferdig form ved innleveringen 17/10. 
 
 ## Andre mappeoppgave 
-Skal leveres inn 6/12, med presentasjon 29/11 og 30/11. Presentasjonen innebærer en gjennomgang av koden/besvarelsen av studentene (10-15 min), etterfulgt av kommentarer/spørsmål (5-10 min).   
+Skal leveres inn 17/11, med presentasjon på samme måte som nevnt over (dato/sted kommer).  
 
-Mappeoppgave 2 <a href='https://github.com/uit-sok-1003-h22/mappe2/blob/main/Mappe%202_oppgaver.ipynb'> finner dere her</a>.
+Lenke til Mappeoppgave 2 kommer her.
 
+## Endelig innlevering på Wiseflow
+Endelig innlevering av mappeoppgavene skjer 1/12 på Wiseflow
 
 # Slik leverer du:
-Hver mappeoppgave leveres som et Jupyter-prosjekt eller python fil (\*.py), som lastes opp til github og Wiseflow. Koden skal kunne kjøres direkte i Jupyter, etter at prosjekte er klonet fra github. På Wiseflow leveres pdf av notatboken (bruk eksportfunksjonen i Jupyter). 
+1. Lag et repositorie med navn  "SOK-1003-H23" (uten anførselstegn). Navnet må være EKSAKT likt, hvis ikke blir ikke oppgaven registrert innlevert, og du vil ikke få karakter i faget. <br> Repositoriet SKAL være privat, hvis ikke kan andre snoke i ditt repositorie. Blir det da en fuskesak vil også den som ikke har lukket sitt repositorie, regnes som medvirkende.<br>  
+2. [Registrer github brukernavn. Det kan leveres i grupper på intil tre personer. ](https://docs.google.com/forms/d/e/1FAIpQLSd8nLKEYmY6auenPYH-aKWOtBaJmmADK6fKoG8bf4GxZqgTeQ/viewform)<br> 
+3. Oppgaven skal være en jupyterfil, men du kan også ha kode i en .py-fil som du importerer.<br> 
+4. Oppgaven er levert når følgende er tilfredstilt:
+    1. oppgaven ligger i repositoriet registrert i punkt 2 (det er oppgaven som ligger der ved fristens utløp som bli evaluert)
+    2. repositoriet er delt med faglærer (`espensirnes`) og studentassistent (`DanielFabioG`)
+    3. en pdf av jupyterfilen er levert i Wiseflow (gjelder kun endelig levering )
 
-- Wiselow: På wiseflow vil hver mappeoppgave ha en egen "flow". Her leverer en person per gruppe. Denne personen må likevel invitere andre gruppemedlemmer med som deltakere. 
-- Github: en person per mappe, per gruppe, gir tilging til faglærer ("okaars"). Hvis dere har satt reposetoriet til public (anbefales ikke), må dere dele lenken til dette på ole.k.aars@uit.no
-
-[Se her](https://github.com/uit-sok-1003-h22/uit-sok-1003-h22.github.io/blob/main/github.md) for å lese mer om hvordan man leverer på github
-
-Dere kan levere i grupper på opptil 3 personer. <a href= 'https://docs.google.com/forms/d/e/1FAIpQLSeljUukzUU5d-VbxyM4C0x4WUplhUKBCU5wIpPZl_bP5kN71A/viewform?usp=sf_link'> Registrer medlemmer av gruppen deres her.
-
-### For mappe 1
-Bruk følgende navn: SOK-1003-eksamen-2022-mappe1. 
-
-### For mappe 2
-Bruk følgende navn: SOK-1003-eksamen-2022-mappe2
 
 # Skriftlig vurdering
 Karakter gis ut fra følgende tre kriterier: 
