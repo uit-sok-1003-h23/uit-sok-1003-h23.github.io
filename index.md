@@ -30,19 +30,12 @@ Ingen
 
 ## Kursplan  
 
-Undervisningsplanen inneholder kronologisk rekkefølge over de temaer som gjennomgså, og lenker til forelesningsnotater. Timeplanen viser tidspunkt og sted for forelesningene og seminarer. Tidspunkt for seminarer vil bli lagt til/oppdatert ila uke 30
+Undervisningsplanen inneholder kronologisk rekkefølge over de temaer som gjennomgås, og lenker til forelesningsnotater. Timeplanen viser tidspunkt og sted for forelesningene og seminarer. Tidspunkt for seminarer vil bli lagt til/oppdatert ila uke 30
 
 - [Forelesningsplan](forelesningsplan.md){:target="blank"}
 
-- [Timeplan på timeplan.uit.no](https://timeplan.uit.no/emne_timeplan.php?sem=22h&module=SOK-1003-1#week=33-52){:target="blank"}
+- [Timeplan på timeplan.uit.no](https://timeplan.uit.no/emne_timeplan.php?sem=23h&module=SOK-1003-1){:target="blank"}
 
-## Forelesninger/undervisning
-
-Det gjøres ikke opptak av forelesninger for dette semesteret. 
-  
-Under forelesning vil et zoom-rom være åpent hvis det er spørsmål noen ikke ønsker å ta i plenum.
-
-- [Zoom-rom (for spørsmål og tilbakemeldinger)](https://uit.zoom.us/j/7036118194?pwd=Umxlb1VFOXRaa3dDSUdaTzNUbTYrUT09)
 
 ## Kunngjøringer  
 
