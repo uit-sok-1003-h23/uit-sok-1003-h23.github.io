@@ -21,7 +21,7 @@ Daniel har også kontortid, der studentene kan stille spørsmål om de har behov
 ## Pensum  
 
 [Interaktive notater i Jupyter](https://espensirnes.github.io/notebooks/){:target="blank"}  
-[Kapittel i DataCamp (se kursplan)](https://learn.datacamp.com/){:target="blank"} 
+[Kapittel i DataCamp (se kursplan)](https://app.datacamp.com/groups/sok-1003-python-lab-h2023-dfac3c1d-1d2f-4145-b407-825b5fa62040){:target="blank"} 
 
 DataCamp blir tilgjengelig snarlig
 
