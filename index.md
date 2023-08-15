@@ -13,7 +13,7 @@ Kurset tas normalt i første høstsemester, og teller 5 studiepoeng.
 
 [Espen Sirnes](https://uit.no/ansatte/espen.sirnes){:target="blank"} (fagansvarlig). Kontor: 02.307
 
-Daniel Groth er seminar/studenthjelp (<danielfabiogroth@gmail.com>)
+Daniel Groth er seminar/studenthjelp (<dgr012@uit.no>)
 
 Daniel har også kontortid, der studentene kan stille spørsmål om de har behov (ikke obligatorisk!). Se timeplan. 
 
