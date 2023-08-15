@@ -1,3 +1,5 @@
+{% include navbar.html %}{% include top-box.html %}
+
 # Instruksjoner for seminar 5
 På dette seminaret skal dere løse matteoppgaver med Sympy. Som dere vil se er det en god del oppgaver. I stedet for å løse hver oppgave individuelt, 
 skal dere derfor lage funksjoner som tar uttrykkene som argumenter, og så løse hver oppgave. 
