@@ -1,6 +1,6 @@
 {% include navbar.html %}{% include top-box.html %}
 # Installere Python, git og Jupyter på Mac
-
+[Se video her!](https://uit.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=7e78bd6a-c347-49ff-a9b8-b06200a3335f)
 
 ## 1. Installere python
 
