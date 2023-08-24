@@ -45,6 +45,8 @@ Kunngjøringer og beskjeder legges ut i [Canvas](https://uit.instructure.com/cou
 ## Innlevering og eksamen  
 Til hver forelesning vil det være et arbeidskrav, enten på [DataCamp](https://learn.datacamp.com/){:target="blank"} eller GitHub. Disse gis bestått/ikke bestått, og alle arbeidskrav må være bestått for at kurset skal være bestått. 
 
+Invitasjon til DataCamp har blitt sendt til alle deltakerne. Om du ikke har mottatt den, kan du [bruke denne invitasjonslenken](https://www.datacamp.com/groups/shared_links/f26e694090f4d0e73d5d7ba2cca431e5fdf7780be6b28be9a41f6d6997dc3b8c).
+
 Karakter A-E, med F som stryk, fastsettes basert på et prosjekt som gjøres i grupper. Følgende inngår i karaktervurderingen:
 
 - 2 mappeinnleveringer 
