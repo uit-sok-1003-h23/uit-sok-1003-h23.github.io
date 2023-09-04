@@ -16,10 +16,10 @@ Ukenummerene kan bli endret
 
 | <img width=120/>|  Tema <img width=600/>       |       Innleveringsfrist for tilhørende arbeidskrav        |
 |-----------------|------------------------------|---------------|
-|Seminar 1        |DataCamp: Python Basics<br> DataCamp: Functions and Packages <br> DataCamp: Writing your own functions <br>Oppgaver til kapittel 1 og 2 i "notebooks"| Uke 36 |
-|Seminar 2        |DataCamp: Matplotlib <br> Oppgaver til kapittel 3 i "notebooks"|  Uke 37 |
-|Seminar 3        |DataCamp: Python Lists <br> Datacamp: Numpy <br> Oppgaver til kapittel 4 i "notebooks"| Uke 39 |
-|Seminar 4        |[Oppgaver i Sympy](https://uit-sok-1003-h23.github.io/files/seminar5/)|  Uke 43|
-|Seminar 5        |Datacamp: Dictionaries & Pandas <br>Datacamp: Logic, Control Flow and Filtering| Uke 44 |
-|Seminar 6        |Datacamp: Loops<br> Datacamp: Case Study: Hacker Statistics|  Uke 45|
+|Seminar 1        |DataCamp: Python Basics<br> DataCamp: Functions and Packages <br> DataCamp: Writing your own functions <br>[Oppgaver til kapittel 1 og 2 i "notebooks"](https://espensirnes.github.io/notebooks/html/1%20-%20introduksjon.html)| Uke 36 |
+|Seminar 2        |DataCamp: Matplotlib <br> [Oppgaver til kapittel 3 i "notebooks"](https://espensirnes.github.io/notebooks/html/3%20-%20matplotlib.html)|  Uke 37 |
+|Seminar 3        |DataCamp: Python Lists <br> Datacamp: Numpy <br> [Oppgaver til kapittel 4 i "notebooks"](https://espensirnes.github.io/notebooks/html/4%20-%20lister,%20oppslag%20og%20numpy.html)| Uke 39 |
+|Seminar 4        |[Oppgaver i Sympy](https://uit-sok-1003-h23.github.io/files/seminar4/)|  Uke 43|
+|Seminar 5        |Datacamp: Dictionaries & Pandas <br>Datacamp: Logic, Control Flow and Filtering <br> [Oppgaver til kapittel 6 i "notebooks"](https://espensirnes.github.io/notebooks/html/6%20-%20pandas,%20filtrering,%20logikk%20og%20betingelser.html)| Uke 44 |
+|Seminar 6        |Datacamp: Loops<br> Datacamp: Case Study: Hacker Statistics <br> [Oppgaver til kapittel 7 i "notebooks"](https://espensirnes.github.io/notebooks/html/7%20-%20l%C3%B8kker%20og%20simulering.html)|  Uke 45|
 
