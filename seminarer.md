@@ -16,10 +16,10 @@ Ukenummerene kan bli endret
 
 | <img width=120/>|  Tema <img width=600/>       |       Innleveringsfrist for tilhørende arbeidskrav        |
 |-----------------|------------------------------|---------------|
-|Seminar 1        |DataCamp: Python Basics<br> DataCamp: Functions and Packages <br> DataCamp: Writing your own functions| Uke 36 |
-|Seminar 2        |DataCamp: Matplotlib|  Uke 37 |
-|Seminar 3        |DataCamp: Python Lists <br> Datacamp: Numpy| Uke 39 |
-|Seminar 4        |Oppgave i canvas (lenke kommer):Sympy|  Uke 43|
+|Seminar 1        |DataCamp: Python Basics<br> DataCamp: Functions and Packages <br> DataCamp: Writing your own functions <br>Oppgaver til kapittel 1 og 2 i "notebooks"| Uke 36 |
+|Seminar 2        |DataCamp: Matplotlib <br> Oppgaver til kapittel 3 i "notebooks"|  Uke 37 |
+|Seminar 3        |DataCamp: Python Lists <br> Datacamp: Numpy <br> Oppgaver til kapittel 4 i "notebooks"| Uke 39 |
+|Seminar 4        |[Oppgaver i Sympy](https://uit-sok-1003-h23.github.io/files/seminar5/)|  Uke 43|
 |Seminar 5        |Datacamp: Dictionaries & Pandas <br>Datacamp: Logic, Control Flow and Filtering| Uke 44 |
 |Seminar 6        |Datacamp: Loops<br> Datacamp: Case Study: Hacker Statistics|  Uke 45|
 
