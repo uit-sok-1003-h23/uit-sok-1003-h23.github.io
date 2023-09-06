@@ -6,7 +6,7 @@ Vurderingsformen i dette kurset er innlevering av to mappeoppgaver. Mappeoppgave
 Frister for innleveringer [finnes her](https://uit-sok-1003-h23.github.io/frister.html).
 
 ## Første mappeoppgave 
-Skal leveres innen 17/10, med presentasjon senere (dato/sted kommer). Presentasjonen innebærer en gjennomgang av koden/besvarelsen av studentene (10-15 min), etterfulgt av kommentarer/spørsmål (5-10 min).  
+Skal leveres innen 17/10, med presentasjon senere (dato/sted kommer). Presentasjonen innebærer en gjennomgang av koden/besvarelsen av studentene, etterfulgt av kommentarer/spørsmål.  
 
 Lenke til Mappeoppgave 1 kommer her.
 
