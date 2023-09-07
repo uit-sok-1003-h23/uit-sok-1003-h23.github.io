@@ -13,12 +13,12 @@
 |Arbeidskrav 3        | Matplotlib                                         | 22/09 kl. 16.00   |[DataCamp](https://learn.datacamp.com/){:target="blank"}|
 |Arbeidskrav 4        | Iterable objekter(NumPy, Lists)                    | 6/10 kl 16.00    |[DataCamp](https://learn.datacamp.com/){:target="blank"}|
 |Innlevering mappe 1  |                       | 17/10 kl 1600   |github|
-|Presentasjon mappe 1 | Presentasjon m/tilbakemelding                      | Kommer    |Publiseres senere |10-15 min presentasjon/gjennomgang av mappe|
+|Presentasjon mappe 1 | Presentasjon m/tilbakemelding                      | 23/10 og 24/10|Digitalt (lenke kommer) |min presentasjon/gjennomgang av mappe|
 |Arbeidskrav 5        | [Sympy  ](https://uit-sok-1003-h23.github.io/files/seminar4/) | 2/11 kl. 16.00   |[GitHub](https://github.com)|
 |Arbeidskrav 6        | Oppslag, Pandas, logikk, filtrering og betingelser <br>(Dictionaries & Pandas,Logic, Control Flow and Filtering)  | 09/11 kl. 16.00   |[DataCamp](https://learn.datacamp.com/){:target="blank"}|
 |Arbeidskrav 7        | Løkker/Simulering  (Loops, Case Study: Hacker Statistics)| 16/11 kl. 16.00   |[DataCamp](https://learn.datacamp.com/){:target="blank"}|
 |Innlevering mappe 2  |                       | 17/11 kl 1600   |github|
-|Presentasjon av mappe 2               |Presentasjon av prosjekt                                  | Kommer |Publiseres senere                          | 10-15 min presentasjon/gjennomgang av mappe |
+|Presentasjon av mappe 2               |Presentasjon m/tilbakemelding                                  | 20/11 og 21/11   |Digitalt (lenke kommer)                     | presentasjon/gjennomgang av mappe |
 |Endelig innlevering mappe 1 og 2|                                              | 1/12 kl. 13.00    | [Wiseflow](https://europe.wiseflow.net/login/license/6){:target="blank"}|
 
 

@@ -21,7 +21,7 @@ Endelig innlevering av mappeoppgavene skjer 1/12 på Wiseflow
 
 # Slik leverer du:
 1. Lag et repositorie med navn  "SOK-1003-H23" (uten anførselstegn). Navnet må være EKSAKT likt, hvis ikke blir ikke oppgaven registrert innlevert, og du vil ikke få karakter i faget. <br> Repositoriet SKAL være privat, hvis ikke kan andre snoke i ditt repositorie. Blir det da en fuskesak vil også den som ikke har lukket sitt repositorie, regnes som medvirkende.<br>  
-2. [Registrer github brukernavn. Det kan leveres i grupper på intil tre personer. ](https://docs.google.com/forms/d/e/1FAIpQLSd8nLKEYmY6auenPYH-aKWOtBaJmmADK6fKoG8bf4GxZqgTeQ/viewform)<br> 
+2. Registrer github brukernavn. Det kan leveres i grupper på intil tre personer. (lenke kommer) <br> 
 3. Oppgaven skal være en jupyterfil, men du kan også ha kode i en .py-fil som du importerer.<br> 
 4. Oppgaven er levert når følgende er tilfredstilt:
     1. oppgaven ligger i repositoriet registrert i punkt 2 (det er oppgaven som ligger der ved fristens utløp som bli evaluert)

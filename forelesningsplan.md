@@ -2,15 +2,27 @@
 |Uke	|#	|Tema	|Innhold	|Kapittel	|DataCamp	|Jupyter	|Innlevering|
 |---|---|---|---|---|---|---|---|
 |34	|0	|Komme i gang med python	|* Jupyter notebook<br>* Konsoll/script<br>* Installasjon av Python/Anaconda<br>* IDE<br>* Python grensesnitt	|||[0 - installasjon og tips](https://espensirnes.github.io/notebooks/html/0%20-%20installasjon%20og%20tips.html)||
+
 |35 |1   |Grunnleggende programmering	|* Kommentarer<br>* Utregning<br>* Variabler og typer<br>* Å sette variabler<br>* Ulike variabeltyper<br>* Konvertere variabeltype	|Python Basics	|Introduction to Python	|[1 - variabler.ipynb](https://espensirnes.github.io/notebooks/html/1%20-%20introduksjon.html)|[DataCamp](https://app.datacamp.com/groups/sok-1003-python-lab-h2023-bd0d964c-2ffa-4206-bf26-4c2e0cfe9a08/assignments)|
+
 |37	|2	|Funksjoner og pakker	|* Funksjoner<br>* Hjelp til funksjoner<br>* Argumenter til funksjoner<br>* Metoder<br>* Importere pakker	|Functions and Packages	|Introduction to Python	|||
+
 |   |   |Funksjoner	|* Definere en enkel funksjon<br>* Funksjoner med flere argumenter<br>* Funksjoner som returnerer flere variabler	|Writing your own functions	|Toolbox I	|[2 - funksjoner.ipynb](https://espensirnes.github.io/notebooks/html/2%20-%20funksjoner.html)|[DataCamp](https://app.datacamp.com/groups/sok-1003-python-lab-h2023-bd0d964c-2ffa-4206-bf26-4c2e0cfe9a08/assignments)|
+
 |38	|3	|Matplotlib	|* Linjeplot<br>* Scatterplot<br>* Histogram<br>* Etiketter<br>* Størrelser<br>* Farger<br>* Andre tilpasninger	|Matplotlib	|Intermediate Python	|[3 - matplotlib.ipynb](https://espensirnes.github.io/notebooks/html/3%20-%20matplotlib.html)|[DataCamp](https://app.datacamp.com/groups/sok-1003-python-lab-h2023-bd0d964c-2ffa-4206-bf26-4c2e0cfe9a08/assignments)|
+
 |40	|4	|Python lister	|* Lage lister<br>* Lage lister med ulike typer<br>* Lister av lister<br>* Velge elementer i en liste<br>* Manipulere lister<br>* Erstatte listeelementer<br>* Utvide en liste<br>* Kopiere en liste	|Python Lists	|Introduction to Python	|[4 - lister, oppslag og numpy.ipynb](https://espensirnes.github.io/notebooks/html/4%20-%20lister,%20oppslag%20og%20numpy.html)|[DataCamp](https://app.datacamp.com/groups/sok-1003-python-lab-h2023-bd0d964c-2ffa-4206-bf26-4c2e0cfe9a08/assignments)|
+
 |   |   |Numpy	|* Vektorer og matriser<br>* Velge elementer<br>* Enkel statistikk	|Numpy	|Introduction to Python	||[DataCamp](https://app.datacamp.com/groups/sok-1003-python-lab-h2023-bd0d964c-2ffa-4206-bf26-4c2e0cfe9a08/assignments)|
+
 |41	|5	|Sympy	|* Bruke sympy til å løse ligninger<br>* Bruke sympy til å<br>- derivere<br>- finne maksimum<br>-integrere	|||[5 - tilbud og etterspørsel.ipynb](https://espensirnes.github.io/notebooks/html/5%20-%20sympy.html)|[Sympy-oppgaver](https://uit-sok-1003-h23.github.io/files/seminar5/)|
+
 |42	|6	|Oppslagsliste og Pandas	|* Motivasjon for oppslagsliste (dictionary)<br>* Lage, bruke og manipulere en oppslagsliste<br>* Konvertere en oppslagsliste til Pandas DataFrame<br>* Velge data med hakeparentes<br>* Velge data med loc og iloc-funksjonene	|Dictionaries & Pandas	|Intermediate Python	|[6 - oppslag og pandas.ipynb](https://espensirnes.github.io/notebooks/html/6%20-%20pandas,%20filtrering,%20logikk%20og%20betingelser.html)|[DataCamp](https://app.datacamp.com/groups/sok-1003-python-lab-h2023-bd0d964c-2ffa-4206-bf26-4c2e0cfe9a08/assignments)|
+
 |   |   |Logikk, filtrering og betingelser	|* Boolske operatorer<br>* Sammenligne vektorer<br>* Numpy, boolske operatorer og filtrering<br>* Betingelser; if-else-elif<br>* Filtrere pandas DataFrame	|Logic, Control Flow and Filtering	|Intermediate Python	||[DataCamp](https://app.datacamp.com/groups/sok-1003-python-lab-h2023-bd0d964c-2ffa-4206-bf26-4c2e0cfe9a08/assignments)|
+
 |43	|7	|Løkker	|* While-løkke<br>* Betingelser<br>* Løkker over lister<br>* Indekser og verdier<br>* Løkker over lister av lister<br>* Løkker over DataFrame<br>* Legge til kollonne i DataFrame	|Loops	|Intermediate Python	|[7 - simulering.ipynb](https://espensirnes.github.io/notebooks/html/7%20-%20l%C3%B8kker%20og%20simulering.html)|[DataCamp](https://app.datacamp.com/groups/sok-1003-python-lab-h2023-bd0d964c-2ffa-4206-bf26-4c2e0cfe9a08/assignments)|
+
 |   |   |Simulering	|* Tilfeldige tall<br>* Random walk<br>* Plot fordelingen	|Case Study: Hacker Statistics	|Intermediate Python	||Oppgave kommer|
+
 |44||Reserve||||||
