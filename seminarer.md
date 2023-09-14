@@ -9,7 +9,7 @@
   
 Se forøvrig <a href='https://uit-sok-1003-h22.github.io/frister.html'> forelesningsplanen </a> for frister og annen informasjon. </p> <br>
 
-<p> <b> NB: for å få tilgang til datacamp må du enten bruke invitasjonen som du skal ha fått på e-post, [eller denne invitasjonslenken](https://www.datacamp.com/groups/shared_links/f26e694090f4d0e73d5d7ba2cca431e5fdf7780be6b28be9a41f6d6997dc3b8c).</b> </p>
+NB: for å få tilgang til datacamp må du enten bruke invitasjonen som du skal ha fått på e-post, [eller denne invitasjonslenken](https://www.datacamp.com/groups/shared_links/f26e694090f4d0e73d5d7ba2cca431e5fdf7780be6b28be9a41f6d6997dc3b8c).</b> </p>
 
 Ukenummerene kan bli endret
 
