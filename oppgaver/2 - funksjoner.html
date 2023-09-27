@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2 - funksjoner</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="2 - funksjoner_files/libs/clipboard/clipboard.min.js"></script>
+<script src="2 - funksjoner_files/libs/quarto-html/quarto.js"></script>
+<script src="2 - funksjoner_files/libs/quarto-html/popper.min.js"></script>
+<script src="2 - funksjoner_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="2 - funksjoner_files/libs/quarto-html/anchor.min.js"></script>
+<link href="2 - funksjoner_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="2 - funksjoner_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="2 - funksjoner_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="2 - funksjoner_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="2 - funksjoner_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">2 - funksjoner</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="å-bruke-funksjoner" class="level1">
+<h1>Å bruke funksjoner</h1>
+<p>Funksjoner er helt sentralt i all slags programmering. Et program uten egendefinerte funksjoner er bare en liste med kommandoer, og det er svært begrenset hva du kan få til med det. Heldigvis er det ekstremt enkelt å lage egne funksjoner i Python.</p>
+<p>En vanlig nybegynnerfeil i programmering er å ikke utnytte muligheten til å lage egne funksjoner tilstrekkelig. Hovedregelen er at om det er noe av koden din som repeteres, så skal du lage en ny funksjon som håndterer dette. Målet er at antall linjer i hver funksjon skal være så lite som mulig. Men før vi lærer å lage egne funksjoner, skal vi se litt på hvordan funksjoner brukes.</p>
+<section id="innebygde-funksjoner" class="level2">
+<h2 class="anchored" data-anchor-id="innebygde-funksjoner">Innebygde funksjoner</h2>
+<p>Python kommer med en rekke innebygde funksjoner. I tillegg kan du importere pakker som har en lang rekke funksjoner. Her er noen innebygde funksjoner i Python:</p>
+<section id="eksempel-1" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-1">Eksempel 1:</h4>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( <span class="bu">max</span>(<span class="fl">2.4</span>,<span class="fl">2.0</span>)   )</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( <span class="bu">min</span>(<span class="fl">2.4</span>, <span class="fl">2.0</span>)  )</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( <span class="bu">abs</span>(<span class="op">-</span><span class="fl">2.4</span>)      )</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( <span class="bu">len</span>(<span class="st">"abcde"</span>)   )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2.4
+2.0
+2.4
+5</code></pre>
+</div>
+</div>
+<p>Legg merke til at funksjonene <code>max</code>, <code>min</code>, <code>abs</code> og <code>len</code> alle er omsluttet av funksjonen <code>print</code> som sørger for at resultatet skrives ut nedenfor. En funksjon kan altså <em>returnere noe</em>, slik som <code>max</code>, <code>min</code>, <code>abs</code> og <code>len</code>, eller <em>gjøre noe</em> slik som <code>print</code>, eller begge deler.</p>
+<p>Funksjonen <code>len</code> angir antall bokstaver, men kan også angi lengde på en liste. En liste i python skriver du som <code>[1,'hei',a]</code>. En liste kan altså bestå av flere ulike typer variabler og konstanter. De to første elementene her er konstanter, og den tredje er en variabel som er satt lik et flyttal i eksemplet under.</p>
+</section>
+<section id="eksempel-2" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-2">Eksempel 2:</h4>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span><span class="fl">50.8</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([<span class="dv">1</span>,<span class="st">'hei'</span>,a])</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>([<span class="dv">1</span>,<span class="st">'hei'</span>,a])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1, 'hei', 50.8]</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>3</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="eksponentialfunksjonene" class="level2">
+<h2 class="anchored" data-anchor-id="eksponentialfunksjonene">Eksponentialfunksjonene</h2>
+<p>I Python er det svært enkelt å <em>importere</em> ferdig pakker for som kan kjøre ferdige funksjoner. Vi skal her se på et eksempel med noe som heter eksponentialfunksjonen. Denne finnes blant annet i pakken <code>numpy</code>. Dette er en svært nyttig pakke for matematiske beregninger. Se seksjonen om “Installere Python-pakker” i <a href="0%20-%20installasjon%20og%20tips.ipynb">“0 - installasjon og tips.ipynb”</a> for å installere Numpy.</p>
+<p>Som vi skal se lenger ned, så er eksponentialfunksjonen viktig innen økonomifaget fordi den brukes i vekstberegninger, for eksempel for befolkning eller produksjon.</p>
+<p>Som nevnt tidligere så er <em>potensen</em> <span class="math inline">\(y^x\)</span> et <em>grunntall</em> <span class="math inline">\(y\)</span> opphøyet i en eksponent <span class="math inline">\(x\)</span>. Når vi snakker om <em>eksponenten</em> i bestemt form, så betyr det at grunntallet er et bestemt tall. Dette tallet kalles <span class="math inline">\(e\)</span>, etter matematikeren Euler, og er tilnærmet <span class="math inline">\(e\approx2.71828\)</span> (det er egentlig en uendelig rekke med siffer etter komma)</p>
+<p>Siden Python ikke har noen innebygd funksjon for eksponenten, importerer vi altså først <code>numpy</code>-pakken, som har en slik funksjon. For å få mindre skriving senere, er det vanlig å importere <code>numpy</code> som aliaset <code>np</code>. Dette gjør vi slik:</p>
+<section id="eksempel-3" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-3">Eksempel 3:</h4>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Navnet på eksponent-funksjonen i numpy er exp. Skal vi for eksempel finne hva <span class="math inline">\(e^2=2.71828^2\)</span> er, skriver vi</p>
+</section>
+<section id="eksempel-4" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-4">Eksempel 4:</h4>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>np.exp(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>7.38905609893065</code></pre>
+</div>
+</div>
+<p>Om vi ønsker å vite hva eksponenten er med litt mer enn fem desimaler, kan vi finne eksponenten av 1, siden ethvert tall opphøyd i 1 er seg selv:</p>
+</section>
+<section id="eksempel-5" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-5">Eksempel 5:</h4>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>np.exp(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>2.718281828459045</code></pre>
+</div>
+</div>
+<p>Eksponenten til 5 er for eksempel 2.71828 opphøyet i 5:</p>
+</section>
+<section id="eksempel-6" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-6">Eksempel 6:</h4>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>np.exp(<span class="dv">1</span>)<span class="op">**</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>148.41315910257657</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>np.exp(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>148.4131591025766</code></pre>
+</div>
+</div>
+<p>For å opphøye noe bruker vi altså dobbelt gangetegn <code>**</code>.</p>
+<p><em>Logartimen</em> er det eksakt motsatte av eksponentialfunksjonen. Tar vi logaritmen av eksponentialfunksjon, får vi argumentet til sistnevnte. Tar vi eksponentialfunksjonen av logartimen får vi også argumentet til logartimen. I en av oppgavene under skal du vise dette.</p>
+</section>
+</section>
+</section>
+<section id="lage-egne-funksjoner---renteregning" class="level1">
+<h1>Lage egne funksjoner - renteregning</h1>
+<p>Vi skal her se hvordan vi kan lage egne funksjoner for renteregning.</p>
+<p>La oss starte med å lage en funksjon for et lån uten avdrag. Om banken legger til renten én gang i året og renten er r, så er lånet på x om T år gitt som <span class="math inline">\(x\cdot (1+r)^{T}\)</span>. Dette kan vi programmere som følgende funksjon:</p>
+<section id="eksempel-7" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-7">Eksempel 7:</h4>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> account_balance(x,r,T):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>r)<span class="op">**</span>T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Nøkkelordet <code>return</code>sørger for at det som står etter <code>return</code> returneres av funksjonen. Dersom funksjonen ikke har <code>return</code>i seg, returneres <code>None</code>, som representerer “ingenting” i Python.</p>
+<p>Om renten på lånet er 20%=0.2 og innskuddet er 100, så er beløpet om to år dermed:</p>
+</section>
+<section id="eksempel-8" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-8">Eksempel 8:</h4>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>account_balance(<span class="dv">100</span>,<span class="fl">0.2</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>144.0</code></pre>
+</div>
+</div>
+<p>La oss nå tenke oss at banken legger til renter n ganger i året. Om for eksempel n=12, så legger banken til renter måndedlig. Vi kan da regne ut lånet ved ulik antall forrentninger per år. Formelen for dette er <span class="math inline">\(x\cdot (1+\frac{r}{n})^{T\cdot n}\)</span>.</p>
+<p>Formelen har en enkel og intuitiv forklaring: Vi deler rentesatsen på antall perioder, samtidig som renten legges til i hver periode. Renten i hver periode er dermed <span class="math inline">\(\frac{r}{n}\)</span>, og dette forrentes totalt <span class="math inline">\(T\cdot n\)</span> ganger. Dette kan programmeres i pyton som</p>
+</section>
+<section id="eksempel-9" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-9">Eksempel 9:</h4>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> account_balance_n(x,r,T,n):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>r<span class="op">/</span>n)<span class="op">**</span>(T<span class="op">*</span>n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>La oss nå sammenligne å legge til renten hver måned, med å legge den til årlig:</p>
+</section>
+<section id="eksempel-10" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-10">Eksempel 10:</h4>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(account_balance_n(<span class="dv">100</span>,<span class="fl">0.2</span>,<span class="dv">2</span>,<span class="dv">12</span>))</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(account_balance_n(<span class="dv">100</span>,<span class="fl">0.2</span>,<span class="dv">2</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>148.69146179463576
+144.0</code></pre>
+</div>
+</div>
+<p>Vi ser at det lønner seg en god del å legge til renten hver måned. La oss nå anta at rentene legges til hvert sekund i året. Det er 31 536 000 sekunder i et år. I så fall er innskuddet om to år verdt:</p>
+</section>
+<section id="eksempel-11" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-11">Eksempel 11:</h4>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>account_balance_n(<span class="dv">100</span>,<span class="fl">0.2</span>,<span class="dv">2</span>,<span class="dv">31536000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>149.18246858790133</code></pre>
+</div>
+</div>
+<p>Banken vil altså tjene litt på å gjøre det. I stedet for å regne ut med daglig forrentning kan vi bruke kontinuerlig, som vil si at vi bruker eksponentialfunksjonen</p>
+</section>
+<section id="eksempel-12" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-12">Eksempel 12:</h4>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> account_balance_exponential(x,r,T):</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">*</span>np.exp(r<span class="op">*</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Dette gir oss verdien på lånet når renten legges til “kontinuerlig”, altså oftere enn hvert sekund. La oss nå regne ut verdien av gjelden om to år med kontinuerlig forrentning:</p>
+</section>
+<section id="eksempel-13" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-13">Eksempel 13</h4>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>account_balance_exponential(<span class="dv">100</span>,<span class="fl">0.2</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>149.18246976412703</code></pre>
+</div>
+</div>
+<p>Vi ser at dette er omtrent identisk med når vi la til renten hvert sekund. Eksponentialfunksjonen er altså en måte å regne ut vekst når økningen legges til veldig hyppig. Forrentning hvert sekund og kontinuerlig forrentig gir altså omtrent det samme resultatet. “Kontinuerlig forrentning” er et abstrakt begrep, men det betyr i realiteten bare at vi legger til veksten “veldig hyppig”.</p>
+<p>Årsaken til at vi ofte bruker logaritmen og eksponentialfunksjonen istedet for å legge til veksten hvert sekund, ar et det er veldig mye enklere å regne med logartimer enn vanlig prosentregning.</p>
+</section>
+</section>
+<section id="mer-om-funksjoner" class="level1">
+<h1>Mer om funksjoner</h1>
+<p>La oss definere en enkel funksjon som dobler et tall:</p>
+<section id="eksempel-14" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-14">Eksempel 14:</h4>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">2</span><span class="op">*</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>La oss nå sjekke følgende:</p>
+<ol type="1">
+<li>Hvilket resultat gir funksjonen?</li>
+<li>Hva slags objekt er funksjonen?</li>
+<li>Hva slags objekt returnerer funksjonen?</li>
+</ol>
+</section>
+<section id="eksempel-15" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-15">Eksempel 15:</h4>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(f(<span class="dv">8</span>))            <span class="co"># printer resultatet av funksjonen når argumentet er 8</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(f))         <span class="co"># printer hvilken type objekt det er</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(f(<span class="dv">5</span>)))      <span class="co"># printer hvilken type resultate av funksjonen er</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>16
+&lt;class 'function'&gt;
+&lt;class 'int'&gt;</code></pre>
+</div>
+</div>
+<p>Funksjonen dobler argumentet, så med 8 som argument blir resultatet 16. Symbolet <code>f</code> representerer nå en funksjon (<code>function</code>), som vi ser er resultatet av <code>print(type(f))</code>. Men dersom vi <em>kaller</em> funksjonen med for eksemple argumentet 5, får vi resultatet av funksjonen, som er av type <code>int</code>. Funksjoner trenger imidlertid ikke retunere noe. Dette er også en funksjon:</p>
+</section>
+<section id="eksempel-16" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-16">Eksempel 16:</h4>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hello():</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Hello world!'</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>hello()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello world!</code></pre>
+</div>
+</div>
+<p>Vi ser at denne funksjonen ikke har <code>return</code>-nøkkelordet. Dermed returneres ingen verdi. I stedet for å returnere noe, så <em>gjør</em> denne funksjonen noe, nemlig å skrive ut ‘Hello world”’ til skjermen.</p>
+<p>Du kaller funksjoner ved å skrive funksjonen med argumentet i parentes etter navnet. Som vi ser her, når det ikke er noen argumenter, skriver du tomme parenteser.</p>
+<p>En funksjon er også en variabel og et objekt. Du kan for eksempel definere en ny variabel som en tidligere definert funksjon:</p>
+</section>
+<section id="eksempel-17" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-17">Eksempel 17:</h4>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>hi<span class="op">=</span>hello</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>hi()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello world!</code></pre>
+</div>
+</div>
+<p>Av og til ønsker du at argumentene til en funksjon skal være valgfrie. Da kan du definere en standard (“default”) verdi for argumentet:</p>
+</section>
+<section id="eksempel-18" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-18">Eksempel 18:</h4>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x,a<span class="op">=</span><span class="fl">1.02e+2</span>):</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a<span class="op">*</span>x</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Innehaveren krevde i utgangspunkltet </span><span class="sc">{</span>f(<span class="dv">5</span>)<span class="sc">}</span><span class="ss"> kroner for fem epler.</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>     <span class="ss">f"Det var alt for mye, så jeg tilbydde </span><span class="sc">{</span>f(<span class="dv">5</span>,<span class="fl">1.02e-2</span>)<span class="sc">}</span><span class="ss"> kroner.</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>     <span class="ss">f"Vi ble til slutt enige om </span><span class="sc">{</span>f(<span class="dv">5</span>,<span class="fl">1.02e+1</span>)<span class="sc">}</span><span class="ss"> kroner.</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Innehaveren krevde i utgangspunkltet 510.0 kroner for fem epler.
+Det var alt for mye, så jeg tilbydde 0.051000000000000004 kroner.
+Vi ble til slutt enige om 51.0 kroner.
+</code></pre>
+</div>
+</div>
+<p>Legg merke til at argumentene til en funksjon settes inn i en parentes. For <code>f(x,y)</code> for eksempel, så er <code>x</code> og <code>y</code> argumenter til funksjonen <code>f</code>. Disse står inne i en parentes <code>(x,y)</code>. Denne parentesen er et objekt i seg selv og kalles en <code>tuple</code>. Det går derfor an å definere alle argumentene <em>først</em>, og så la funksjonen evaluere dem. La oss for eksempel si at <code>x=20</code> og <code>y=50</code>, slik at <code>(x,y)=(20,50)</code>. Vi kan da definere variablene først og så evaluere funksjonen på følgende måte</p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>args<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">50</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>f(<span class="op">*</span>args)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>1000</code></pre>
+</div>
+</div>
+<p>Dette er en mulighet som kan være veldig nyttig i mange sammenhenger. En <code>tuple</code>skiller seg fra en liste (<code>list</code>) ved at sistnevnte defineres med hakeparenteser <code>[]</code> i stedet for runde parenteser <code>()</code>. Vi skal senere komme tilbake til flere forskjeller på en liste og en tuple.</p>
+</section>
+</section>
+<section id="tilbud-og-etterspørsel" class="level1">
+<h1>Tilbud og etterspørsel</h1>
+<p>La oss definere en tilbud- og etterspørselsfunksjon. Disse funksjonene skal vise hvilken <strong><em>pris</em></strong> konsumentene maksimalt er villige til å betale for en gitt mengde, og hvor mye produsentene minimum må ha for å selge varen.</p>
+<p>Den høyeste prisen er det bare noen få konsumenter som er villige til å betale, så desto større kvantum <code>x</code> som skal selges, desto lavere må prisen være. Etterspørselsfunksjonen må derfor være fallende (lavere pris ved høyere kvantum).</p>
+<p>Her er et forslag til etterspørselsfunksjon:</p>
+<section id="eksempel-19" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-19">Eksempel 19:</h4>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating a function that returns total demand given a price p</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> demand(x):</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">125</span><span class="op">/</span>(<span class="dv">5</span><span class="op">+</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Den laveste prisen er det bare den mest effektive bedriften som klarer å produsere lønnsomt for. Ettersom kvantum <code>x</code> øker vil flere, men mindre effektive bedrifter, tilby varen. Desto større kvantum, desto høyere pris kreves per enhet. Tilbudsfunksjonen bør derfor være stigende (høyere pris ved høyere kvantum).</p>
+<p>Her er forslag til tilbudsfunksjoner:</p>
+</section>
+<section id="eksempel-20" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-20">Eksempel 20:</h4>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating a function that returns total supply given a price p</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> supply(x):</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="oppgaver" class="level2">
+<h2 class="anchored" data-anchor-id="oppgaver">Oppgaver:</h2>
+<section id="oppgave-1" class="level4">
+<h4 class="anchored" data-anchor-id="oppgave-1">Oppgave 1:</h4>
+<p>Sjekk med nummeriske eksempler at tilbudskurven faktisk er økende og etterspørselskurven faktisk er fallende.</p>
+<div class="cell" data-tags="[]" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(supply(<span class="dv">5</span>))</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(supply(<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>25
+100</code></pre>
+</div>
+</div>
+<p><strong><em>Tilbudet er økende</em></strong></p>
+<div class="cell" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(demand(<span class="dv">5</span>))</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(demand(<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>12.5
+8.333333333333334</code></pre>
+</div>
+</div>
+<p><strong><em>Etterspørselen er synkende</em></strong></p>
+</section>
+<section id="oppgave-2" class="level4">
+<h4 class="anchored" data-anchor-id="oppgave-2">Oppgave 2:</h4>
+<p>Finn med prøving og feiling eller på annen måte hvilket kvantum som gir likhet mellom tilbud og etterspørsel. Hvilken pris gir slik kvantum?</p>
+<div class="cell" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#printing out demand and supply for different quantities to see for which the mnarket clears, approximately</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([supply(i) <span class="cf">for</span> i <span class="kw">in</span> np.linspace(<span class="fl">0.</span>,<span class="dv">7</span>,<span class="dv">10</span>)])</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([demand(i) <span class="cf">for</span> i <span class="kw">in</span> np.linspace(<span class="dv">0</span>,<span class="dv">7</span>,<span class="dv">10</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0.0, 0.6049382716049383, 2.419753086419753, 5.4444444444444455, 9.679012345679013, 15.123456790123456, 21.777777777777782, 29.641975308641978, 38.71604938271605, 49.0]
+[25.0, 21.634615384615383, 19.06779661016949, 17.045454545454543, 15.41095890410959, 14.0625, 12.93103448275862, 11.96808510638298, 11.138613861386139, 10.416666666666666]</code></pre>
+</div>
+</div>
+<p><strong><em>Markedet klarer rundt en etterspørsel på 14-15 enheter.</em></strong></p>
+</section>
+<section id="oppgave-3" class="level4">
+<h4 class="anchored" data-anchor-id="oppgave-3">Oppgave 3:</h4>
+<ol type="1">
+<li>Lag en funksjon som viser hvor mange penger du har i gjen når du har brukt x penger av et budsjett på b</li>
+</ol>
+<div class="cell" data-tags="[]" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rest(b, x):</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> b<span class="op">-</span>x</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span><span class="dv">1000</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">700</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="ss">f"Av et budjsett på </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss"> brukte jeg </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> og har igjen </span><span class="sc">{</span>rest(b,x)<span class="sc">}</span><span class="ss">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>'Av et budjsett på 1000 brukte jeg 700 og har igjen 300'</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Lag en funksjon som returnerer hvor mye parkeringen kostet når du har stått en tidsperiode angitt av argumentet <code>time_period</code>, og en pris per time angitt av argumentet <code>p</code>. Funksjonen skal forvente at time_period er på formatet “hh:mm:ss” (en streng). Du kan trekke ut timer, minutter og sekunder fra en tekstreng på det foreslåtte formatet, ved å bruke koden <code>hh,mm,ss=int(time_period[0:2]),int(time_period[3:5]),int(time_period[6:])</code>. Du må konvertere tiden til timer på desimalform for å regne ut kostnad. Det kan du gjøre med denne formelen: <code>tt_dec=hh+mm/60+ss/(60*60)</code>.</li>
+</ol>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parking_cost(time_period, p):</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    hh,mm,ss<span class="op">=</span><span class="bu">int</span>(time_period[<span class="dv">0</span>:<span class="dv">2</span>]),<span class="bu">int</span>(time_period[<span class="dv">3</span>:<span class="dv">5</span>]),<span class="bu">int</span>(time_period[<span class="dv">6</span>:])</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    time_decimal <span class="op">=</span> hh <span class="op">+</span> (mm<span class="op">/</span><span class="dv">60</span>) <span class="op">+</span> (ss<span class="op">/</span>(<span class="dv">60</span><span class="op">*</span><span class="dv">60</span>))</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> time_decimal<span class="op">*</span>p</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>time_period <span class="op">=</span> <span class="st">"02:22:31"</span></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">120</span></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Parkeringstid: </span><span class="sc">{</span>time_period<span class="sc">}</span><span class="ss">, pris per time: </span><span class="sc">{</span>p<span class="sc">}</span><span class="ss"> kroner, parkeringskostnad: </span><span class="sc">{</span>parking_cost(time_period, p)<span class="sc">}</span><span class="ss"> kroner"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Parkeringstid: 02:22:31, pris per time: 120 kroner, parkeringskostnad: 285.03333333333336 kroner</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Lag en funksjon som tar en liste med adjektiv som argument. Kall argumentet for <code>adj_list</code>. Funksjonen skal returnere et tilfeldig element fra listen. Du kan for eksempel teste funksjonen med denne listen <code>['dyr', 'billig', 'pareto optimal', 'høy', 'lav', 'ineffektiv']</code>. For å plukke et tilfeldig element fra en liste <code>adj_list</code> med <code>4</code>elementer, skriver du <code>adj_list[np.random.randint(4)]</code>.</li>
+</ol>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_adjective(adj_list):</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> np.random.randint(<span class="bu">len</span>(adj_list))</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> adj_list[i]</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>get_adjective([<span class="st">'dyr'</span>, <span class="st">'billig'</span>, <span class="st">'pareto optimal'</span>, <span class="st">'høy'</span>, <span class="st">'lav'</span>, <span class="st">'ineffektiv'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>'høy'</code></pre>
+</div>
+</div>
+</section>
+<section id="oppgave-4" class="level4">
+<h4 class="anchored" data-anchor-id="oppgave-4">Oppgave 4:</h4>
+<ol type="a">
+<li>Bruk eksponentialfunksjonen og log-funksjonen i numpy til å vise at log-funksjonen er det motsatte av eksponentialfunksjonen.</li>
+</ol>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>number <span class="op">=</span> <span class="fl">3.234</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> np.exp(number)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.log(e))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3.234</code></pre>
+</div>
+</div>
+<p><strong><em>Vi ser at vi får samme tall</em></strong></p>
+<ol start="2" type="a">
+<li>Regn ut hvor mange prosent 205,210,220,230 og 240 er av 200. Regn også ut logaritmen av 205/200, 210/200 … osv. og kommenter resultatet.</li>
+</ol>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">205</span>,<span class="dv">210</span>,<span class="dv">220</span>,<span class="dv">230</span>, <span class="dv">240</span>]:</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"i %: </span><span class="sc">{</span><span class="dv">100</span><span class="op">*</span>(i<span class="op">/</span><span class="dv">200</span><span class="op">-</span><span class="dv">1</span>)<span class="sc">}</span><span class="ss">, i log: </span><span class="sc">{</span><span class="dv">100</span><span class="op">*</span>np<span class="sc">.</span>log(i<span class="op">/</span><span class="dv">200</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>i %: 2.499999999999991, i log: 2.4692612590371414
+i %: 5.000000000000004, i log: 4.879016416943204
+i %: 10.000000000000009, i log: 9.531017980432493
+i %: 14.999999999999991, i log: 13.976194237515863
+i %: 19.999999999999996, i log: 18.232155679395458</code></pre>
+</div>
+</div>
+<p><strong><em>Prosentene ligner, logarigmen er % ved kontinuerlig forrentning.</em></strong></p>
+</section>
+<section id="oppgave-5" class="level4">
+<h4 class="anchored" data-anchor-id="oppgave-5">Oppgave 5:</h4>
+<p>Lag en funksjon som returnerer det høyeste av funksjonene <code>account_balance_exponential</code> og <code>account_balance</code>. Er dette en nyttig funksjon?</p>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> higest_account_balance(x,r,T,n):</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">max</span>((</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>        account_balance_n(x,r,T,n),</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>        account_balance_exponential(x,r,T)</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(higest_account_balance(<span class="dv">100</span>, <span class="fl">0.2</span>, <span class="dv">4</span>, <span class="dv">1</span>))</span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>account_balance_exponential(<span class="dv">100</span>, <span class="fl">0.2</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>222.55409284924679</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>222.55409284924679</code></pre>
+</div>
+</div>
+<p><strong><em>Funksjonen vil alltid være lik <code>account_balance_exponential</code>, siden kontinuerlig forrentning alltid er høyest, så ikke så nyttig</em></strong></p>
+</section>
+<section id="oppgave-6" class="level4">
+<h4 class="anchored" data-anchor-id="oppgave-6">Oppgave 6</h4>
+<ol type="a">
+<li>Bruk innebygde Python-funksjoner til å finne maksimum, minimum, absoluttverdi og lengden av teksten “1, -5, 10”. Bruk funksjonen <code>eval</code> til å konvertere verdiene til en tallrekke</li>
+</ol>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> <span class="bu">eval</span>(<span class="st">"1, -5, 10"</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">max</span>(values))</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">max</span>(values))</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.<span class="bu">abs</span>(values))</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(values))</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(<span class="st">"1, -5, 10"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>10
+10
+[ 1  5 10]
+3
+9</code></pre>
+</div>
+</div>
+<p><strong><em>Lengden kan enten være lengden av strengen eller lengden av listen</em></strong></p>
+<ol start="2" type="a">
+<li>Nåverdien til et beløp er det en trenger å sette i banken i dag for å få beløpet i fremtiden. Formelen for dette er <code>X/((1+r)**T)</code>. Lag en funksjon som retuner nåverdien av et beløp. Lag også en funksjon som returnerer nåverdien med kontinuerlig forrentning.</li>
+</ol>
+<div class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> present_value(x,r,T,n):</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>r<span class="op">/</span>n)<span class="op">**</span>(<span class="op">-</span>T<span class="op">*</span>n)</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> present_value_exponential(x,r,T):</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">*</span>np.exp(<span class="op">-</span>r<span class="op">*</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="a">
+<li>Lag en funkson som returnerer nåverdi eller sluttverdi avhengig av hva argumentene er. Sluttverdi er det som er beregnet i avsnittet “Lage egne funksjoner - renteregning”. Funksjonen skal ha antall forrentninger per år som argument, og skal returnere kontinuerlig forrentning dersom antall forrentninger er høyere enn 100</li>
+</ol>
+<p>Du kan bruke en <code>if</code>- betingelse til å velge hva en funksjon skal gjøre slik:</p>
+<div class="cell" data-tags="[]" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pv_or_balance(x,r,T, return_pv ,n<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> return_pv:</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> present_value_exponential(x,r,T)</span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> account_balance_exponential(x,r,T)</span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> return_pv:</span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> present_value(x,r,T, n)</span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> account_balance_n(x,r,T,n)</span>
+<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb61-14"><a href="#cb61-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( pv_or_balance(<span class="dv">100</span>, <span class="fl">0.2</span>, <span class="dv">4</span>, <span class="va">True</span>) )</span>
+<span id="cb61-15"><a href="#cb61-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( pv_or_balance(<span class="dv">100</span>, <span class="fl">0.2</span>, <span class="dv">4</span>, <span class="va">False</span>) )</span>
+<span id="cb61-16"><a href="#cb61-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( pv_or_balance(<span class="dv">100</span>, <span class="fl">0.2</span>, <span class="dv">4</span>, <span class="va">True</span>, <span class="dv">1</span>) )</span>
+<span id="cb61-17"><a href="#cb61-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( pv_or_balance(<span class="dv">100</span>, <span class="fl">0.2</span>, <span class="dv">4</span>, <span class="va">False</span>, <span class="dv">1</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>44.932896411722155
+222.55409284924679
+48.22530864197532
+207.35999999999999</code></pre>
+</div>
+</div>
+<p><strong><em>Men vi kan også bruke at med negaativ tid T får vi nåverdi, slik at vi slipper et eget argument for det</em></strong></p>
+<div class="cell" data-tags="[]" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pv_or_balance(x,r,T ,n<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> account_balance_exponential(x,r,T)</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> account_balance_n(x,r,T, n)</span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( pv_or_balance(<span class="dv">100</span>, <span class="fl">0.2</span>, <span class="op">-</span><span class="dv">4</span>) )</span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( pv_or_balance(<span class="dv">100</span>, <span class="fl">0.2</span>,  <span class="dv">4</span>) )</span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( pv_or_balance(<span class="dv">100</span>, <span class="fl">0.2</span>, <span class="op">-</span><span class="dv">4</span>, <span class="dv">1</span>) )</span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( pv_or_balance(<span class="dv">100</span>, <span class="fl">0.2</span>,  <span class="dv">4</span>, <span class="dv">1</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>44.932896411722155
+222.55409284924679
+48.22530864197532
+207.35999999999999</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
