@@ -17,7 +17,7 @@ juks, med de konsekvenser det kan medføre om det blir oppdaget. For det andre v
 
 # Karakter
 Denne mappen vil inngå i den endelige karaktervurderingen, men dere får kun godkjent/ikke godkjent på denne innleveringen. Dere vil få mulighet til å forbedre svarene 
-på både Mappe1 og Mappe2 før endelig innlevering. 
+på både Mappe1 og Mappe2 i tiden før endelig innlevering. 
 
 
 # Oppgave 1:
@@ -50,7 +50,13 @@ Du kan lage en ny variabel som den naturlige logaritmen med for eksempel `df['lo
     2) som regner ut likevekten med Sympy
     3) som tegner tilbud og etterspørselskfunksjonene, med konsument og produsentoverskudd
     
-3) Test funksjonen på minst to ulike etterspørselsfunksjoner. 
+4) Anta at det pålegges en avgift på 50 0000 på hver Tesla (for hver mengde langs x-aksen, er kostnade/tilbudskurven 50 0000 høyere). Hvor mye synker etterspørselen med etterspørselsfunksjonen din?
+    
+3) Test funksjonen på minst to ulike etterspørselsfunksjoner og to ulike tilbudsfunksjoner (fire kombinasjoner totalt).
+
+4) Lag en helt flat tilbudsfunksjon, og regn ut likevekten. Det kan argumenteres for at tilbudsfunksjonen for Tesla er flat i Norge, hva tror du argumentasjonen er for det?
+
+
 
 
 
