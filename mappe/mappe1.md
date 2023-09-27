@@ -23,17 +23,14 @@ på både Mappe1 og Mappe2 i tiden før endelig innlevering.
 ## Oppgave 1:
 
 1. Les inn 'bilparken_ssb.csv' inn i en variable df med pandas
-2. Sorter tabellen med df = df.sort_values('Personbiler vraket mot pant (prosent av bestanden)', ascending=True) 
-
-Du kan lage grafer av et datasett i pandas med plot-objektet. Du kan for eksempel lage et søylediagram med `df.plot.bar(etikketer, verdier)` og et scatter-plott med `df.plot.scatter(x, y)`. 
+2. Sorter tabellen med `df = df.sort_values('Personbiler vraket mot pant (prosent av bestanden)', ascending=True)`
+<br><br>Du kan lage grafer av et datasett i pandas med plot-objektet. Du kan for eksempel lage et søylediagram med `df.plot.bar(etikketer, verdier)` og et scatter-plott med `df.plot.scatter(x, y)`. 
 Argumentene i funksjonen er navnene på variablene i datasettet. 
 
 3. Lag et søylediagram med prosentvis andel av kjøretøy vraket for hvert bilmerke. 
 
 4. Lag et scatter-plott med antall biler som er over 20 år og prosentvis andel biler som er vraket. Ser det ut til å være en sammenheng?
-
-Du kan lage en ny variabel som den naturlige logaritmen med for eksempel `df['log20år'] = np.log(df['Over 20 år'])`.
-
+<br><br>Du kan lage en ny variabel som den naturlige logaritmen med for eksempel `df['log20år'] = np.log(df['Over 20 år'])`.
 
 5. Lag nye variabler med den naturlige logaritmen for antall biler som er over 20 år og prosentvis andel biler som er vraket, og lag et scatter-plott av disse. Ser det nå ut tilå være en sammenheng?
 
