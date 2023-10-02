@@ -23,7 +23,7 @@ på både Mappe1 og Mappe2 i tiden før endelig innlevering.
 
 ## Oppgave 1:
 
-1. Les inn ['bilparken_ssb.csv']('https://uit-sok-1003-h23.github.io/mappe/bilparken_ssb.csv') inn i en variable df med pandas.
+1. Les inn ['bilparken_ssb.csv'](https://uit-sok-1003-h23.github.io/mappe/bilparken_ssb.csv) inn i en variable df med pandas.
 2. Sorter tabellen med `df = df.sort_values('Personbiler vraket mot pant (prosent av bestanden)', ascending=True)`
 <br><br>Du kan lage grafer av et datasett i pandas med plot-objektet. Du kan for eksempel lage et søylediagram med `df.plot.bar(etikketer, verdier)` og et scatter-plott med `df.plot.scatter(x, y)`. 
 Argumentene i funksjonen er navnene på variablene i datasettet. 
