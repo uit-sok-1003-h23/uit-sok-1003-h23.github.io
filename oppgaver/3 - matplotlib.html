@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3 - matplotlib</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="3 - matplotlib_files/libs/clipboard/clipboard.min.js"></script>
+<script src="3 - matplotlib_files/libs/quarto-html/quarto.js"></script>
+<script src="3 - matplotlib_files/libs/quarto-html/popper.min.js"></script>
+<script src="3 - matplotlib_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="3 - matplotlib_files/libs/quarto-html/anchor.min.js"></script>
+<link href="3 - matplotlib_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="3 - matplotlib_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="3 - matplotlib_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="3 - matplotlib_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="3 - matplotlib_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">3 - matplotlib</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="enkle-grafer" class="level1">
+<h1>Enkle grafer</h1>
+<p>Det er fint å kunne lage funksjoner i Python, men det er enda bedre å <em>se</em> dem. Vi skal nå se på hvordan vi kan tegne resultatet av funksjoner i et diagram ved hjelp av pakken <code>matplotlib</code>.</p>
+<p>Ofte ønsker vil å bruke matplotlib til å vise oss sammenhenger i data vi har hentet inn. Når vi importerer data til Python bruker vi vanligvis pakken <code>pandas</code>. Vi kommer sener tilbake til hvordan vi arbeider med data i <code>pandas</code>, så foreløpig skal vi ikke gjøre noe mer enn å importere og bruke dataene i <code>matplotlib</code>.</p>
+<p>Vi starter derfor med å <em>importere</em> <code>matplotlib</code>, <code>numpy</code> og <code>pandas</code>:</p>
+<section id="eksempel-1" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-1">Eksempel 1:</h4>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="plotte-tall" class="level3">
+<h3 class="anchored" data-anchor-id="plotte-tall">Plotte tall</h3>
+<p>Vi starter med å plotte følgende tre kooridnater: (4,8), (7,2) og (2,6). For å gjøre det lager vi én variabel med x-koordinatene, og én med y-koordiantene. Funksjonen <code>plot</code>lager en figur med linjer mellom hvert av punktene:</p>
+<section id="eksempel-2" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-2">Eksempel 2:</h4>
+<div class="cell" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>[<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">2</span>]</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>[<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">6</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Vi kan legge til punktene, så vi ser dem tydligere, med funksjonen <code>scatter</code>:</p>
+</section>
+<section id="eksempel-3" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-3">Eksempel 3:</h4>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>&lt;matplotlib.collections.PathCollection at 0x2b7b36dbc50&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-4-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>… og vi kan plotte kun punktene:</p>
+</section>
+<section id="eksempel-4" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-4">Eksempel 4:</h4>
+<div class="cell" data-scrolled="true" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>&lt;matplotlib.collections.PathCollection at 0x2b7b37426d0&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-5-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="plotte-en-funksjon" class="level3">
+<h3 class="anchored" data-anchor-id="plotte-en-funksjon">Plotte en funksjon</h3>
+<p>Du kan plotte en funksjon ved å definere en liste med tall, og så definere en funksjonsverdi for hvert element i listen. <code>range</code>-funksjonen har vi vært borte i før, og range(1,50) gir oss en liste over heltall fra 1 til 50. Så regner vi ut logaritmen av disse tallene og setter det inn som y-verdier:</p>
+<section id="eksempel-5" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-5">Eksempel 5:</h4>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">50</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>np.log(x)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="importere-data" class="level3">
+<h3 class="anchored" data-anchor-id="importere-data">Importere data</h3>
+<p>Men det er morsommere å jobbe med virkelige data. Import av data til <code>pandas</code> gjøres enkelt med funksjonen <code>read_csv</code>. Dersom du har lastet ned siste versjon av notebooks, ligger den en fil i mappen “data” som heter schooling-gdp.csv. (kilde: https://ourworldindata.org/grapher/correlation-between-mean-years-of-schooling-and-gdp-per-capita). Denne filen inneholder data på BNP og utdanningsnivå for endel land i 2010. Den kan du lese inn slik:</p>
+<section id="eksempel-6" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-6">Eksempel 6:</h4>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span>pd.read_csv(<span class="st">'./data/schooling-gdp.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>La oss nå se på dataene, ved å kjøre en kode med kun navnet på variabelen som holder dataene:</p>
+</section>
+<section id="eksempel-7" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-7">Eksempel 7:</h4>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Land</th>
+<th data-quarto-table-cell-role="th">Landkode</th>
+<th data-quarto-table-cell-role="th">BNP_per_capita</th>
+<th data-quarto-table-cell-role="th">Utdanning</th>
+<th data-quarto-table-cell-role="th">Befolkning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Norway</td>
+<td>NOR</td>
+<td>73262.68000</td>
+<td>11.65</td>
+<td>4886000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Kuwait</td>
+<td>KWT</td>
+<td>67029.52300</td>
+<td>6.39</td>
+<td>2992000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Luxembourg</td>
+<td>LUX</td>
+<td>57882.80900</td>
+<td>11.33</td>
+<td>508000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Switzerland</td>
+<td>CHE</td>
+<td>55688.02000</td>
+<td>12.92</td>
+<td>7809000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>United States</td>
+<td>USA</td>
+<td>49500.62900</td>
+<td>13.24</td>
+<td>309011008</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">101</td>
+<td>Malawi</td>
+<td>MWI</td>
+<td>972.04572</td>
+<td>5.01</td>
+<td>14540000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">102</td>
+<td>Mozambique</td>
+<td>MOZ</td>
+<td>969.23077</td>
+<td>2.03</td>
+<td>23532000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">103</td>
+<td>Niger</td>
+<td>NER</td>
+<td>845.86932</td>
+<td>1.95</td>
+<td>16464000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">104</td>
+<td>Liberia</td>
+<td>LBR</td>
+<td>786.67023</td>
+<td>4.35</td>
+<td>3891000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">105</td>
+<td>Democratic Republic of Congo</td>
+<td>COD</td>
+<td>634.97137</td>
+<td>3.79</td>
+<td>64564000</td>
+</tr>
+</tbody>
+</table>
+
+<p>106 rows × 5 columns</p>
+</div>
+</div>
+</div>
+<p>Vi ser at vi har fire variabler: Land, Landkode, BNP_per_capita (BNP per innbygger), Utdanning og Befolkning. BNP er “brutto nasjonalprodukt” som måler hvor mye som produseres i et land i løpet av et år. BNP_per_capita viser altså hvor mye hver person i landet produserer hvert år i gjennomsnitt.</p>
+<p>Vi kan hente opp hver serie ved å skrive navnet til variabelen som holder dataene, altså <code>df</code>, etterfulgt av en klammeparentes med navnet på dataserien vi ønsker, for eksempel ‘BNP’:</p>
+</section>
+<section id="eksempel-8" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-8">Eksempel 8:</h4>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'BNP_per_capita'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>0      73262.68000
+1      67029.52300
+2      57882.80900
+3      55688.02000
+4      49500.62900
+          ...     
+101      972.04572
+102      969.23077
+103      845.86932
+104      786.67023
+105      634.97137
+Name: BNP_per_capita, Length: 106, dtype: float64</code></pre>
+</div>
+</div>
+<p>Skal vi plotte data, gjør vi akkurat som i Eksempel 2; vi legger inn x- og y-verdier i plotfunksjonen, og disse verdiene henter vi med klammeparentes etter datavariabelen. Her plotter vi BNP langs x-aksen og utdanning langs y-aksen. Vi bruker <code>scatter</code>-funksjonen, siden det ikke gir noen mening å tegne streker mellom disse punktene:</p>
+</section>
+<section id="eksempel-9" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-9">Eksempel 9:</h4>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(df[<span class="st">'BNP_per_capita'</span>], df[<span class="st">'Utdanning'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>&lt;matplotlib.collections.PathCollection at 0x2b7b1618c50&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-10-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Om vi ser på log-funksjonen i Eksempel 5, så ser vi at fordelingen av punkter ligner litt på den, så la oss legge inn logaritmen som funksjon av BNP. Vi må justere den litt, men som du ser passer den ganske bra! Det ser altså ut til at det er en sammenheng mellom utdanningsnivå og BNP, men sammenhengen blir svakere desto høyere BNP er.</p>
+</section>
+<section id="eksempel-10" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-10">Eksempel 10:</h4>
+<div class="cell" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>bnp_per_capita<span class="op">=</span>np.array(df[<span class="st">'BNP_per_capita'</span>])</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>utdanning<span class="op">=</span>np.array(df[<span class="st">'Utdanning'</span>])</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>plt.scatter(bnp_per_capita, np.array(df[<span class="st">'Utdanning'</span>]))</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>plt.plot(   bnp_per_capita, np.log(bnp_per_capita<span class="op">+</span><span class="dv">100</span>)<span class="op">*</span><span class="dv">3</span><span class="op">-</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="eksempel-med-bankinnskudd-og-bruk-av-subplots" class="level2">
+<h2 class="anchored" data-anchor-id="eksempel-med-bankinnskudd-og-bruk-av-subplots">Eksempel med bankinnskudd og bruk av subplots()</h2>
+<p>Vi begynner med å lage funksjonen for et lån fra forrige forelesning. Vi husker at om banken din legger til renten <code>n</code> ganger i året, og renten er <code>r</code>, så er bankinnskuddet på <code>x</code> om <code>T</code> år gitt som <span class="math inline">\(x\cdot (1+\frac{r}{n})^{T\cdot n}\)</span>, som vi kan programmere slik:</p>
+<section id="eksempel-11" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-11">Eksempel 11:</h4>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> account_balance(x,r,T,n):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>r<span class="op">/</span>n)<span class="op">**</span>(T<span class="op">*</span>n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Vi skal bruke en litt annen fremgangsmåte for å plotte denne funksjonen, enn i eksemplene over. Vi skal først lage et figurobjekt og et akseobjekt med funksjonen <code>fig,ax=plt.subplots()</code>. Vi kan så bruke objektet <code>ax</code> til å lage etiketter til aksene og plotte flere grafer oppå hverandre. Dette er altså en littegran mer avansert bruk av <code>matplotlib</code>. Fordelen er at vi kan legge til nye elementer i eksisterende plot, uten å skrive hele koden på nytt når vi kjører i en annen celle.</p>
+<p>Om renten er 20%=0.2, innskuddet er 100 som forrentes årlig, så kan vi tegne innskuddsfunksjonen for 10 år som</p>
+</section>
+<section id="eksempel-12" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-12">Eksempel 12:</h4>
+<div class="cell" data-tags="[]" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#1. Checking developement over 10 years, with 100 data points</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">100</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#2. initiating the plot:</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>fig,ax<span class="op">=</span>plt.subplots()</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#3. adding axis lables:</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Verdi bankinnskudd'</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Tid T'</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co">#4. plotting the function:</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>ax.plot(T, account_balance(<span class="dv">100</span>,<span class="fl">0.2</span>,T,<span class="dv">1</span>),          label<span class="op">=</span><span class="st">'Bankinnskudd, årlig forrentning'</span>,    color<span class="op">=</span><span class="st">'lightblue'</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co">#5. adding legend in the upper left corner:</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="st">'upper left'</span>,frameon<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>&lt;matplotlib.legend.Legend at 0x2b7b156f3d0&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-13-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Det som skjer over er at vi</p>
+<ol type="1">
+<li>Definerer for hvilke verdier vi skal tegne og hvor mange punkter. Her ser vi at vi tegner hundre punkter i intervallet 0 til 10</li>
+<li>Lager to objekter <code>fig</code> og <code>ax</code> som brukes til å tegne grafene.</li>
+<li>Definerer hva som skal være på x og y-aksen</li>
+<li>Plotter ved å sette inn punktene <code>T</code> og funksjonen <code>account_balance(100,0.2,T,1)</code> inn i funksjonen <code>ax.plot</code></li>
+<li>lager ettikett og plasserer den oppe til venstre</li>
+</ol>
+<p>Som i forrige forelesning kan det være interessant å sammenligne ulike hyppigheter for å legge til renter. Vi legger derfor til fire grafer til, i samme figur, med henholdsvis kvartalsvis, månedlig, ukentlig og daglig forrentning:</p>
+</section>
+<section id="eksempel-13" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-13">Eksempel 13:</h4>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plotting four graphs with different compounding:</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>ax.plot(T,       account_balance(<span class="dv">100</span>,<span class="fl">0.2</span>,T,<span class="dv">4</span>),          label<span class="op">=</span><span class="st">'Kvartalsvis forrentning'</span>,     color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>ax.plot(T,       account_balance(<span class="dv">100</span>,<span class="fl">0.2</span>,T,<span class="dv">12</span>),         label<span class="op">=</span><span class="st">'Måndedlig forrentning'</span>,       color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>ax.plot(T,       account_balance(<span class="dv">100</span>,<span class="fl">0.2</span>,T,<span class="dv">52</span>),         label<span class="op">=</span><span class="st">'Ukentlig forrentning'</span>,        color<span class="op">=</span><span class="st">'orange'</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>ax.plot(T,       account_balance(<span class="dv">100</span>,<span class="fl">0.2</span>,T,<span class="dv">365</span>),        label<span class="op">=</span><span class="st">'Daglig forrentning'</span>,          color<span class="op">=</span><span class="st">'purple'</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="st">'upper left'</span>,frameon<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Hva synes du, har hyppigheten har det mye å si hvor ofte vi legger til renter?</p>
+<p>For å svare på det kan det være interessant å kobinere grafene med en utregning regne av hva du taper på hyppig forretning. La oss se på differansen mellom daglig og ukentlig, og ukentlig mot årlig:</p>
+</section>
+<section id="eksempel-14" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-14">Eksempel 14:</h4>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#printing the nummerical difference between annual and daily compounding:</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"""Differansen mellom daglig og ukentlig forrentning i løpet av 20 år er </span><span class="sc">{</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    np<span class="sc">.</span><span class="bu">round</span>(</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    account_balance(<span class="dv">100</span>,<span class="fl">0.2</span>,<span class="dv">10</span>,<span class="dv">365</span>)<span class="op">-</span>account_balance(<span class="dv">100</span>,<span class="fl">0.2</span>,<span class="dv">10</span>,<span class="dv">52</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>        ,<span class="dv">2</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="sc">}</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="ss">"""</span>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"""Differansen mellom ukentlig og årlig forrentning i løpet av 20 år er </span><span class="sc">{</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    np<span class="sc">.</span><span class="bu">round</span>(</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    account_balance(<span class="dv">100</span>,<span class="fl">0.2</span>,<span class="dv">10</span>,<span class="dv">52</span>)<span class="op">-</span>account_balance(<span class="dv">100</span>,<span class="fl">0.2</span>,<span class="dv">10</span>,<span class="dv">1</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>        ,<span class="dv">2</span>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="sc">}</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="ss">"""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Differansen mellom daglig og ukentlig forrentning i løpet av 20 år er 2.42
+
+Differansen mellom ukentlig og årlig forrentning i løpet av 20 år er 116.9
+</code></pre>
+</div>
+</div>
+<p>Vi ser altså at å gå fra ukentlig til daglig forrentning ikke har så mye å si, men forskjellen fra ukentlig til årlig er ganske stor.</p>
+<p>I stedet for å regne ut med daglig forrentning kan vi bruke kontinuerlig forrentning. Som vi husker fra forrige forelesnig, betyr det at vi bruker eksponentialfunksjonen:</p>
+</section>
+<section id="eksempel-15" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-15">Eksempel 15:</h4>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#defining the continous compounding function:</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> account_balance_exponential(x,r,T):</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">*</span>np.exp(r<span class="op">*</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>La oss plotte kontinuerlig og <em>sammenligne</em> med daglig forrentning. Legg merke til første linje, som sørger for at vi starter med “blanke ark”.</p>
+</section>
+<section id="eksempel-16" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-16">Eksempel 16:</h4>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Starting with a blank graph by defining ax and fig again:</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>fig,ax<span class="op">=</span>plt.subplots()</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#adding continious compounding to the prevoius plot</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>ax.plot(T,       account_balance_exponential(<span class="dv">100</span>,<span class="fl">0.2</span>,T),label<span class="op">=</span><span class="st">'Kontinuerlig forrentet'</span>,      color<span class="op">=</span><span class="st">'pink'</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>ax.plot(T,       account_balance(<span class="dv">100</span>,<span class="fl">0.2</span>,T,<span class="dv">365</span>),        label<span class="op">=</span><span class="st">'Daglig forrentning'</span>,          color<span class="op">=</span><span class="st">'purple'</span>)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co">#printing the nummerical difference between continious and daily compounding:</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"""Differansen mellom årlig og kontinuerlig forrentning etter 20 år er </span><span class="sc">{</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    np<span class="sc">.</span><span class="bu">round</span>(</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>   account_balance_exponential(<span class="dv">100</span>,<span class="fl">0.2</span>,<span class="dv">10</span>)<span class="op">-</span> account_balance(<span class="dv">100</span>,<span class="fl">0.2</span>,<span class="dv">10</span>,<span class="dv">365</span>)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>        ,<span class="dv">2</span>)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="sc">}</span><span class="ss">"""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Differansen mellom årlig og kontinuerlig forrentning etter 20 år er 0.4</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-17-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Vi ser at selv om det lønner seg å forrente ofte, er det liten forskjell mellom daglig og kontinuerlig forretning. Likevel benytter vi ofte kontinuerlig forrentning i økonomifaget. Årsaken til det er at eksponenten og logaritmen er mye enklere å jobbe med matematisk enn prosentvis avkastning. Nummerisk er imidlertid forskjellen liten så lenge hyppigheten er høy.</p>
+</section>
+</section>
+</section>
+<section id="googling" class="level1">
+<h1>Googling</h1>
+<p>Det er umulig å huske hvordan alle funksjonene til alle pakkene i Python skal brukes, ikke minst fordi det er en konstant uvikling av slike pakker. Heldigvis lages de fleste pakker på en <em>pytonsk</em> måte, hvilket vil si at funksjoner og objekter fra forskjellige pakker og forfattere skal oppføre seg forutsigbart og ensartet. Helt selvforklarende er imidlertid ingen pakker.</p>
+<p>Den beste måten å finne ut hvordan du skal bruke en pakke, er derfor å google det du lurer på. Dette må gjøres på engelsk, siden stort sett alt av forum og dokumentasjon er på engelsk.</p>
+<p>La oss derfor ta matplotlib som eksempel. La oss si at du har glemt denne forelesningen og derfor skal finne ut hvordan du plotter en linje med matplotlib. Forsøk å google <code>"matplotlib plot function"</code>. I skrivende stund i første treff på Google (det er ikke alltid det første treffet er best), finner du denne koden på <a href="https://scriptverse.academy/tutorials/python-matplotlib-plot-function.html">scriptverse.academy</a>:</p>
+<section id="eksempel-17" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-17">Eksempel 17:</h4>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 100 linearly spaced numbers</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">100</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># the function, which is y = x^2 here</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co"># setting the axes at the centre</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'left'</span>].set_position(<span class="st">'center'</span>)</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'bottom'</span>].set_position(<span class="st">'zero'</span>)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_color(<span class="st">'none'</span>)</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_color(<span class="st">'none'</span>)</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>ax.xaxis.set_ticks_position(<span class="st">'bottom'</span>)</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>ax.yaxis.set_ticks_position(<span class="st">'left'</span>)</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the function</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y, <span class="st">'r'</span>)</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a><span class="co"># show the plot</span></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Vi ser umiddelbart at det er endel ting vi ikke trenger for et enkelt plott, så vi sletter alt under kommentaren <code># setting the axes at the centre</code> (frem til <code># plot the function</code>). Vi trenger heller ikke definisjonen av funksjonen under kommentaren <code># the function, which is y = x^2 here</code>, siden vi har definert våre egne funksjoner over, så vi sletter den også. Så bytter vi ut alle <code>x</code>’er med <code>T</code> og velger å sette inn funksjonen for daglig forretning <code>account_balance(100,0.2,T,365)</code> inn i <code>plot</code>-funksjonen. Tilslutt bytter vi ut startpunktet i <code>linspace</code>-funksjonen med <code>0</code>. Da får vi følgende kode:</p>
+</section>
+<section id="eksempel-18" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-18">Eksempel 18:</h4>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#From https://scriptverse.academy/tutorials/python-matplotlib-plot-function.html</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 100 linearly spaced numbers</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">100</span>)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the function</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>plt.plot(T,account_balance(<span class="dv">100</span>,<span class="fl">0.2</span>,T,<span class="dv">365</span>), <span class="st">'r'</span>)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co"># show the plot</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Vi ser altså her at ved å bruke eksempler som vi kan endre på, så kan vi raskt finne ut hvordan en pakke fungerer.</p>
+<p>*HUSK: Bruker du andres kode, skal det kommenteres i koden!</p>
+</section>
+<section id="eksempel-med-tilbud-og-etterspørsel" class="level2">
+<h2 class="anchored" data-anchor-id="eksempel-med-tilbud-og-etterspørsel">Eksempel med tilbud og etterspørsel</h2>
+<p>Vi definerer først tilbud og etterspørsel slik vi gjorde i forrige forelesning, men med litt andre tall:</p>
+<section id="eksempel-19" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-19">Eksempel 19:</h4>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> supply(x):</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (x<span class="op">**</span><span class="dv">2</span>)<span class="op">*</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">250</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> demand(x):</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">3000</span><span class="op">/</span>(<span class="dv">100</span><span class="op">+</span>x)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="op">/</span><span class="fl">0.004</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>250.0</code></pre>
+</div>
+</div>
+<p>Vi skal nå finne likhet mellom tilbud og etterspørsel grafisk ved å tegne opp begge funksjonene i samme diagram:</p>
+</section>
+<section id="eksempel-20" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-20">Eksempel 20:</h4>
+<div class="cell" data-tags="[]" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#drawing 100 points in the interval 0.0 to 100</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">1</span>,<span class="dv">100</span>,<span class="dv">100</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co">#drawing supply</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>plt.plot(x,supply(x),label<span class="op">=</span><span class="st">'Tilbud'</span>)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co">#drawing demand</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>plt.plot(x,demand(x),color<span class="op">=</span><span class="st">'green'</span>,label<span class="op">=</span><span class="st">'Etterspørsel'</span>)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co">#adding legend:</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'lower right'</span>)</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="co">#setting the axis lables</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pris'</span>)</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Enheter'</span>)</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="co">#setting the range of y values (the price) to be between 0 and 30, so that we can more</span></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="co">#easily see the equilibrium price</span></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>plt.ylim((<span class="op">-</span><span class="dv">2</span>,<span class="dv">32</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>(-2.0, 32.0)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-21-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="oppgaver" class="level2">
+<h2 class="anchored" data-anchor-id="oppgaver">Oppgaver</h2>
+<section id="oppgave-1" class="level4">
+<h4 class="anchored" data-anchor-id="oppgave-1">Oppgave 1:</h4>
+<ol type="1">
+<li>Forsøk å finne prisen og mengden i likevekt (der tilbud=etterspørsel) ved å bruke informasjonen i figuren</li>
+<li>Gjør endringer i tilbud og etterspørselsfunksjonene og finn likevekt for disse.</li>
+</ol>
+<p>Vi ser at likevekt er omtrent ved mengde 65. Prøver og feiler for å finne omtrent likevekt:</p>
+<div class="cell" data-tags="[]" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((supply(<span class="dv">65</span>), demand(<span class="dv">65</span>)))</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((supply(<span class="dv">66</span>), demand(<span class="dv">66</span>)))</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((supply(<span class="dv">67</span>), demand(<span class="dv">67</span>)))</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((supply(<span class="dv">68</span>), demand(<span class="dv">68</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(16.9, 18.181818181818183)
+(17.424, 18.072289156626507)
+(17.956, 17.964071856287426)
+(18.496, 17.857142857142858)</code></pre>
+</div>
+</div>
+<p>Vi ser at pris=67 gir mengde som er likest, og dermed nærmest likevekt.</p>
+</section>
+<section id="oppgave-2" class="level4">
+<h4 class="anchored" data-anchor-id="oppgave-2">Oppgave 2:</h4>
+<p>Finn på noen koordinater selv, som du plotter 1. som punkter 2. med linjer mellom 3. med både linjer og punkter.</p>
+<div class="cell" data-tags="[]" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>[<span class="dv">55</span>,<span class="dv">236</span>,<span class="dv">7</span>,<span class="dv">200</span>]</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>[<span class="dv">44</span>,<span class="dv">215</span>,<span class="dv">885</span>,<span class="dv">30</span>]</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>&lt;matplotlib.collections.PathCollection at 0x2b7b39e3e50&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-23-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(x,y)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="oppgave-3" class="level4">
+<h4 class="anchored" data-anchor-id="oppgave-3">Oppgave 3:</h4>
+<ol type="1">
+<li>Plott BNP_per_capita mot Befolkning</li>
+<li>Plott Utdanning mot Befolkning</li>
+</ol>
+<div class="cell" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Land</th>
+<th data-quarto-table-cell-role="th">Landkode</th>
+<th data-quarto-table-cell-role="th">BNP_per_capita</th>
+<th data-quarto-table-cell-role="th">Utdanning</th>
+<th data-quarto-table-cell-role="th">Befolkning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Norway</td>
+<td>NOR</td>
+<td>73262.68000</td>
+<td>11.65</td>
+<td>4886000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Kuwait</td>
+<td>KWT</td>
+<td>67029.52300</td>
+<td>6.39</td>
+<td>2992000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Luxembourg</td>
+<td>LUX</td>
+<td>57882.80900</td>
+<td>11.33</td>
+<td>508000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Switzerland</td>
+<td>CHE</td>
+<td>55688.02000</td>
+<td>12.92</td>
+<td>7809000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>United States</td>
+<td>USA</td>
+<td>49500.62900</td>
+<td>13.24</td>
+<td>309011008</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">101</td>
+<td>Malawi</td>
+<td>MWI</td>
+<td>972.04572</td>
+<td>5.01</td>
+<td>14540000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">102</td>
+<td>Mozambique</td>
+<td>MOZ</td>
+<td>969.23077</td>
+<td>2.03</td>
+<td>23532000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">103</td>
+<td>Niger</td>
+<td>NER</td>
+<td>845.86932</td>
+<td>1.95</td>
+<td>16464000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">104</td>
+<td>Liberia</td>
+<td>LBR</td>
+<td>786.67023</td>
+<td>4.35</td>
+<td>3891000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">105</td>
+<td>Democratic Republic of Congo</td>
+<td>COD</td>
+<td>634.97137</td>
+<td>3.79</td>
+<td>64564000</td>
+</tr>
+</tbody>
+</table>
+
+<p>106 rows × 5 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(df[<span class="st">'BNP_per_capita'</span>], df[<span class="st">'Befolkning'</span>], label<span class="op">=</span><span class="st">'BNP_per_capita - Befolkning'</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'center right'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>&lt;matplotlib.legend.Legend at 0x2b7b4bca490&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-27-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(df[<span class="st">'Utdanning'</span>], df[<span class="st">'Befolkning'</span>],label<span class="op">=</span><span class="st">'Utdanning - Befolkning'</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'center right'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>&lt;matplotlib.legend.Legend at 0x2b7b384f550&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-28-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="oppgave-4" class="level4">
+<h4 class="anchored" data-anchor-id="oppgave-4">Oppgave 4:</h4>
+<ol type="1">
+<li>Plot <code>np.log(x)</code></li>
+<li>Plot <code>np.cos(x)</code></li>
+<li>Plot <code>np.sin(x)</code></li>
+<li>Plot <code>np.exp(-x)</code></li>
+<li>Lag en funksjon selv, og plott denne.</li>
+</ol>
+<div class="cell" data-tags="[]" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">100</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,np.log(x), label<span class="op">=</span><span class="st">'log'</span>)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'center right'</span>, frameon<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>&lt;matplotlib.legend.Legend at 0x2b7b4e5f810&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-29-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">100</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,np.cos(x), label<span class="op">=</span><span class="st">'cos'</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'center right'</span>, frameon<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<pre><code>&lt;matplotlib.legend.Legend at 0x2b7b4e1f550&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-30-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">100</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,np.sin(x), label<span class="op">=</span><span class="st">'sin'</span>)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'center left'</span>, frameon<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>&lt;matplotlib.legend.Legend at 0x2b7b4eb5890&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-31-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">100</span>)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x,np.exp(x), label<span class="op">=</span><span class="st">'exp'</span>)</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'center left'</span>, frameon<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>&lt;matplotlib.legend.Legend at 0x2b7b4e67550&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-32-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="oppgave-5" class="level4">
+<h4 class="anchored" data-anchor-id="oppgave-5">Oppgave 5:</h4>
+<p>En fabrikk produserer <span class="math inline">\(x\)</span> enheter. Kostnaden per enhet er 5 kroner, og i tillegg øker kostnaden med 5 øre per produsert enhet. Hver enhet koster dermed <span class="math inline">\(5+0.05 \cdot x\)</span>. Bedriften selger produksjonen <span class="math inline">\(x\)</span> til en pris <span class="math inline">\(p\)</span>. Fortjenesten er dermed differansen mellom inntekter <span class="math inline">\(p\cdot x\)</span> og totale kostnader <span class="math inline">\(x \cdot (5+0.05 x)\)</span>.</p>
+<p>I alle oppgavene under skal du plotte i intervallet 0 til 100 (<code>x=p=np.linspace(0,100,100)</code>).</p>
+<ol type="1">
+<li>Lag en funksjon <code>cost(x)</code> for totale kostnader, gitt en produksjonsmengde <span class="math inline">\(x\)</span>, og</li>
+<li>Lag en funksjon <code>profit(x,p)</code> for fortjenesten, gitt en produksjonsmengde <span class="math inline">\(x\)</span> og pris <span class="math inline">\(p\)</span>.</li>
+<li>Sett <code>x</code>til 5 i funksjonen du lagde over i 2., og plott fortjenesten som en funksjon av prisen.</li>
+<li>Sett <code>p</code>til 10 i funksjonen du lagde over i 2., og plott fortjenesten som en funksjon av produsert mengde.</li>
+<li>Hva er optimal produsert mengde?</li>
+</ol>
+<p>Husk å lag etiketter for aksene!</p>
+<div class="cell" data-tags="[]" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>p<span class="op">=</span>np.linspace(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">100</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cost(x):</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    unit_cost <span class="op">=</span> <span class="dv">5</span> <span class="op">+</span> <span class="fl">0.05</span><span class="op">*</span>x</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> unit_cost<span class="op">*</span>x</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> profit(x, p):</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> p<span class="op">*</span>x<span class="op">-</span>cost(x)</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>plt.plot(x, profit(<span class="dv">5</span>,x), label<span class="op">=</span><span class="st">'Fortjeneste gitt mengde 5'</span>)</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>plt.plot(x, profit(x,<span class="dv">10</span>), label<span class="op">=</span><span class="st">'Fortjeneste gitt pris 10'</span>)</span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper left'</span>, frameon<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>&lt;matplotlib.legend.Legend at 0x2b7b4a8f150&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-33-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="oppgave-6" class="level4">
+<h4 class="anchored" data-anchor-id="oppgave-6">Oppgave 6</h4>
+<p>Bytt om på x og y verdier i Eksempel 10, og bytt ut <code>np.log</code> med <code>np.exp</code>, bytt ut <code>Utdanning</code> i stedet for <code>BNP_per_capita</code> i <code>plt.plot()</code>-funksjonen, og plott figuren på nytt.</p>
+<p>Sorter datasettet på <code>Utdanning</code> først med <code>df_sorted = df.sort_values('Utdanning')</code>, og bruke <code>df_sorted</code> i stedet for <code>df</code> i koden i Eksempel 10.</p>
+<ol type="a">
+<li><p>Gjør tilpassninger tilsvarende de som er gjort med log-funksjonen for å få exp-funksjonen til å passe så godt som mulig til dataene.</p></li>
+<li><p>Forsøk uten sortering, hva skjer?</p></li>
+</ol>
+<div class="cell" data-tags="[]" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>df_sort <span class="op">=</span> df.sort_values(<span class="st">'Utdanning'</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>bnp_per_capita<span class="op">=</span>np.array(df_sort[<span class="st">'BNP_per_capita'</span>])</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>utdanning<span class="op">=</span>np.array(df_sort[<span class="st">'Utdanning'</span>])</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>plt.scatter( utdanning, bnp_per_capita)</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>plt.plot(utdanning, np.exp(utdanning<span class="op">*</span><span class="fl">0.7</span><span class="op">+</span><span class="dv">2</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-34-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>bnp_per_capita<span class="op">=</span>np.array(df[<span class="st">'BNP_per_capita'</span>])</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>utdanning<span class="op">=</span>np.array(df[<span class="st">'Utdanning'</span>])</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>plt.scatter( np.array(df[<span class="st">'Utdanning'</span>]), bnp_per_capita)</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>plt.plot(utdanning, np.exp(utdanning<span class="op">*</span><span class="fl">0.7</span><span class="op">+</span><span class="dv">2</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="3%20-%20matplotlib_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
