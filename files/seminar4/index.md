@@ -4,7 +4,10 @@
 På dette seminaret skal dere løse matteoppgaver med Sympy. Som dere vil se er det en god del oppgaver. I stedet for å løse hver oppgave individuelt, 
 skal dere derfor lage funksjoner som tar uttrykkene som argumenter, og så løse hver oppgave. 
 
-Oppgavene skal leveres som en jupyter-fil.
+Oppgavene skal leveres som en jupyter-fil på github. Bruk repositoriet "SOK-1003-H23" som du laget til [Mappe 1](https://uit-sok-1003-h23.github.io/mappe/mappe1.html), og 
+lag en undermappe "sympy" hvor du legger denne besvarelsen.
+
+Oppgaven er levert når det ligger en besvarelse på github innnen fristen.
 
 
 ## [17_Likningssett_faktoriseringsmetoden_oppgaver.pdf](17_Likningssett_faktoriseringsmetoden_oppgaver.pdf)

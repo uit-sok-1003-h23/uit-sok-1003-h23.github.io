@@ -6,6 +6,8 @@ title: Mappe 1
 Husk å følge instruksjonene nøye. All kode skal kommenteres, og figurer skal ha tydelig merkede akser. Oppgaven leveres ved å ligge i et repositorie 
 kalt “SOK-1003-H23” som er delt med faglærer og studentassistent [som beskrevet her](https://uit-sok-1003-h23.github.io/mappeoppgave.html)
 
+Legg denne besvarelsen i en undermappe til SOK-1003-H23, som du kaller Mappe1
+
 
 ## Om ChatGPT/Kunsig intelligens (KI)
 Det er lov å bruke ChatGPT og annen kunstid intelligens, men dialogen med KI må legges ved. Husk at god og veldokumentert bruk av KI belønnes karatkermessig. Det er lov å starte en ny chat

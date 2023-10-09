@@ -8,7 +8,7 @@ Frister for innleveringer [finnes her](https://uit-sok-1003-h23.github.io/friste
 ## Første mappeoppgave 
 Skal leveres innen 17/10, med presentasjon senere (dato/sted kommer). Presentasjonen innebærer en gjennomgang av koden/besvarelsen av studentene, etterfulgt av kommentarer/spørsmål.  
 
-Lenke til Mappeoppgave 1 kommer her.
+[Mappeoppgave 1](https://uit-sok-1003-h23.github.io/mappe/mappe1.html)
 
 
 ## Andre mappeoppgave 
