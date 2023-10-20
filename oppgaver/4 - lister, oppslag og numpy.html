@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Lister</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="4 - lister, oppslag og numpy_files/libs/clipboard/clipboard.min.js"></script>
+<script src="4 - lister, oppslag og numpy_files/libs/quarto-html/quarto.js"></script>
+<script src="4 - lister, oppslag og numpy_files/libs/quarto-html/popper.min.js"></script>
+<script src="4 - lister, oppslag og numpy_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="4 - lister, oppslag og numpy_files/libs/quarto-html/anchor.min.js"></script>
+<link href="4 - lister, oppslag og numpy_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="4 - lister, oppslag og numpy_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="4 - lister, oppslag og numpy_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="4 - lister, oppslag og numpy_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="4 - lister, oppslag og numpy_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lister</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><span style="color:#9bb1d4;font-size:30px;font-weight:900"> 4 - lister, oppslag og numpy </span></p>
+<p>En liste er en <em>datastruktur</em>, som igjen er en organisering av <em>objekter</em>. Slike datastrukturer er helt sentralt i alle programmeringsspråk, og alle språk har ulike typer strukturer til ulike formål. I noen datastrukturer kan du putte alle typer objekter sammen, slik som tekst, funksjoner og tall og nye datastrukturer.</p>
+<p>I andre datastrukturer kan du kun putte tall. Slike datastrukturer er vanligvis det vi i matematikken kaller <em>vektorer</em> og <em>matriser</em>. Disse kommer vi tilbake til når vi skal snakke om Numpy.</p>
+<p>Det vi skal se på først er de innebygde datastrukturene til Python. Alle de innebygde strukturene kan inneholde alle typer objekter, men de har noen viktige egenskaper som skiller dem: * <code>list</code> (liste): Hvert element har en bestemt plassering i listen, Tilgang fås ved å referere til plasseringen (indeksen) i form av et heltall <code>int</code>. * <code>Tuple</code>: Lik lister, men kan ikke forandres når den er skapt. Hovedsakelig til bruk i forbindelse med funksjoner. * <code>dict</code>(dictionary, oppslag): Elementene har ikke en bestemt plassering. Tilgang fås ved å referere til en nøkkel (vanligvis en streng <code>str</code>)</p>
+<p>Vi starter med å se på lister.</p>
+<p>Lister lages med klammeparenteser. Her er noen lister med navn, forkortelse (Ticker), aksjekurs, markedsverdi, PE og gjeldsgrad for noen aksjer på Oslo Børs. Tallene er fra 27. november 2020 (kilde https://tilon.uit.no).</p>
+<p>PE er “Price/Earnings”, som er forholdet mellom selskapenes inntjening og prisen. Gjeldsgrad er hvor stor andel av total kapital som er gjeld. Det som ikke er gjeld er egenkapital.</p>
+<section id="eksempel-1" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-1">Eksempel 1:</h4>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>equinor<span class="op">=</span>[<span class="st">'Statoil'</span>, <span class="st">'EQNR'</span>, <span class="fl">167.554919090282</span>, <span class="fl">376883380048.5</span>, <span class="fl">6.14609823076753</span>, <span class="fl">0.617893838660362</span>]</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>dnb<span class="op">=</span>[<span class="st">'DNB'</span>, <span class="st">'DNB'</span>, <span class="dv">164</span>, <span class="dv">259169427140</span>, <span class="fl">11.1121822724349</span>, <span class="fl">0.914999939276725</span>]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>telenor<span class="op">=</span>[<span class="st">'Telenor'</span>, <span class="st">'TEL'</span>, <span class="fl">148.737572948101</span>, <span class="fl">227115017138.4</span>, <span class="fl">13.0211568133471</span>, <span class="fl">0.715300723576896</span>]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>marine_harvest<span class="op">=</span>[<span class="st">'Marine Harvest'</span>, <span class="st">'MHG'</span>, <span class="fl">225.589705235372</span>, <span class="fl">118004750966.2</span>, <span class="fl">21.6878893009616</span>, <span class="fl">0.440427599611273</span>]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>aker_bp<span class="op">=</span>[<span class="st">'Aker BP'</span>, <span class="st">'AKERBP'</span>, <span class="fl">272.499264741749</span>, <span class="dv">103712690592</span>, <span class="fl">26.7636558040214</span>, <span class="fl">0.722568840028356</span>]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>yara_international<span class="op">=</span>[<span class="st">'Yara International'</span>, <span class="st">'YAR'</span>, <span class="fl">333.328922090651</span>, <span class="fl">99481443032.4</span>, <span class="fl">86.741957363663</span>, <span class="fl">0.465057636887608</span>]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>gjensidige_forsikring<span class="op">=</span>[<span class="st">'Gjensidige Forsikring'</span>, <span class="st">'GJF'</span>, <span class="fl">172.830508474576</span>, <span class="dv">92125000000</span>, <span class="fl">24.9404407385348</span>, <span class="fl">0.847890127134592</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Vi kan nå få tilgang til listene ved å referere til plasseringen med klammeparentes. Om vi vil referere navnet til equinor, som ligger på plass 0, kan vi for eksempel skrive <code>equinor[0]</code> (første element er alltid på plass 0 i Python):</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>equinor[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>'Statoil'</code></pre>
+</div>
+</div>
+<p>Vi ser at navnet er feil, dette er det gamle navnet til Equinor. Dette kan vi enkelt endre ved å sette element 0 i <code>equinor</code>-listen lik <code>'Equinor'</code>:</p>
+</section>
+<section id="eksempel-2" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-2">Eksempel 2:</h4>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(equinor)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>equinor[<span class="dv">0</span>]<span class="op">=</span><span class="st">'Equinor'</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(equinor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['Statoil', 'EQNR', 167.554919090282, 376883380048.5, 6.14609823076753, 0.617893838660362]
+['Equinor', 'EQNR', 167.554919090282, 376883380048.5, 6.14609823076753, 0.617893838660362]</code></pre>
+</div>
+</div>
+<p>Men vi kan legge hvilke som helst objekter inn i en liste, så vi kan også lage en liste av listene over.</p>
+</section>
+<section id="eksempel-3" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-3">Eksempel 3:</h4>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>stocks<span class="op">=</span>[equinor,dnb,telenor,marine_harvest,aker_bp,yara_international,gjensidige_forsikring]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>stocks</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>[['Equinor',
+  'EQNR',
+  167.554919090282,
+  376883380048.5,
+  6.14609823076753,
+  0.617893838660362],
+ ['DNB', 'DNB', 164, 259169427140, 11.1121822724349, 0.914999939276725],
+ ['Telenor',
+  'TEL',
+  148.737572948101,
+  227115017138.4,
+  13.0211568133471,
+  0.715300723576896],
+ ['Marine Harvest',
+  'MHG',
+  225.589705235372,
+  118004750966.2,
+  21.6878893009616,
+  0.440427599611273],
+ ['Aker BP',
+  'AKERBP',
+  272.499264741749,
+  103712690592,
+  26.7636558040214,
+  0.722568840028356],
+ ['Yara International',
+  'YAR',
+  333.328922090651,
+  99481443032.4,
+  86.741957363663,
+  0.465057636887608],
+ ['Gjensidige Forsikring',
+  'GJF',
+  172.830508474576,
+  92125000000,
+  24.9404407385348,
+  0.847890127134592]]</code></pre>
+</div>
+</div>
+<p>Aker BP-askjen er element nummer fem i denne listen. Om vi nå skal referere til den, så bruker vi indeks 4, siden vi starter på null.</p>
+</section>
+<section id="eksempel-4" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-4">Eksempel 4:</h4>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>stocks[<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>['Aker BP',
+ 'AKERBP',
+ 272.499264741749,
+ 103712690592,
+ 26.7636558040214,
+ 0.722568840028356]</code></pre>
+</div>
+</div>
+<p>Om du vil referere til siste element, bruker du indeks -1. Vil du referere til nest siste, bruker du indeks -2, og så videre:</p>
+</section>
+<section id="eksempel-5" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-5">Eksempel 5:</h4>
+<div class="cell" data-scrolled="true" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stocks[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stocks[<span class="op">-</span><span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['Gjensidige Forsikring', 'GJF', 172.830508474576, 92125000000, 24.9404407385348, 0.847890127134592]
+['Yara International', 'YAR', 333.328922090651, 99481443032.4, 86.741957363663, 0.465057636887608]</code></pre>
+</div>
+</div>
+<p>Du kan også referere til flere elementer som står ved siden av hverandre med en såkalt <code>slice</code>, eller skjære som vi kan kalle det på norsk:</p>
+</section>
+<section id="eksempel-6" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-6">Eksempel 6:</h4>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Fra element to til og med tre:</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>stocks[<span class="dv">2</span>:<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>[['Telenor',
+  'TEL',
+  148.737572948101,
+  227115017138.4,
+  13.0211568133471,
+  0.715300723576896],
+ ['Marine Harvest',
+  'MHG',
+  225.589705235372,
+  118004750966.2,
+  21.6878893009616,
+  0.440427599611273]]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Fra og med nest siste element:</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>stocks[<span class="op">-</span><span class="dv">2</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>[['Yara International',
+  'YAR',
+  333.328922090651,
+  99481443032.4,
+  86.741957363663,
+  0.465057636887608],
+ ['Gjensidige Forsikring',
+  'GJF',
+  172.830508474576,
+  92125000000,
+  24.9404407385348,
+  0.847890127134592]]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Til og med nest siste element:</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>stocks[:<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>[['Equinor',
+  'EQNR',
+  167.554919090282,
+  376883380048.5,
+  6.14609823076753,
+  0.617893838660362],
+ ['DNB', 'DNB', 164, 259169427140, 11.1121822724349, 0.914999939276725],
+ ['Telenor',
+  'TEL',
+  148.737572948101,
+  227115017138.4,
+  13.0211568133471,
+  0.715300723576896],
+ ['Marine Harvest',
+  'MHG',
+  225.589705235372,
+  118004750966.2,
+  21.6878893009616,
+  0.440427599611273],
+ ['Aker BP',
+  'AKERBP',
+  272.499264741749,
+  103712690592,
+  26.7636558040214,
+  0.722568840028356],
+ ['Yara International',
+  'YAR',
+  333.328922090651,
+  99481443032.4,
+  86.741957363663,
+  0.465057636887608]]</code></pre>
+</div>
+</div>
+<p>Og vi kan referere til en liste inne i en liste:</p>
+</section>
+<section id="eksempel-7" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-7">Eksempel 7:</h4>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Det tredje selskapet er </span><span class="sc">{</span>stocks[<span class="dv">2</span>][<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Det tredje selskapet er Telenor</code></pre>
+</div>
+</div>
+<p>Det tredje selskapet, altså Equinor, har indeks to, siden Python starter indekseringen på 0.</p>
+<p>Det er enkelt å utvide lister, vi bruker bare <code>+</code>. Om vi for eksempel vil legge til selskapet <code>['Tomra Systems', 'TOM', 276.409619134278, 41208789715.2, 52.8996016883184, 0.454299114121939]</code>, kan vi gjøre det slik:</p>
+</section>
+<section id="eksempel-8" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-8">Eksempel 8:</h4>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>tomra_systems<span class="op">=</span>[<span class="st">'Tomra Systems'</span>, <span class="st">'TOM'</span>, <span class="fl">276.409619134278</span>, <span class="fl">41208789715.2</span>, <span class="fl">52.8996016883184</span>, <span class="fl">0.454299114121939</span>]</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>stocks<span class="op">=</span>stocks<span class="op">+</span>[tomra_systems]</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>stocks</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>[['Equinor',
+  'EQNR',
+  167.554919090282,
+  376883380048.5,
+  6.14609823076753,
+  0.617893838660362],
+ ['DNB', 'DNB', 164, 259169427140, 11.1121822724349, 0.914999939276725],
+ ['Telenor',
+  'TEL',
+  148.737572948101,
+  227115017138.4,
+  13.0211568133471,
+  0.715300723576896],
+ ['Marine Harvest',
+  'MHG',
+  225.589705235372,
+  118004750966.2,
+  21.6878893009616,
+  0.440427599611273],
+ ['Aker BP',
+  'AKERBP',
+  272.499264741749,
+  103712690592,
+  26.7636558040214,
+  0.722568840028356],
+ ['Yara International',
+  'YAR',
+  333.328922090651,
+  99481443032.4,
+  86.741957363663,
+  0.465057636887608],
+ ['Gjensidige Forsikring',
+  'GJF',
+  172.830508474576,
+  92125000000,
+  24.9404407385348,
+  0.847890127134592],
+ ['Tomra Systems',
+  'TOM',
+  276.409619134278,
+  41208789715.2,
+  52.8996016883184,
+  0.454299114121939]]</code></pre>
+</div>
+</div>
+</section>
+<section id="unngå-uønsket-endring-av-objekter" class="level1">
+<h1>Unngå uønsket endring av objekter</h1>
+<p>En veldig vanlig nybegynnerfeil i Python er å glemme at selv om et objekt, slik som en liste, har fått nytt navn, så er det fortsatt det samme objektet. Dette er spesielt lett å glemme når du objektet er et argument i en funksjon. Her er for eksempel en funksjon som opererer på argumentet:</p>
+<section id="eksempel-9" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-9">Eksempel 9:</h4>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#This function removes element i it</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pop_and_print(a,i):</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    last_element<span class="op">=</span>a.pop(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(last_element)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>pop_and_print(stocks,<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>stocks</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['Tomra Systems', 'TOM', 276.409619134278, 41208789715.2, 52.8996016883184, 0.454299114121939]</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>[['Equinor',
+  'EQNR',
+  167.554919090282,
+  376883380048.5,
+  6.14609823076753,
+  0.617893838660362],
+ ['DNB', 'DNB', 164, 259169427140, 11.1121822724349, 0.914999939276725],
+ ['Telenor',
+  'TEL',
+  148.737572948101,
+  227115017138.4,
+  13.0211568133471,
+  0.715300723576896],
+ ['Marine Harvest',
+  'MHG',
+  225.589705235372,
+  118004750966.2,
+  21.6878893009616,
+  0.440427599611273],
+ ['Aker BP',
+  'AKERBP',
+  272.499264741749,
+  103712690592,
+  26.7636558040214,
+  0.722568840028356],
+ ['Yara International',
+  'YAR',
+  333.328922090651,
+  99481443032.4,
+  86.741957363663,
+  0.465057636887608],
+ ['Gjensidige Forsikring',
+  'GJF',
+  172.830508474576,
+  92125000000,
+  24.9404407385348,
+  0.847890127134592]]</code></pre>
+</div>
+</div>
+<p>Over brukes <code>pop</code>-metoden til listeobjektet. En “metode” er en funksjon som kan henges på et bestemt objekt. Liste-objektet har altså en metode <code>pop</code>, som vi kan henge på listeobjektet med et punktum. <code>pop</code>-metoden fjerner elementet angitt av argumentet (siste element <code>-1</code> i eksemplet under), og returnerer det fjernede elementet.</p>
+<p>Kjører du koden over mange nok ganger, vil du se at alle elementene til slutt er borte og du får feilmelding.</p>
+<p>Av og til vil du at funksjonen skal operere på argumentet, men om det ikke er meningen at argumentet skal være endret når funksjonen er ferdigkjørt, så kan du ta en kopi inne i funksjonen. Det gjøres enklest ved å bruke <em>typen</em> til objektet som funksjon. Du danner da et nytt objekt av samme type. For eksempel for en liste som <code>stocks</code>bruker du <code>list</code>som funksjon</p>
+</section>
+<section id="eksempel-10" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-10">Eksempel 10:</h4>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#This function removes element i it</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pop_and_print(a,i):</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#making a copy:</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    a<span class="op">=</span><span class="bu">list</span>(a)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#doing the rest:</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    last_element<span class="op">=</span>a.pop(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(last_element)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>pop_and_print(stocks,<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>stocks</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['Gjensidige Forsikring', 'GJF', 172.830508474576, 92125000000, 24.9404407385348, 0.847890127134592]</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>[['Equinor',
+  'EQNR',
+  167.554919090282,
+  376883380048.5,
+  6.14609823076753,
+  0.617893838660362],
+ ['DNB', 'DNB', 164, 259169427140, 11.1121822724349, 0.914999939276725],
+ ['Telenor',
+  'TEL',
+  148.737572948101,
+  227115017138.4,
+  13.0211568133471,
+  0.715300723576896],
+ ['Marine Harvest',
+  'MHG',
+  225.589705235372,
+  118004750966.2,
+  21.6878893009616,
+  0.440427599611273],
+ ['Aker BP',
+  'AKERBP',
+  272.499264741749,
+  103712690592,
+  26.7636558040214,
+  0.722568840028356],
+ ['Yara International',
+  'YAR',
+  333.328922090651,
+  99481443032.4,
+  86.741957363663,
+  0.465057636887608],
+ ['Gjensidige Forsikring',
+  'GJF',
+  172.830508474576,
+  92125000000,
+  24.9404407385348,
+  0.847890127134592]]</code></pre>
+</div>
+</div>
+<p>Denne koden kan kjøres så mange ganger du vil, uten at stocks endres</p>
+</section>
+</section>
+<section id="tuple" class="level1">
+<h1>Tuple</h1>
+<p>En <code>tuple</code> fungerer ganske likt som en liste når du skal hente noe fra den. Men i motsetning til en liste, så går det ikke an å endre på en <code>tuple</code> etter at den er skapt. Du kan lage en tuple enten ved å bruke den innebygde funksjonen <code>tuple()</code> eller ved å lage en liste med en vanlig parentes:</p>
+<section id="eksempel-11" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-11">Eksempel 11:</h4>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span><span class="bu">tuple</span>(equinor)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>b<span class="op">=</span>(<span class="st">'Equinor'</span>, <span class="st">'EQNR'</span>, <span class="fl">146.85</span>, <span class="dv">315357973561</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(a))</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(b))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'tuple'&gt;
+&lt;class 'tuple'&gt;</code></pre>
+</div>
+</div>
+<p>Vi kan <em>få tak i</em> innholdet, men det går ikke an å <em>endre</em> på innholdet i en <code>tuple</code>etter at den er skapt:</p>
+</section>
+<section id="eksempel-12" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-12">Eksempel 12:</h4>
+<div class="cell" data-scrolled="true" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a[<span class="dv">0</span>])</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">0</span>]<span class="op">=</span><span class="st">'Statoil'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Equinor</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: 'tuple' object does not support item assignment</code></pre>
+</div>
+</div>
+<p>Tuple er mest brukt i forbindelse med funksjoner, og er ikke noe vi kommer til å bruke mye tid på i dette kurset.</p>
+</section>
+</section>
+<section id="numpy" class="level1">
+<h1>Numpy</h1>
+<p>Numpy er en pakke som kan gjøre matematiske beregninger på store datasett svært effektivt. Vi starter med å importere pakken, og konvertere listen vi har brukt til en numpy-matrise kalt <code>ndarray</code>. En <em>matrise</em> er en liste der alle rader har like mangee elementer, og det er jo tilfelle med vår <code>stocks</code>-liste.</p>
+<p>Vi starter med å definere en liste av liste med informasjon om aksjene:</p>
+<section id="eksempel-13" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-13">Eksempel 13:</h4>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>stocks<span class="op">=</span>[</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>[<span class="st">'Equinor'</span>, <span class="st">'EQNR'</span>, <span class="fl">167.554919090282</span>, <span class="fl">376883380048.5</span>, <span class="fl">6.14609823076753</span>, <span class="fl">0.617893838660362</span>] , </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>[<span class="st">'DNB'</span>, <span class="st">'DNB'</span>, <span class="dv">164</span>, <span class="dv">259169427140</span>, <span class="fl">11.1121822724349</span>, <span class="fl">0.914999939276725</span>] , </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>[<span class="st">'Telenor'</span>, <span class="st">'TEL'</span>, <span class="fl">148.737572948101</span>, <span class="fl">227115017138.4</span>, <span class="fl">13.0211568133471</span>, <span class="fl">0.715300723576896</span>] , </span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>[<span class="st">'Marine Harvest'</span>, <span class="st">'MHG'</span>, <span class="fl">225.589705235372</span>, <span class="fl">118004750966.2</span>, <span class="fl">21.6878893009616</span>, <span class="fl">0.440427599611273</span>] , </span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>[<span class="st">'Aker BP'</span>, <span class="st">'AKERBP'</span>, <span class="fl">272.499264741749</span>, <span class="dv">103712690592</span>, <span class="fl">26.7636558040214</span>, <span class="fl">0.722568840028356</span>] , </span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>[<span class="st">'Yara International'</span>, <span class="st">'YAR'</span>, <span class="fl">333.328922090651</span>, <span class="fl">99481443032.4</span>, <span class="fl">86.741957363663</span>, <span class="fl">0.465057636887608</span>] , </span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>[<span class="st">'Gjensidige Forsikring'</span>, <span class="st">'GJF'</span>, <span class="fl">172.830508474576</span>, <span class="dv">92125000000</span>, <span class="fl">24.9404407385348</span>, <span class="fl">0.847890127134592</span>] , </span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>[<span class="st">'Orkla'</span>, <span class="st">'ORK'</span>, <span class="fl">86.5857852597003</span>, <span class="fl">89087299091.2</span>, <span class="fl">26.5615083754323</span>, <span class="fl">0.350968405416214</span>] , </span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>[<span class="st">'Norsk Hydro'</span>, <span class="st">'NHY'</span>, <span class="fl">31.4389402413895</span>, <span class="fl">67532103728.64</span>, <span class="fl">15.6215830970715</span>, <span class="fl">0.439195576287418</span>] , </span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>[<span class="st">'SalMar'</span>, <span class="st">'SALM'</span>, <span class="fl">449.3</span>, <span class="fl">50905689550.7</span>, <span class="fl">14.222545257898</span>, <span class="fl">0.396134627028104</span>] , </span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>[<span class="st">'Tomra Systems'</span>, <span class="st">'TOM'</span>, <span class="fl">276.409619134278</span>, <span class="fl">41208789715.2</span>, <span class="fl">52.8996016883184</span>, <span class="fl">0.454299114121939</span>] , </span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>[<span class="st">'Aker'</span>, <span class="st">'AKER'</span>, <span class="fl">514.200494811093</span>, <span class="dv">40393931997</span>, <span class="fl">43.4343354806452</span>, <span class="fl">0.548092886866901</span>] , </span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Som du ser, så består listen av tolv rader og fire kolonner. Dette er altså en 12x6-matrise. Den kan enkelt konverteres til en numpy-matrise med funksjonen <code>np.array()</code> slik som her:</p>
+</section>
+<section id="eksempel-14" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-14">Eksempel 14:</h4>
+<div class="cell" data-scrolled="true" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>stocks_np<span class="op">=</span>np.array(stocks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Listen er nå lagret som en numpy 12x6-matrise i objektet <code>stocks_np</code>. Vi kan imidlertid ikke utføre noen matematiske beregninger slik denne matrisen står, fordi alle tall er i tekstformat. Som vi har sett tidligere går det bare an å regne med <code>float</code>, <code>int</code> og <code>bool</code>. At det er tekst ser vi ved at det er enkle anførselstegn <code>'</code> rundt alle elementene.</p>
+<p>Heldigvis er det veldig enkelt å hente ut informasjon fra numpy-matriser, fordi mulighetene til å skjære utsnitt er langt større enn for vanlige lister. Numpy-lister kan nemlig skjæres i flere dimensjoner.</p>
+<p>I motsetning til vanlige lister, kan vi for eksempel velge ut kolonner. I en liste av lister velger du, som vi har sett, rad 2 og kolonne 0 med <code>stocks[2][0]</code>. Med numpy-matriser separerer du de to indeksene med et komma, <code>stocks[2,0]</code>.</p>
+<p>Men enda viktigere, du kan velge alle elementer ved å sette inn kolon <code>:</code> i stedet for tall. Dermed kan du velge hele kolonne 0 med <code>stocks_np[:,0]</code>.</p>
+<p>Her er vi mest interessert i de to siste kolonnene. Det er disse som inneholder tall. For å plukke ut disse velger vi alle radene (<code>:</code>) og alle kolonnene fra og med kolonne 2 (<code>2:</code>). Da får vi</p>
+</section>
+<section id="eksempel-15" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-15">Eksempel 15:</h4>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>stocks_np[:,<span class="dv">2</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>array([['167.554919090282', '376883380048.5', '6.14609823076753',
+        '0.617893838660362'],
+       ['164', '259169427140', '11.1121822724349', '0.914999939276725'],
+       ['148.737572948101', '227115017138.4', '13.0211568133471',
+        '0.715300723576896'],
+       ['225.589705235372', '118004750966.2', '21.6878893009616',
+        '0.440427599611273'],
+       ['272.499264741749', '103712690592', '26.7636558040214',
+        '0.722568840028356'],
+       ['333.328922090651', '99481443032.4', '86.741957363663',
+        '0.465057636887608'],
+       ['172.830508474576', '92125000000', '24.9404407385348',
+        '0.847890127134592'],
+       ['86.5857852597003', '89087299091.2', '26.5615083754323',
+        '0.350968405416214'],
+       ['31.4389402413895', '67532103728.64', '15.6215830970715',
+        '0.439195576287418'],
+       ['449.3', '50905689550.7', '14.222545257898', '0.396134627028104'],
+       ['276.409619134278', '41208789715.2', '52.8996016883184',
+        '0.454299114121939'],
+       ['514.200494811093', '40393931997', '43.4343354806452',
+        '0.548092886866901']], dtype='&lt;U32')</code></pre>
+</div>
+</div>
+<p>Sist i matrisen over, står det <code>dtype='&lt;U21'</code>. Det betyr at dette er tekstrenger på 21 eller færre tegn. Vi må imidlertid ha dette over i tallformat for å kunne jobbe med det. Det gjør vi slik:</p>
+</section>
+<section id="eksempel-16" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-16">Eksempel 16:</h4>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>stocks_numbers<span class="op">=</span>np.array(stocks_np[:,<span class="dv">2</span>:],dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>stocks_numbers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>array([[1.67554919e+02, 3.76883380e+11, 6.14609823e+00, 6.17893839e-01],
+       [1.64000000e+02, 2.59169427e+11, 1.11121823e+01, 9.14999939e-01],
+       [1.48737573e+02, 2.27115017e+11, 1.30211568e+01, 7.15300724e-01],
+       [2.25589705e+02, 1.18004751e+11, 2.16878893e+01, 4.40427600e-01],
+       [2.72499265e+02, 1.03712691e+11, 2.67636558e+01, 7.22568840e-01],
+       [3.33328922e+02, 9.94814430e+10, 8.67419574e+01, 4.65057637e-01],
+       [1.72830508e+02, 9.21250000e+10, 2.49404407e+01, 8.47890127e-01],
+       [8.65857853e+01, 8.90872991e+10, 2.65615084e+01, 3.50968405e-01],
+       [3.14389402e+01, 6.75321037e+10, 1.56215831e+01, 4.39195576e-01],
+       [4.49300000e+02, 5.09056896e+10, 1.42225453e+01, 3.96134627e-01],
+       [2.76409619e+02, 4.12087897e+10, 5.28996017e+01, 4.54299114e-01],
+       [5.14200495e+02, 4.03939320e+10, 4.34343355e+01, 5.48092887e-01]])</code></pre>
+</div>
+</div>
+<p>Når vi konverterte listen til en <code>ndarray</code>, så brukte vi altså funksjonen <code>np.array()</code>, slik som i Eksempel 14. Men denne gangen legger vi til det valgfrie argument <code>dtype=float</code> for å eksplisitt gi beskjed om at vi ønsker strengene konvertert til flyttal.</p>
+<p>Nå kan vi begynne å bruke tallene. For eksempel kan vi se grafisk om det er en sammenheng mellom gjeldsgrad og pris-inntjeningstraten (PE). Dette er de to siste kolonnene i datamatrisen:</p>
+</section>
+<section id="eksempel-17" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-17">Eksempel 17:</h4>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>fig,ax<span class="op">=</span>plt.subplots()</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'PE'</span>)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'gjeldsrate'</span>)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>ax.scatter(stocks_numbers[:,<span class="op">-</span><span class="dv">1</span>], stocks_numbers[:,<span class="op">-</span><span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>&lt;matplotlib.collections.PathCollection at 0x29f7edd0b50&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="4%20-%20lister,%20oppslag%20og%20numpy_files/figure-html/cell-21-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Ser du en sammenheng?</p>
+<p>Det er også enkelt å regne med Numpy. Vi kan bruke alle de vanlige regneartene med numpy-matriser:</p>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>np.array([<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">3</span>])</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>b<span class="op">=</span>np.array([<span class="dv">23</span>,<span class="dv">15</span>,<span class="dv">2</span>,<span class="dv">10</span>])</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a<span class="op">+</span>b)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a<span class="op">-</span>b)</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a<span class="op">*</span>b)</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a<span class="op">/</span>b)</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a<span class="op">**</span><span class="dv">3</span>)</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a<span class="op">**</span><span class="fl">0.5</span>)<span class="co">#Kvadratroten</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[24 20  8 13]
+[-22 -10   4  -7]
+[23 75 12 30]
+[0.04347826 0.33333333 3.         0.3       ]
+[  1 125 216  27]
+[1.         2.23606798 2.44948974 1.73205081]</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="oppslag" class="level1">
+<h1>Oppslag</h1>
+<p>Et oppslag, eller <em>dictionary</em> har symbol <code>dict</code> i Python. Dette er en datastruktur der hvert element ikke identifiseres med hvor det er plassert, men med et nøkkelord (<code>key</code>). Å bruke oppslag i stedet for lister gjør ofte koden mer lesbar. Det finnes to måter å lage oppslag på; enten ved å bruke funksjonen <code>dict()</code>:</p>
+<section id="eksempel-18" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-18">Eksempel 18:</h4>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span><span class="bu">dict</span>()</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>a[<span class="st">'gjeldsrate'</span>]<span class="op">=</span>stocks_numbers[:,<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>a[<span class="st">'PE'</span>]<span class="op">=</span>stocks_numbers[:,<span class="op">-</span><span class="dv">2</span>]</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(a))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'dict'&gt;</code></pre>
+</div>
+</div>
+<p>Som vi ser, blir dette et objekt av type <code>dict</code>. Alternativt kan vi definere elementer inne i en krølleparentes på formen <code>{nøkkel: objekt}</code>, slik som dette:</p>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>b<span class="op">=</span>{</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'gjeldsrate'</span>:stocks_numbers[:,<span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'PE'</span>:stocks_numbers[:,<span class="op">-</span><span class="dv">2</span>], </span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(b))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'dict'&gt;</code></pre>
+</div>
+</div>
+<p>Her er det altså to elementer med nøkler <code>'gjeldsrate'</code> og <code>'PE'</code>, og tilhørende objekter fra <code>stocks_numbers</code>.</p>
+<p>Vi legger merke til at dette også er en objekt av type <code>dict</code>. Med oppslag blir det enklere å bruke variablene, siden vi kan referere til dem med navn i stedet for indeks. Her er plottet i Eksempel 17 gjort med oppslag:</p>
+</section>
+<section id="eksempel-19" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-19">Eksempel 19:</h4>
+<div class="cell" data-scrolled="true" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'PE'</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'gjeldsrate'</span>)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(a[<span class="st">'gjeldsrate'</span>], a[<span class="st">'PE'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>&lt;matplotlib.collections.PathCollection at 0x29f69d5f250&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="4%20-%20lister,%20oppslag%20og%20numpy_files/figure-html/cell-25-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Når du først har laget en dict, er det enkelt å legge til nye elementer. Det gjør du enkelt ved å bruke en nøkkel som ikke finnes, for eksempel <code>'Pris'</code>, og dette elementet lik ønsket objekt:</p>
+</section>
+<section id="eksempel-20" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-20">Eksempel 20:</h4>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>a[<span class="st">'Pris'</span>]<span class="op">=</span>stocks_numbers[:,<span class="dv">0</span>]</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pris'</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'gjeldsrate'</span>)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>plt.scatter(a[<span class="st">'gjeldsrate'</span>], a[<span class="st">'Pris'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>&lt;matplotlib.collections.PathCollection at 0x29f7f6cf250&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="4%20-%20lister,%20oppslag%20og%20numpy_files/figure-html/cell-26-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p><code>dict</code>-objektet er helt sentralt i selve byggeklossene til Python. Alle variabler du lager er faktisk elementer i to <code>dict</code> som du kan få frem med funksjonene <code>locals()</code> og <code>globals()</code>, som kaller de lokalt og globalt definerte variablene i miljøet du befinner deg. Dette eksemplet viser at objektet <code>stocks</code> som vi har definert i Eksempel 13, er identisk med elementet <code>'stocks'</code> i <code>locals()</code>.</p>
+</section>
+<section id="eksempel-21" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-21">Eksempel 21:</h4>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="bu">locals</span>()[<span class="st">'stocks'</span>]<span class="op">==</span>stocks</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>True</code></pre>
+</div>
+</div>
+<p>Vi ser at disse objektene egentlig er det samme, ved at den logiske testen om disse er like, returnerer sann (<code>True</code>).</p>
+</section>
+</section>
+<section id="oppgaver" class="level1">
+<h1>Oppgaver</h1>
+<p>Det er enkelt å konvertere en pandas dataramme til numpy. Vi skal bruke skolegangeksemplet fra forelesning “3 - matplotlib”. Vi henter inn dataene og konverterer dem til numpy slik:</p>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span>pd.read_csv(<span class="st">'./data/schooling-gdp.csv'</span>)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>schooling<span class="op">=</span>np.array(df)</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>schooling</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>array([['Norway', ' NOR', 73262.68, 11.65, 4886000],
+       ['Kuwait', ' KWT', 67029.523, 6.39, 2992000],
+       ['Luxembourg', ' LUX', 57882.809, 11.33, 508000],
+       ['Switzerland', ' CHE', 55688.02, 12.92, 7809000],
+       ['United States', ' USA', 49500.629, 13.24, 309011008],
+       ['Ireland', ' IRL', 47823.504, 12.45, 4554000],
+       ['Australia', ' AUS', 44854.902, 11.69, 22155000],
+       ['Netherlands', ' NLD', 44004.145, 11.71, 16683000],
+       ['Denmark', ' DNK', 43416.223, 11.97, 5555000],
+       ['Hong Kong', ' HKG', 41687.949, 12.2, 6966000],
+       ['Germany', ' DEU', 40627.23, 12.58, 80827000],
+       ['Austria', ' AUT', 40489.809, 10.13, 8410000],
+       ['Sweden', ' SWE', 40421.906, 11.95, 9390000],
+       ['Canada', ' CAN', 40269.031, 12.74, 34148000],
+       ['Finland', ' FIN', 38394.059, 10.71, 5366000],
+       ['Belgium', ' BEL', 38177.945, 11.29, 10939000],
+       ['Iceland', ' ISL', 37729.016, 11.48, 320000],
+       ['Taiwan', ' TWN', 37188.895, 11.96, 23188000],
+       ['Japan', ' JPN', 36595.633, 12.44, 128542000],
+       ['France', ' FRA', 35786.16, 11.34, 62880000],
+       ['United Kingdom', ' GBR', 34810.281, 12.46, 63460000],
+       ['Italy', ' ITA', 34727.676, 10.71, 59325000],
+       ['Spain', ' ESP', 31610.98, 10.75, 46931000],
+       ['South Korea', ' KOR', 31589.705, 12.96, 49546000],
+       ['New Zealand', ' NZL', 30867.053, 11.12, 4370000],
+       ['Cyprus', ' CYP', 28046.375, 11.76, 1113000],
+       ['Trinidad and Tobago', ' TTO', 27510.236, 10.96, 1328000],
+       ['Czechia', ' CZE', 26129.568, 12.8, 10537000],
+       ['Greece', ' GRC', 25815.799, 11.36, 10888000],
+       ['Portugal', ' PRT', 25788.273, 8.71, 10596000],
+       ['Malta', ' MLT', 22983.451, 11.06, 414000],
+       ['Russia', ' RUS', 21754.066, 12.02, 143479008],
+       ['Poland', ' POL', 21006.027, 11.62, 38330000],
+       ['Hungary', ' HUN', 20477.799, 11.98, 9927000],
+       ['Chile', ' CHL', 18092.941, 10.35, 17063000],
+       ['Turkey', ' TUR', 17930.68, 7.44, 72327000],
+       ['Malaysia', ' MYS', 17913.164, 10.89, 28208000],
+       ['Iran', ' IRN', 17328.459, 9.15, 73763000],
+       ['Romania', ' ROU', 16775.609, 11.08, 20472000],
+       ['Venezuela', ' VEN', 16357.737, 8.78, 28440000],
+       ['Argentina', ' ARG', 15841.659, 9.71, 40896000],
+       ['Uruguay', ' URY', 15783.405, 8.61, 3359000],
+       ['Mauritius', ' MUS', 15178.326, 9.44, 1248000],
+       ['Panama', ' PAN', 15055.237, 9.72, 3643000],
+       ['Bulgaria', ' BGR', 14906.785, 11.07, 7425000],
+       ['Mexico', ' MEX', 14507.013, 9.18, 114093000],
+       ['Barbados', ' BRB', 13995.613, 9.57, 282000],
+       ['Brazil', ' BRA', 13541.462, 8.17, 195714000],
+       ['Algeria', ' DZA', 12590.226, 7.0, 35977000],
+       ['Thailand', ' THA', 12496.244, 8.47, 67195000],
+       ['Serbia', ' SRB', 12453.482, 11.52, 8991000],
+       ['Costa Rica', ' CRI', 12106.992, 8.43, 4577000],
+       ['Dominican Republic', ' DOM', 11500.132, 8.12, 9695000],
+       ['South Africa', ' ZAF', 11388.641, 9.89, 51217000],
+       ['Tunisia', ' TUN', 10647.835, 8.0, 10635000],
+       ['Colombia', ' COL', 10636.5, 9.35, 45223000],
+       ['Albania', ' ALB', 9544.7402, 10.44, 2948000],
+       ['Jordan', ' JOR', 9351.3877, 10.0, 7262000],
+       ['Iraq', ' IRQ', 9344.5439, 7.43, 29742000],
+       ['China', ' CHN', 9337.29, 8.25, 1368811008],
+       ['Peru', ' PER', 9262.1641, 9.28, 29028000],
+       ['Egypt', ' EGY', 9148.8398, 7.44, 82761000],
+       ['Ecuador', ' ECU', 9129.1367, 8.02, 15011000],
+       ['Sri Lanka', ' LKA', 8390.4297, 10.67, 20262000],
+       ['Indonesia', ' IDN', 7365.4385, 8.02, 241834000],
+       ['Belize', ' BLZ', 7145.9521, 9.63, 322000],
+       ['Eswatini', ' SWZ', 7042.5239, 5.33, 1065000],
+       ['Fiji', ' FJI', 6902.0688, 10.35, 860000],
+       ['Paraguay', ' PRY', 6825.2051, 7.99, 6248000],
+       ['Jamaica', ' JAM', 6675.1768, 10.33, 2810000],
+       ['Morocco', ' MAR', 6421.9375, 5.27, 32343000],
+       ['Guatemala', ' GTM', 6359.2627, 5.21, 14630000],
+       ['El Salvador', ' SLV', 6096.9585, 8.06, 6184000],
+       ['Syria', ' SYR', 5700.3291, 7.07, 21363000],
+       ['Philippines', ' PHL', 5391.2339, 8.65, 93967000],
+       ['Bolivia', ' BOL', 4806.6094, 8.57, 10049000],
+       ['Yemen', ' YEM', 4553.5571, 3.84, 23155000],
+       ['India', ' IND', 4357.0596, 6.59, 1234280960],
+       ['Pakistan', ' PAK', 4171.4165, 5.19, 179424992],
+       ['Nicaragua', ' NIC', 3992.762, 6.82, 5824000],
+       ['Ghana', ' GHA', 3931.2917, 7.66, 24780000],
+       ['Honduras', ' HND', 3789.9104, 6.6, 8317000],
+       ['Sudan', ' SDN', 3608.7856, 3.49, 34545000],
+       ['Myanmar', ' MMR', 3422.2415, 5.11, 50601000],
+       ['Zambia', ' ZMB', 2870.8872, 7.4, 13606000],
+       ['Senegal', ' SEN', 2741.1213, 3.11, 12678000],
+       ['Cameroon', ' CMR', 2684.9727, 6.41, 20341000],
+       ['Gambia', ' GMB', 2681.8586, 3.92, 1793000],
+       ['Kenya', ' KEN', 2484.0349, 6.47, 42031000],
+       ["Cote d'Ivoire", ' CIV', 2452.6096, 4.93, 20533000],
+       ['Lesotho', ' LSO', 2432.7976, 6.08, 1996000],
+       ['Bangladesh', ' BGD', 2411.1021, 6.22, 147575008],
+       ['Cambodia', ' KHM', 2330.1272, 4.94, 14312000],
+       ['Nepal', ' NPL', 1996.1962, 4.44, 27013000],
+       ['Benin', ' BEN', 1919.9968, 4.57, 9199000],
+       ['Mali', ' MLI', 1873.281, 2.14, 15049000],
+       ['Uganda', ' UGA', 1723.5942, 5.87, 32428000],
+       ['Haiti', ' HTI', 1650.2697, 5.17, 9949000],
+       ['Zimbabwe', ' ZWE', 1479.0305, 7.86, 12698000],
+       ['Togo', ' TGO', 1222.8151, 6.09, 6422000],
+       ['Sierra Leone', ' SLE', 1161.8798, 4.28, 6416000],
+       ['Malawi', ' MWI', 972.04572, 5.01, 14540000],
+       ['Mozambique', ' MOZ', 969.23077, 2.03, 23532000],
+       ['Niger', ' NER', 845.86932, 1.95, 16464000],
+       ['Liberia', ' LBR', 786.67023, 4.35, 3891000],
+       ['Democratic Republic of Congo', ' COD', 634.97137, 3.79,
+        64564000]], dtype=object)</code></pre>
+</div>
+</div>
+<ol type="1">
+<li>Bytt ut navnet til “Ireland” med “Republic of Ireland” og “United States” med “United States of America”</li>
+</ol>
+<div class="cell" data-tags="[]" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>schooling[<span class="dv">5</span>][<span class="dv">0</span>]<span class="op">=</span><span class="st">"Republic of Ireland"</span> </span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>schooling[<span class="dv">4</span>][<span class="dv">0</span>]<span class="op">=</span><span class="st">"United States of America"</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>schooling[:<span class="dv">7</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<pre><code>array([['Norway', ' NOR', 73262.68, 11.65, 4886000],
+       ['Kuwait', ' KWT', 67029.523, 6.39, 2992000],
+       ['Luxembourg', ' LUX', 57882.809, 11.33, 508000],
+       ['Switzerland', ' CHE', 55688.02, 12.92, 7809000],
+       ['United States of America', ' USA', 49500.629, 13.24, 309011008],
+       ['Republic of Ireland', ' IRL', 47823.504, 12.45, 4554000],
+       ['Australia', ' AUS', 44854.902, 11.69, 22155000]], dtype=object)</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Print data for “Luxembourg”</li>
+</ol>
+<div class="cell" data-tags="[]" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(schooling[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['Luxembourg' ' LUX' 57882.809 11.33 508000]</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Print data for “Liberia” ved å referere til nest siste element.</li>
+</ol>
+<div class="cell" data-tags="[]" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>schooling[<span class="op">-</span><span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>array(['Liberia', ' LBR', 786.67023, 4.35, 3891000], dtype=object)</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Print BNP per capita for de tre siste elementene i <code>schooling</code> (ligger i kolonne med indeks 2)</li>
+</ol>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>np.array(schooling)[<span class="bu">len</span>(schooling)<span class="op">-</span><span class="dv">3</span>:,<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<pre><code>array([845.86932, 786.67023, 634.97137], dtype=object)</code></pre>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Print BNP per capita for de tre siste elementene i <code>schooling</code> men hent kolonnen ved å refere til tredje siste kolonne.</li>
+</ol>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>np.array(schooling)[<span class="op">-</span><span class="dv">3</span>:,<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>array([845.86932, 786.67023, 634.97137], dtype=object)</code></pre>
+</div>
+</div>
+<ol start="6" type="1">
+<li>Plukk ut de tre siste kolonnene i <code>schooling</code>, som representerer BNP per capita, skolegang og befolkning, og konverter dem til datatype <code>float</code>.</li>
+</ol>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>schooling_float <span class="op">=</span> np.array(np.array(schooling)[:,<span class="op">-</span><span class="dv">3</span>:],dtype<span class="op">=</span><span class="bu">float</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="7" type="1">
+<li>Lag et oppslag (dictionary) med de tre siste kolonnene og passende navn som nøkler. Kall det <code>schooling_dict</code>.</li>
+</ol>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>schooling_dict <span class="op">=</span> {<span class="st">'gdp_cap'</span>: schooling_float[:,<span class="dv">0</span>], <span class="st">'schooling'</span>: schooling_float[:,<span class="dv">1</span>], <span class="st">'pop'</span>: schooling_float[:,<span class="dv">2</span>]}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="8" type="1">
+<li>Lag en ny variabel i oppslaget med navn “Total schooling” som er produktet av skolegang og befolkning.</li>
+</ol>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>schooling_dict[<span class="st">"Total schooling"</span>] <span class="op">=</span> schooling_dict[<span class="st">"schooling"</span>]<span class="op">*</span>schooling_dict[<span class="st">"pop"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="9" type="1">
+<li>Lag en ny variabel “Total GDP” som er produktet av BNP per capita og befolkning.</li>
+</ol>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>schooling_dict[<span class="st">"Total GDP"</span>] <span class="op">=</span> schooling_dict[<span class="st">"gdp_cap"</span>]<span class="op">*</span>schooling_dict[<span class="st">"pop"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="10" type="1">
+<li>Lag et scatterplot med de to variablene du nettopp lagde.</li>
+</ol>
+<div class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(schooling_dict[<span class="st">"Total schooling"</span>],schooling_dict[<span class="st">"Total GDP"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<pre><code>&lt;matplotlib.collections.PathCollection at 0x29f1d704790&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="4%20-%20lister,%20oppslag%20og%20numpy_files/figure-html/cell-38-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<ol start="11" type="1">
+<li>Lag plottet over, men konverter variablene med np.log()</li>
+</ol>
+<div class="cell" data-tags="[]" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(np.log(schooling_dict[<span class="st">"Total schooling"</span>]),np.log(schooling_dict[<span class="st">"Total GDP"</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<pre><code>&lt;matplotlib.collections.PathCollection at 0x29f1d878c10&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="4%20-%20lister,%20oppslag%20og%20numpy_files/figure-html/cell-39-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<ol start="12" type="1">
+<li>Lag en ny variabel “GDP per schooling” som er BNP per capita delt på skolegang.</li>
+</ol>
+<div class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>schooling_dict[<span class="st">"GDP per schooling"</span>] <span class="op">=</span> schooling_dict[<span class="st">"gdp_cap"</span>]<span class="op">/</span>schooling_dict[<span class="st">"schooling"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="13" type="1">
+<li>Lag et liggende stolpediagram med navn på land og “GDP per schooling”. Du bruker da funksjonen <code>plt.barh</code> på denne måten:</li>
+</ol>
+<pre><code>plt.barh(names,values)</code></pre>
+<p>Hvor <code>names</code> er en liste med navnene og <code>values</code> er de tilhørende verdiene.</p>
+<div class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>plt.barh(schooling[:,<span class="dv">0</span>],schooling_dict[<span class="st">"GDP per schooling"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="52">
+<pre><code>&lt;BarContainer object of 106 artists&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="4%20-%20lister,%20oppslag%20og%20numpy_files/figure-html/cell-41-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<ol start="14" type="1">
+<li>Dette blir ikke pent. Velg kun de 20 første landene, og forsøk på nytt.</li>
+</ol>
+<div class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>ncount <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>plt.barh(schooling[:,<span class="dv">0</span>][:ncount],schooling_dict[<span class="st">"GDP per schooling"</span>][:ncount])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="53">
+<pre><code>&lt;BarContainer object of 20 artists&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="4%20-%20lister,%20oppslag%20og%20numpy_files/figure-html/cell-42-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<ol start="15" type="1">
+<li>med <code>argsort</code> får du rangeringen til etter en sortering. Her er rangeringen for “GDP per schooling”</li>
+</ol>
+<div class="cell" data-tags="[]" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>schooling_dict[<span class="st">"GDP per schooling"</span>].argsort()[::<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="67">
+<pre><code>array([  1,   0,   2,   3,  11,   5,   6,   7,   4,   8,  14,   9,  12,
+        15,  16,  21,  10,  13,  19,  17,  29,  18,  22,  20,  24,  26,
+        23,  35,  25,  28,  30,  27,  37,  39,  41,  31,  32,  48,  34,
+        33,  47,  36,  40,  42,  45,  43,  38,  49,  46,  51,  52,  44,
+        54,  66,  58,  61,  71,  70,  76,  53,  62,  55,  59,  50,  82,
+        60,  57,  64,  56,  85,  95,  68,  73,  78,  63,  72,  65,  87,
+        83,  67,  77,  69,  74,  79,  81,  75,  80,  89, 102,  92,  93,
+       103,  94,  86,  90,  84,  91,  88,  97,  96, 100,  99, 101,  98,
+       104, 105], dtype=int64)</code></pre>
+</div>
+</div>
+<p><code>[::-1]</code> til slutt sørger for å reversere sorteringen. Legg referansen til soreringen inn i variabelen <code>sorted</code>, og lag diagrammet på nytt med sorterte verdier. Om du har en numpy-liste a, kan du velge de sorterte verdiene med <code>a[sorted]</code></p>
+<p>Lag</p>
+<ol type="a">
+<li><p>et nytt diagram med alle landene og</p></li>
+<li><p>et diagram med de 20 øverste.</p></li>
+<li><p>et diagram med de 20 nederste</p></li>
+</ol>
+<div class="cell" data-tags="[]" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span> <span class="op">=</span> schooling_dict[<span class="st">"GDP per schooling"</span>].argsort()[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>plt.barh(schooling[:,<span class="dv">0</span>][<span class="bu">sorted</span>],schooling_dict[<span class="st">"GDP per schooling"</span>][<span class="bu">sorted</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="68">
+<pre><code>&lt;BarContainer object of 106 artists&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="4%20-%20lister,%20oppslag%20og%20numpy_files/figure-html/cell-44-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>plt.barh(schooling[:,<span class="dv">0</span>][<span class="bu">sorted</span>][:ncount],schooling_dict[<span class="st">"GDP per schooling"</span>][<span class="bu">sorted</span>][:ncount])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="69">
+<pre><code>&lt;BarContainer object of 20 artists&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="4%20-%20lister,%20oppslag%20og%20numpy_files/figure-html/cell-45-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>plt.barh(schooling[:,<span class="dv">0</span>][<span class="bu">sorted</span>][<span class="op">-</span>ncount:],schooling_dict[<span class="st">"GDP per schooling"</span>][<span class="bu">sorted</span>][<span class="op">-</span>ncount:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="71">
+<pre><code>&lt;BarContainer object of 20 artists&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="4%20-%20lister,%20oppslag%20og%20numpy_files/figure-html/cell-46-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
