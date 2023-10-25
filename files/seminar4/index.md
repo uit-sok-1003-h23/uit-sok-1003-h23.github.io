@@ -11,24 +11,25 @@ Oppgaven er levert når det ligger en besvarelse på github innnen fristen.
 
 
 ## [17_Likningssett_faktoriseringsmetoden_oppgaver.pdf](17_Likningssett_faktoriseringsmetoden_oppgaver.pdf)
-Lag en funksjon `test_solve(eq)` der eq er en Sympy-ligning, og der du bruker `solve(f)` til å finne løsning på likhetene. Lag en test i funksjonen, ved å sette løsningen inn i likheten. 
-Funksjonen skal returnere både svaret og resultatet av løsningen. Kjør funksjonen på alle oppgavene i én celle, og gjør koden så kort som mulig (færrest mulig linjer) . 
+Lag en funksjon `test_solve(eqs)` der eqs er et Sympy ligningssett, og der du bruker `solve(f)` til å finne løsning på likhetene. Lag en test i funksjonen, ved å sette løsningen inn i likheten. 
+Funksjonen skal returnere både svaret og resultatet av løsningen. 
 
 ## [19_Grunnleggende_derivasjonsregler_oppgaver.pdf](19_Grunnleggende_derivasjonsregler_oppgaver.pdf)
-Løs alle oppgavene med Sympy i én celle. Bruk `diff()`-funksjonen for å derivere, og gjør koden så kort som mulig.
+Løs alle oppgavene med Sympy i én celle. Bruk `diff()`-funksjonen for å derivere, og gjør koden så kort som mulig (i antall tegn, ikke antall linjer).
 
 ## [20_Produkt_og_brokregelen_oppgaver.pdf](20_Produkt_og_brokregelen_oppgaver.pdf)
 
 ### 1)
-Lag en funksjon `simp(f)` som forenkler uttrykkene i Oppgavene 1 a)-d), og løs disse oppgavene med denne funksjonen. Kommenter hvilke av oppgavene som lar seg forenkle.
+Forenkl uttrykkene i Oppgavene 1 a)-d) med færrest mulig tegn. Kommenter hvilke av oppgavene som lar seg forenkle.
 
 ### 2)
-Lag en funksjon `f_deriv_prod(f, g)` som bruker produktregelen til å derivere et produkt. Argumenter skal være de to delene i produktet. 
+Lag to funksjoner `f_deriv_prod(f, g)` og `f_deriv_frac(f, g)` som bruker henholdsvis produktregelen og brøkregelen til å derivere et uttrykk. Argumenter skal være de to delene i produktet. 
 Om produktet for eksempel er $\sqrt{3x-1}\cdot(1+x)$ skal argumentene være $\sqrt{3x-1}$ og $(1+x)$. Funksjonen skal returnere den deriverte av produktet.
 
+Deriver alle utrykene i e)-m) med disse funksjonene, men velg først ut alle produktene og deriver de, før du i neste omgang deriverer brøkene.
+
 ### 3)
-Test at produktregelen fungerer ved å sjekke at differansen mellom funksjonen du nettopp laget og derivasjon av hele utrykket med `diff()`-funksjonen er null.
-Er uttrykket en brøk, for eksempel  $\frac{\sqrt{3x-1}}{(1+x)}$, blir argumentene $\sqrt{3x-1}$ og $\frac{1}{(1+x)}$. 
+Test at produktregelen fungerer ved å printe differansen mellom funksjonene over og derivering av hele uttrykket med `sp.diff()`. Du kan  sette dette inn i koden over om du vil.
 
 
 ## [21_Kjerneregelen_oppgaver.pdf](21_Kjerneregelen_oppgaver.pdf)
@@ -40,10 +41,13 @@ Har du for eksempel et uttrykk $\sqrt{3x-1}$, så er $f(y)=\sqrt{y}$ og $g(x)=\s
 Husk å bytt ut $y$ med $g(x)$ (i dette tilfelle $3x-1$) før svaret returneres. 
 
 ### 2)
-Bruk `f_deriv_chain(f, g)` på uttrykkene i Oppgave 1 og Oppgave 2. Du kan også bruke `f_deriv_prod(f, g)` i kombinasjon med `f_deriv_chain(f(y), g(x))`, om du synes det passer. 
-Finn differansen mellom uttrykkene derivert med disse funksjonene, og uttrykkene derivert med ´diff()´-funksjonen. Denne differansen (som bør være null) er tilstrekkelig svar for hvert uttrykk. 
+a) Bruk `f_deriv_chain(f, g)` på uttrykkene i Oppgave 1 a), b), d), e) og Oppgave 2 a) og e). 
+
+b) Bruk `f_deriv_prod(f, g)` i kombinasjon med `f_deriv_chain(f(y), g(x))` og løs Oppgave 1 h) og Oppgave 2 b)
+
+Test samtidig resultatene med `sp.diff())`, der du stter inn kjernen i funksjonen før du deriverer. 
 
 
 ## [22_Derivasjon_av_logaritme_og_eksponentialfunksjoner_oppgaver.pdf](22_Derivasjon_av_logaritme_og_eksponentialfunksjoner_oppgaver.pdf)
 
-Løs alle oppgavene i samme celle med så kort kode som mulig.
+Løs følgende oppgaver: Oppgave 1 a), b), f) og Oppgave 2 a) og b). Lag koden med så få tegn som mulig-
