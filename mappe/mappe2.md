@@ -1,6 +1,7 @@
 ---
 title: Mappe 2
 ---
+{% include navbar.html %}{% include top-box.html %}
 
 Husk å følge instruksjonene nøye. All kode skal kommenteres, og figurer skal ha tydelig merkede akser. Oppgaven leveres ved å være merket "Mappe 2" og ligge i et repositorie 
 kalt “SOK-1003-H23” som er delt med faglærer og studentassistent [som beskrevet her](https://uit-sok-1003-h23.github.io/semesteroppgave.html)
