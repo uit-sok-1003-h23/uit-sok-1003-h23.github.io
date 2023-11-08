@@ -69,20 +69,23 @@ cov = np.cov(x, y)
 b = cov[0,1]/cov[0,0]
 a = np.mean(y) - b*np.mean(x)
 ```
+Kovariansmatrisen forteller noe om i hvilken grad det er sammenheng mellom variabler. Elementene  `cov[0,0]` og `cov[1,1]` forteller hvor mye den første og den andre variablene varierer.  `cov[1,0]` og `cov[0,1]` er identiske, og forteller hvor mye sammenheng det er mellom variablene. 
+
 3. Lag en funksjon `f(x, a, b)`, som returnerer `a + b * x`
 4. Lag et nytt plott, som er likt det gamle, men der du legger til et plott av denne funksjonen. Gi plottet av funksjonen etiketten (label) 'predicted',  og sørg for at etiketten vises i plottet.
-5. Definer følgende funksjon, som regner ut det gjennomsnittlige kvadrerte avviket mellom `y` og `f(x, a, b)`:
+5. Definer følgende funksjon
 
 ```
 def sumsq_errs(x, y, f, a, b):
     return np.var((y-f(x, a, b)))
 ```
+Denne funksjonen returnerer et mål på hvor stor forskjelle det er mellom elementene i variabel y og elementene fra funksjonen f(x, a, b)
 
 6. Lag en funksjon `calc_errs(x, y, f, a, b, its)` som regner ut dette avviket for ulike verdier av b. De nye verdiene for b skal være i intervallet b-0.5 til b + 0.5. Antall verdier i intervallet som det skal regnes på, er gitt ved `its`. 
 7. Lag en funksjon plot_and_print(x, y, f, a, b, its)
     1. lage et scatterplott med de kvadrerte avvikene langs y aksen og verdiene for b langs x-aksen
     2. Identifiserer for hvilken verdi av b avvikene er minst
-    3. printer verdien av denne b'en, verdien av den opprinnelige b'en (fra oppgave 2.2) og differansen mellom disse
+    3. print verdien av denne b'en, verdien av den opprinnelige b'en (fra oppgave 2.2) og differansen mellom disse
 9. Kjør plot_and_print for its =10, its=100 og its= 1000. 
 10. Kommenter resultatet og forklar hva du tror du har gjort. 
 11. Definer b som et sympysymbol og bruk sympy til å minimere `sp.diff(cov[1,1]- 2*cov[0,1]*b + b**2*cov[0,0])`
