@@ -61,8 +61,8 @@ Du skal nå ha en DataFrame med minst de to kollonene som du tror det kan være 
 # Oppgave 2:
 
 1. Definer de to kollonnene du har valgt som henholdsvis x og y
-1. Lag et scatter-plott med x og y, med variabelnavn langs aksene. 
-2. Beregn "kovariansmatrisen" for de to variablene slik som angitt under og beregn a og b med denne koden:
+2. Lag et scatter-plott med x og y, med variabelnavn langs aksene. 
+3. Beregn "kovariansmatrisen" for de to variablene slik som angitt under og beregn a og b med denne koden:
 ```
 import numpy as np
 cov = np.cov(x, y)
@@ -71,9 +71,9 @@ a = np.mean(y) - b*np.mean(x)
 ```
 Kovariansmatrisen forteller noe om i hvilken grad det er sammenheng mellom variabler. Elementene  `cov[0,0]` og `cov[1,1]` forteller hvor mye den første og den andre variablene varierer.  `cov[1,0]` og `cov[0,1]` er identiske, og forteller hvor mye sammenheng det er mellom variablene. 
 
-3. Lag en funksjon `f(x, a, b)`, som returnerer `a + b * x`
-4. Lag et nytt plott, som er likt det gamle, men der du legger til et plott av denne funksjonen. Gi plottet av funksjonen etiketten (label) 'predicted',  og sørg for at etiketten vises i plottet.
-5. Definer følgende funksjon
+4. Lag en funksjon `f(x, a, b)`, som returnerer `a + b * x`
+5. Lag et nytt plott, som er likt det gamle, men der du legger til et plott av denne funksjonen. Gi plottet av funksjonen etiketten (label) 'predicted',  og sørg for at etiketten vises i plottet.
+6. Definer følgende funksjon
 
 ```
 def sumsq_errs(x, y, f, a, b):
@@ -81,8 +81,8 @@ def sumsq_errs(x, y, f, a, b):
 ```
 Denne funksjonen returnerer et mål på hvor stor forskjelle det er mellom elementene i variabel y og elementene fra funksjonen f(x, a, b)
 
-6. Lag en funksjon `calc_errs(x, y, f, a, b, its)` som regner ut dette avviket for ulike verdier av b. De nye verdiene for b skal være i intervallet b-0.5 til b + 0.5. Antall verdier i intervallet som det skal regnes på, er gitt ved `its`. 
-7. Lag en funksjon plot_and_print(x, y, f, a, b, its)
+7. Lag en funksjon `calc_errs(x, y, f, a, b, its)` som regner ut dette avviket for ulike verdier av b. De nye verdiene for b skal være i intervallet b-0.5 til b + 0.5. Antall verdier i intervallet som det skal regnes på, er gitt ved `its`. 
+8. Lag en funksjon plot_and_print(x, y, f, a, b, its)
     1. lage et scatterplott med de kvadrerte avvikene langs y aksen og verdiene for b langs x-aksen
     2. Identifiserer for hvilken verdi av b avvikene er minst
     3. print verdien av denne b'en, verdien av den opprinnelige b'en (fra oppgave 2.2) og differansen mellom disse
