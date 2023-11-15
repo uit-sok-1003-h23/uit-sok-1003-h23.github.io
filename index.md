@@ -53,7 +53,7 @@ Karakter A-E, med F som stryk, fastsettes basert på et prosjekt som gjøres i g
 - Muntlig eksamen (presentasjon av mappe)
 
 
-[Her finner du informasjon om frister og hvordan du leverer arbeidskrav og prosjekt, og dato for muntlig](semesteroppgave.md){:target="blank"}. 
+[Her finner du informasjon om frister](https://uit-sok-1003-h23.github.io/frister.html) og [hvordan du leverer arbeidskrav og prosjekt, og dato for muntlig](https://uit-sok-1003-h23.github.io/mappeoppgave.html){:target="blank"}. 
 
 Merk at prosjektet leveres BÅDE i GitHub og på Wiseflow.
 
