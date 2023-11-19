@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>&lt; Forrige | Neste &gt;</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="7 - løkker og simulering_files/libs/clipboard/clipboard.min.js"></script>
+<script src="7 - løkker og simulering_files/libs/quarto-html/quarto.js"></script>
+<script src="7 - løkker og simulering_files/libs/quarto-html/popper.min.js"></script>
+<script src="7 - løkker og simulering_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="7 - løkker og simulering_files/libs/quarto-html/anchor.min.js"></script>
+<link href="7 - løkker og simulering_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="7 - løkker og simulering_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="7 - løkker og simulering_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="7 - løkker og simulering_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="7 - løkker og simulering_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><a href="6%20-%20pandas%2C%20filtrering%2C%20logikk%20og%20betingelser.ipynb">&lt; Forrige</a> | <a href="8%20-%20git%2C%20pythonfiler%20og%20IDE.ipynb">Neste &gt;</a></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><span style="color:#9bb1d4;font-size:30px;font-weight:900"> 7 - løkker og simulering </span></p>
+<p>Løkker er noe av det mest brukte verktøyet for en programmerer. EN løkke er en programkode som repeteres. Det finnes i hovedsak to typer løkker i Python: <code>while</code>-løkker og <code>for</code>-løkker. En <code>while</code> lar løkken løpe til en betingelse er oppfylt, mens <code>for</code> løkken repeterer koden for alle elementene i en liste eller annen <em>iterativ datastruktur</em>.</p>
+<section id="for-løkker" class="level1">
+<h1>For-løkker</h1>
+<p>Her er eksempel på en <code>for</code>-løkke som deriverer alle utrykkene i listen <code>expressions</code>:</p>
+<section id="eksempel-1" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-1">Eksempel 1:</h4>
+<div class="cell" data-tags="[]" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown, display</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>x,y<span class="op">=</span>sp.symbols(<span class="st">"x y"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>expressions<span class="op">=</span>[</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    sp.root(x,y),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    x<span class="op">**</span><span class="dv">2</span><span class="op">+</span><span class="dv">5</span><span class="op">*</span>sp.exp(x),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    x<span class="op">*</span>sp.ln(x)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> expressions:</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    display(Markdown(<span class="ss">f"Den deriverte av $</span><span class="sc">{</span>sp<span class="sc">.</span>latex(i)<span class="sc">}</span><span class="ss">$ er $</span><span class="sc">{</span>sp<span class="sc">.</span>latex(sp.diff(i,x))<span class="sc">}</span><span class="ss">$"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p>Den deriverte av <span class="math inline">\(x^{\frac{1}{y}}\)</span> er <span class="math inline">\(\frac{x^{\frac{1}{y}}}{x y}\)</span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p>Den deriverte av <span class="math inline">\(x^{2} + 5 e^{x}\)</span> er <span class="math inline">\(2 x + 5 e^{x}\)</span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p>Den deriverte av <span class="math inline">\(x \log{\left(x \right)}\)</span> er <span class="math inline">\(\log{\left(x \right)} + 1\)</span></p>
+</div>
+</div>
+<p>Eller du kan bare gjøre en enkel iterasjon for heltall fra en startverdi til en sluttverdi:</p>
+</section>
+<section id="eksempel-2" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-2">Eksempel 2:</h4>
+<div class="cell" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>,<span class="dv">8</span>):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5
+6
+7
+0
+1
+2</code></pre>
+</div>
+</div>
+<p>Du kan også “pakke ut” elementer, dersom hvert element i <code>for</code>-setningen har et bestemt antall sub-elementer. La oss først lage en liste som inneholder en ´tuple´ med uttrykkene i <code>expressions</code> over, og den deriverte av disse:</p>
+</section>
+<section id="eksempel-3" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-3">Eksempel 3:</h4>
+<div class="cell" data-tags="[]" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#using list comprehension to generate a list with expression,derivative tuples:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>expressions_w_derivatives<span class="op">=</span>[ (i, sp.diff(i,x)) <span class="cf">for</span> i <span class="kw">in</span> expressions ]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>expressions_w_derivatives</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>[(x**(1/y), x**(1/y)/(x*y)),
+ (x**2 + 5*exp(x), 2*x + 5*exp(x)),
+ (x*log(x), log(x) + 1)]</code></pre>
+</div>
+</div>
+<p>Vi kan nå kjøre en for-løkke som forventer at hvert element i listen er en <em>iterabel</em> (for eksempel liste eller tuple) med to elementer:</p>
+</section>
+<section id="eksempel-4" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-4">Eksempel 4</h4>
+<div class="cell" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> function,derivative <span class="kw">in</span> expressions_w_derivatives:</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    display(Markdown(<span class="ss">f"Den deriverte av $</span><span class="sc">{</span>sp<span class="sc">.</span>latex(function)<span class="sc">}</span><span class="ss">$ er $</span><span class="sc">{</span>sp<span class="sc">.</span>latex(derivative)<span class="sc">}</span><span class="ss">$"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p>Den deriverte av <span class="math inline">\(x^{\frac{1}{y}}\)</span> er <span class="math inline">\(\frac{x^{\frac{1}{y}}}{x y}\)</span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p>Den deriverte av <span class="math inline">\(x^{2} + 5 e^{x}\)</span> er <span class="math inline">\(2 x + 5 e^{x}\)</span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p>Den deriverte av <span class="math inline">\(x \log{\left(x \right)}\)</span> er <span class="math inline">\(\log{\left(x \right)} + 1\)</span></p>
+</div>
+</div>
+</section>
+</section>
+<section id="while-løkker" class="level1">
+<h1>While-løkker</h1>
+<p>En <code>while</code>-løkke er en løkke som fortsetter inntil en betingelse er oppfylt. I eksemplet under ser vi at det genereres nye tilfeldige aksjekurser så lenge kursen er under 125 kroner .</p>
+<p>Aksjen skal bevege seg tilfeldig. For å få til det bruker vi funksjonen <code>rand</code> fra <code>random</code>-modulen i numpy. <code>np.random.rand()</code> gir et tilfeldig tall mellom null og én, så ved å multiplisere <code>(np.random.rand()-0.5)</code> med 40, får vi et tilfeldig tall mellom -20 og 20.</p>
+<section id="eksempel-5" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-5">Eksempel 5:</h4>
+<div class="cell" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>dy,y<span class="op">=</span><span class="dv">0</span>,<span class="dv">100</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> y<span class="op">&lt;</span><span class="dv">125</span>:  </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    y<span class="op">+=</span>dy</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    dy<span class="op">=</span><span class="dv">40</span><span class="op">*</span>(np.random.rand()<span class="op">-</span><span class="fl">0.5</span>) </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>100
+100.5934160508667
+106.11798205606688
+121.45152918704454
+136.90649543072016</code></pre>
+</div>
+</div>
+<p>Legg spesielt merke til <code>y+=dy</code> over. Denne operasjonen legger <code>dy</code> til <code>y</code>, og tilsvarer altså <code>y=y+dy</code>. De aller fleste programmeringsspråk støtter <code>+=</code>-operatoren.</p>
+<p>Legg også merke til at vi kan sette flere variabler samtidig, ved å skille både variablene og verdiene med like mange kommaer, <code>dy,y=0,100</code></p>
+</section>
+</section>
+<section id="simulering" class="level1">
+<h1>Simulering</h1>
+<p>Løkker kan brukes til mye, så la oss se på et eksempel på simulering. Simulering vil si å trekke tilfeldige tall for å se hvordan en modell opptrer under usikkerhet. La oss for eksempel tenke oss en aksje som starter på hundre kroner, og så beveger seg tilfeldig. Vi ser på aksjen hvert sjette minutt, eller én tidel (0.1) av én time. Tiden øker dermed med 0.1 i hver periode.</p>
+<p>For å tegne opp stien til aksjekursen, lager vi først lister for x- og y-verdiene, og så legger vi til elementer i hver av listene med <code>append</code>-funksjonen til listeobjektene, før listen plottes som en graf. Kjør koden flere ganger, for å se ulike simuleringer.</p>
+<section id="eksempel-6" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-6">Eksempel 6:</h4>
+<div class="cell" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.patches <span class="im">import</span> Ellipse</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, clear_output</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">10</span>))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylim([<span class="dv">0</span>,<span class="dv">200</span>])</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>ax.set_xlim([<span class="dv">0</span>,<span class="dv">20</span>])</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>x,y,dy<span class="op">=</span><span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">0</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>ypath<span class="op">=</span>[]</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>xpath<span class="op">=</span>[]</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> x<span class="op">&lt;</span><span class="dv">25</span>:</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    x<span class="op">+=</span> <span class="fl">0.1</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    y<span class="op">+=</span> dy</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    dy<span class="op">=</span><span class="dv">40</span><span class="op">*</span>(np.random.rand()<span class="op">-</span><span class="fl">0.5</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    xpath.append(x)</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    ypath.append(y)</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>ax.plot(xpath,ypath,label<span class="op">=</span><span class="st">'YARA'</span>)</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="st">'upper left'</span>,frameon<span class="op">=</span><span class="va">False</span>,fontsize<span class="op">=</span><span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>&lt;matplotlib.legend.Legend at 0x2cd8c808190&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="7%20-%20løkker%20og%20simulering_files/figure-html/cell-7-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="dynamisk-plott" class="level1">
+<h1>Dynamisk plott</h1>
+<p>Om vi ønsker å formidle kunnskap, er det av og til nyttig med dynamiske plott. Altså plott som endrer seg mens du ser på dem. Vi kan gjøre det ved å rykke inn de to siste setningene i Eksempel 15 over. Det er disse setningene som lager plottet. Ved å rykke dem inn, plottes figuren i hver iterasjon.</p>
+<p>I utgangspunktet vil du da få 25 figurer etter hverandre. For at figuren skal tegnes i samme figur hver gang, må vi slette figuren i figurobjektet <code>ax</code> og i visningen (<code>clear_output(wait = True)</code>). Vi må da også sette akseintervallene på nytt.</p>
+<p>Det bør nevenes at dette ikke er den anbefalte måte å lage grafiske animasjoner. Det går tregt og hakker. Om en skal gjøre det på en litt mer profesjonell måte, er det hovedsakelig to alternativer:</p>
+<ul>
+<li>bruke python-pakken ´tkinter´, som er den vanligste pakken for å lage python-programmer med grafisk brukergrensesnitt</li>
+<li>javascript på en nettside</li>
+</ul>
+<section id="eksempel-7" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-7">Eksempel 7:</h4>
+<div class="cell" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x,y,dy<span class="op">=</span><span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">0</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>ypath<span class="op">=</span>[]</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>xpath<span class="op">=</span>[]</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> x<span class="op">&lt;</span><span class="dv">20</span>:</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    clear_output(wait <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    x<span class="op">+=</span> <span class="fl">0.5</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    y<span class="op">+=</span> dy</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    dy<span class="op">=</span><span class="dv">40</span><span class="op">*</span>(np.random.rand()<span class="op">-</span><span class="fl">0.5</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    xpath.append(x)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    ypath.append(y)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">#placing the plot function inside the loop, ensures that it is plotted every iteration</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    ax.plot(xpath,ypath,label<span class="op">=</span><span class="st">'YARA'</span>)</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    ax.legend(loc<span class="op">=</span><span class="st">'upper left'</span>,frameon<span class="op">=</span><span class="va">False</span>,fontsize<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">#making dot:</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    c<span class="op">=</span>Ellipse((x, y), <span class="fl">0.25</span>,<span class="dv">5</span>, color<span class="op">=</span><span class="st">'r'</span>)</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    ax.add_patch(c)</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    <span class="co">#making text:</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    ax.text(x<span class="op">+</span><span class="fl">0.1</span>,y<span class="op">+</span><span class="dv">3</span>,<span class="ss">f'NOK </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(y,<span class="dv">1</span>)<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    <span class="co">#jupyter only shows the last statement by default, so we need to add this </span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    <span class="co">#in order to plot at every iteration</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>    display(fig)</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>    <span class="co">#makes sure the plot and output are ereased each time:</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>    ax.cla()</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim([<span class="dv">0</span>,<span class="dv">200</span>])</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim([<span class="dv">0</span>,<span class="dv">20</span>])</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="7%20-%20løkker%20og%20simulering_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="fangenes-dilemma---dynamisk-repetert-spill" class="level2">
+<h2 class="anchored" data-anchor-id="fangenes-dilemma---dynamisk-repetert-spill">Fangenes dilemma - dynamisk repetert spill</h2>
+<p>“Fangenes dilemma” er et velkjent spill innen samfunnsøkonomi. To fanger avhøres om en forbrytelse de har begått sammen. Hver av dem kan enten velge å forråde den andre ved å sladre (“T” for “traitor”) eller være lojal og taus (“L” for “loyal”). Holder begge tett, blir det en lav straff for begge. Sladrer begge blir det en høyere straff. Dersom bare én sladrer, slipper den som sladrer fri, mens den som holder tett får en streng straff.</p>
+<p>Dette kan operasjonaliseres i følgende gevinstfunksjon:</p>
+<section id="eksempel-8" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-8">Eksempel 8:</h4>
+<div class="cell" data-tags="[]" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> game_payoff(action_a, action_b):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> action_a <span class="op">==</span> <span class="st">"L"</span> <span class="kw">and</span> action_b <span class="op">==</span> <span class="st">"L"</span>:</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">3</span>, <span class="dv">3</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> action_a <span class="op">==</span> <span class="st">"L"</span> <span class="kw">and</span> action_b <span class="op">==</span> <span class="st">"T"</span>:</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span>, <span class="dv">5</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> action_a <span class="op">==</span> <span class="st">"T"</span> <span class="kw">and</span> action_b <span class="op">==</span> <span class="st">"L"</span>:</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">5</span>, <span class="dv">0</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span>, <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Du kan se på poengene som antall år de får i strafferabatt i forhold til straffen for en som holder tett, når den andre forråder.</p>
+<p>Vi kan nå lage en adferdsfunksjon for fangene. Fangene får ikke vite hva motstanderen gjør i øyeblikket, men vi skal se på et spill som gjentas flere ganger. Spillerne får da vite hva motstanderen gjorde forrige periode. Handlingen til motstanderen forrige periode, blir da argumentet i adferdsfunksjonen, eller strategien. Vi definerer en egen funksjon for hver spiller, men de er foreløpig identiske. I øvingsoppgaven kan du lage ulike funksjoner for spillerne om du vil.</p>
+</section>
+<section id="eksempel-9" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-9">Eksempel 9</h4>
+<div class="cell" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> strategy_player_a(action_b):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">#punish if the other is a traitor, else be loyal</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> action_b <span class="op">==</span> <span class="st">"T"</span>:</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"T"</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"L"</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> strategy_player_b(action_a):</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#punish if the other is a traitor, else be loyal</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> action_a <span class="op">==</span> <span class="st">"T"</span>:</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"T"</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"L"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Vi kan nå se hvordan dette vil spille seg ut, gitt payoffen og strategien.</p>
+</section>
+<section id="eksempel-10" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-10">Eksempel 10</h4>
+<div class="cell" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>num_rounds <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Defining history and initial response</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>actions_a <span class="op">=</span> [<span class="st">"T"</span>]</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>actions_b <span class="op">=</span> [<span class="st">"T"</span>]</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>scores_a <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>scores_b <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Iterating over periods</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, num_rounds):</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">#collecting responses and appending to history</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    next_a <span class="op">=</span> strategy_player_a(actions_b[i<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    next_b <span class="op">=</span> strategy_player_b(actions_a[i<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    actions_a.append(next_a)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    actions_b.append(next_b)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">#calculating score</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    score_a, score_b <span class="op">=</span> game_payoff(next_a, next_b)</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    scores_a <span class="op">+=</span> score_a</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    scores_b <span class="op">+=</span> score_b</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Actions A:"</span>, actions_a)</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Actions B:"</span>, actions_b)</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Total Score A:"</span>, scores_a)</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Total Score B:"</span>, scores_b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Actions A: ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T']
+Actions B: ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T']
+Total Score A: 9
+Total Score B: 9</code></pre>
+</div>
+</div>
+<p>Målet er for hver å få lavest mulig score. Hva er den beste strategien for spillerne?</p>
+</section>
+</section>
+<section id="nummerisk-optimering" class="level2">
+<h2 class="anchored" data-anchor-id="nummerisk-optimering">Nummerisk optimering</h2>
+<p>Vi har før regnet ut optimalt kvantum ved å bruke Sympy til å regne ut den deriverte, sette lik null og løse. Av og til er det vanskelig å regne ut det optimale. Da går det an å regneut objektfunksjonen (det vi ønsker å maksimere) for mange ulike verdier, og velge det som gir høyest resultat.</p>
+<p>Vi skal her se et eksempel på det, men med en objektfunksjon som egentlig er enkelt å regne ut maksimum av analytisk med Sympy. Du kan da sjekke om det nummeriske resultatet er korrekt ved å regne ut i Sympy (det er en av øvningsoppgavene).</p>
+<p>Som objektfunksjon bruker vi fortjenesten til en bedrift som selger Q varer til pris p.&nbsp;Bedriftens kostnad per enhet er C</p>
+<section id="eksempel-11" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-11">Eksempel 11:</h4>
+<div class="cell" data-tags="[]" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> profit(p, C):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Beregner profitt gitt pris p og kostnad per enhet C."""</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    Q <span class="op">=</span> demand(p)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> p <span class="op">*</span> Q <span class="op">-</span> C <span class="op">*</span> Q</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Q bestemmes av en etterspørselsfunksjon.</p>
+</section>
+<section id="eksempel-12" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-12">Eksempel 12:</h4>
+<div class="cell" data-tags="[]" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> demand(p):</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Returnerer antall enheter solgt gitt en pris p."""</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">100</span> <span class="op">-</span> p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Vi kan nå finne optimum nummerisk:</p>
+</section>
+<section id="eksempel-13" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-13">Eksempel 13</h4>
+<div class="cell" data-tags="[]" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_optimal_price(start, end, C):</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Finding optimal price in the range start-end"""</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    max_profit <span class="op">=</span> <span class="bu">float</span>(<span class="st">'-inf'</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    optimal_price <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    n_samples <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#iterating over the price range</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> p <span class="kw">in</span> np.linspace(start, end, n_samples):</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>        current_profit <span class="op">=</span> profit(p, C)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> current_profit <span class="op">&gt;</span> max_profit:</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>            <span class="co">#if the profit exeeds the current profit, then store the new profit and price</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>            max_profit <span class="op">=</span> current_profit</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>            optimal_price <span class="op">=</span> p</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> optimal_price, max_profit</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>cost <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>start_price <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>end_price <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>optimal_price, max_profit <span class="op">=</span> find_optimal_price(<span class="dv">0</span>, <span class="dv">100</span>, cost)</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Optimal pris: </span><span class="sc">{</span>optimal_price<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Maksimal profitt ved optimal pris: </span><span class="sc">{</span>max_profit<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Optimal pris: 52.452452452452455
+Maksimal profitt ved optimal pris: 2256.247739230722</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="monte-carlo-simulering" class="level2">
+<h2 class="anchored" data-anchor-id="monte-carlo-simulering">“Monte Carlo”-simulering</h2>
+<p>Fremtiden er usikker, en deterministisk modell som over tar ikke hensyn til det. En “Monte Carlo”-simulering betyr å trekke tilfeldige tall fra en sannsynlighetsfordeling, og bruke det i beregningen. En vil da kunne få et anslag på usikkerheten i den endelige beregningen.</p>
+<p>I dette eksemplet regnes inntekten etter 30 år ut (eller så lenge du spesifiserer). Inntekten hvert år er imidlertid avhengig av inntekten i fjor (for eksempel fordi man investerer noe av inntekten).</p>
+<p>Vi starter med å definere en funksjon som regner ut inntekten, basert på forrige års inntekt og et tilfeldig bidrag:</p>
+<section id="eksempel-14" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-14">Eksempel 14:</h4>
+<div class="cell" data-tags="[]" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_income(last_year_income, growth_rate, volatility):</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    random_growth <span class="op">=</span> np.random.normal(<span class="dv">0</span>, volatility)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    growth <span class="op">=</span>  growth_rate <span class="op">+</span> random_growth</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    income <span class="op">=</span> last_year_income <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> growth)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> income</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co"># regner ut med en halv million som fjorårets inntekt, 5% forventet inntektsøkning og 2% usikkerhet</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>calc_income(<span class="dv">500000</span>, <span class="fl">0.05</span>, <span class="fl">0.02</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>533433.1498755204</code></pre>
+</div>
+</div>
+<p>Så lager vi en funksjon som lager en “inntektssti” (income path) for et gitt antall års inntekt. Dette kalles en “sti”/“path” fordi dagens inntekt er avhengig av gårsdagen. Dagens situasjon er altså avhengig av hvilken sti inntekten har fulgt i alle tidligere år.</p>
+</section>
+<section id="eksempel-15" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-15">Eksempel 15</h4>
+<div class="cell" data-tags="[]" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> income_path(years, initial_income, growth_rate, volatility):</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    incomes <span class="op">=</span> [initial_income]</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#simulating a single income path:</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> year <span class="kw">in</span> <span class="bu">range</span>(years<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>        <span class="co">#calculating income:</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>        income <span class="op">=</span> calc_income(incomes[<span class="op">-</span><span class="dv">1</span>], growth_rate, volatility)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>        <span class="co">#adding income for year to the path</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>        incomes.append(income)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> incomes</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co">#regner ut for fem år:</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>income_path(<span class="dv">5</span>,<span class="dv">500000</span>, <span class="fl">0.05</span>, <span class="fl">0.02</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>[500000,
+ 506168.7941812706,
+ 535258.7582826338,
+ 564758.1719742338,
+ 566393.5674357883]</code></pre>
+</div>
+</div>
+<p>Vi kan nå lage en funksjon som simulerer et gitt antall intektsstier gitt ved <code>num_simulations</code>:</p>
+</section>
+<section id="eksempel-16" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-16">Eksempel 16:</h4>
+<div class="cell" data-tags="[]" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> simulate_income(years, initial_income, growth_rate, volatility, num_simulations):</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Returns a 2D-array with simulated income for each year."""</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    all_incomes <span class="op">=</span> []</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(num_simulations):</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">#adding the path to all_incomes</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>        incomes <span class="op">=</span> income_path(years, initial_income, growth_rate, volatility)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>        all_incomes.append(incomes)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(all_incomes)</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Setter inn i pandas DataFrame for å få en finere tabell</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(  simulate_income(<span class="dv">5</span>, <span class="dv">500000</span>, <span class="fl">0.05</span>, <span class="fl">0.02</span>, <span class="dv">3</span>)</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>            )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">0</th>
+<th data-quarto-table-cell-role="th">1</th>
+<th data-quarto-table-cell-role="th">2</th>
+<th data-quarto-table-cell-role="th">3</th>
+<th data-quarto-table-cell-role="th">4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>500000.0</td>
+<td>540576.123105</td>
+<td>583394.434495</td>
+<td>597057.526074</td>
+<td>639534.378887</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>500000.0</td>
+<td>498980.102373</td>
+<td>520177.467079</td>
+<td>546327.340384</td>
+<td>562340.864710</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>500000.0</td>
+<td>523886.294686</td>
+<td>550140.566096</td>
+<td>572966.722461</td>
+<td>607913.955354</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Vi kan nå plotte fordelingen, for å få et inntrykk av fordelingen til inntekten i avslutningsåret:</p>
+</section>
+<section id="eksempel-17" class="level4">
+<h4 class="anchored" data-anchor-id="eksempel-17">Eksempel 17:</h4>
+<div class="cell" data-tags="[]" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#parameters</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>initial_income <span class="op">=</span> <span class="dv">400000</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>growth_rate <span class="op">=</span> <span class="fl">0.03</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>volatility <span class="op">=</span> <span class="fl">0.02</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>num_simulations <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>simulated_incomes <span class="op">=</span> simulate_income(years, initial_income, growth_rate, volatility, num_simulations)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting the final income</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>final_year_incomes <span class="op">=</span> simulated_incomes[:, <span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>plt.hist(final_year_incomes, bins<span class="op">=</span><span class="dv">50</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>, alpha<span class="op">=</span><span class="fl">0.75</span>)</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>plt.gca().get_xaxis().set_major_formatter(plt.FuncFormatter(<span class="kw">lambda</span> x, loc: <span class="st">"{:,}"</span>.<span class="bu">format</span>(<span class="bu">int</span>(x))))</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribusjon av simulerte inntekter etter 30 år"</span>)</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Inntekt"</span>)</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Antall simuleringer"</span>)</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="7%20-%20løkker%20og%20simulering_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="oppgaver" class="level1">
+<h1>Oppgaver</h1>
+<ol type="1">
+<li>Om du kjører koden i Eksempel 7 noen ganger vil du oppdage et problem. Aksjekursen kan bli negativ. Dette kan unngås ved å plotte <em>eksponenenten</em> av prosessen, i stedet. Dette kan du få til på følgende måte
+<ol type="1">
+<li>Omdøp <code>y</code> i <code>y+= dy</code> til <code>lny</code>, og <code>x,y,dy=0,100,0</code> til <code>x,lny,dy=0,0,0</code></li>
+<li>Eksponenten liker ikke store tall som argument, så fjern <code>40*</code> fra definisjonen av <code>dy</code> inne i while-løkken.</li>
+<li>definer en ny <code>y</code>som settes lik hundre ganger eksponenten til <code>lny</code>. Bruk <code>np.exp()</code>-funksjonen til numpy.</li>
+</ol></li>
+</ol>
+<div class="cell" data-tags="[]" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.patches <span class="im">import</span> Ellipse</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, clear_output</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">10</span>))</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>x,lny,dy<span class="op">=</span><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>ypath<span class="op">=</span>[]</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>xpath<span class="op">=</span>[]</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> x<span class="op">&lt;</span><span class="dv">20</span>:</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    clear_output(wait <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    x<span class="op">+=</span> <span class="fl">0.5</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>    lny<span class="op">+=</span> dy</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    dy<span class="op">=</span><span class="fl">0.5</span><span class="op">*</span>(np.random.rand()<span class="op">-</span><span class="fl">0.5</span>)</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="dv">100</span><span class="op">*</span>np.exp(lny)</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>    xpath.append(x)</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>    ypath.append(y)</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>    <span class="co">#placing the plot function inside the loop, ensures that it is plotted every iteration</span></span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>    ax.plot(xpath,ypath,label<span class="op">=</span><span class="st">'YARA'</span>)</span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>    ax.legend(loc<span class="op">=</span><span class="st">'upper left'</span>,frameon<span class="op">=</span><span class="va">False</span>,fontsize<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">#making dot:</span></span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>    c<span class="op">=</span>Ellipse((x, y), <span class="fl">0.25</span>,<span class="dv">5</span>, color<span class="op">=</span><span class="st">'r'</span>)</span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a>    ax.add_patch(c)</span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>    <span class="co">#making text:</span></span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a>    ax.text(x<span class="op">+</span><span class="fl">0.1</span>,y<span class="op">+</span><span class="dv">3</span>,<span class="ss">f'NOK </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(y,<span class="dv">1</span>)<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a>    <span class="co">#jupyter only shows the last statement by default, so we need to add this </span></span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a>    <span class="co">#in order to plot at every iteration</span></span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a>    display(fig)</span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a>    <span class="co">#makes sure the plot and output are ereased each time:</span></span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a>    ax.cla()</span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim([<span class="dv">0</span>,<span class="bu">max</span>((<span class="dv">200</span>,<span class="bu">max</span>(ypath)))])</span>
+<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim([<span class="dv">0</span>,<span class="dv">20</span>])</span>
+<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="7%20-%20løkker%20og%20simulering_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="7%20-%20løkker%20og%20simulering_files/figure-html/cell-19-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<ol start="2" type="1">
+<li><p>I simuleringen du nå har laget over, lag intervallet for aksjekursen dynamisk, slik at slik at største aksjekurs alltid er minst ti prosent mer enn den simulerte kursen.</p></li>
+<li><p>Fangenes dilemma:</p>
+<ol type="1">
+<li>Lag en strategi for hver spiller der spillerne antar at motstanderen vil repetere forrige trekk, og finn den beste responsen gitt denne antakelsen.</li>
+<li>Hva skal til for å få dem til å samarbeide, om de gjør denne antakelsen?</li>
+<li>Programmere strategien til hver spiller i én funksjon i stedet for to.</li>
+</ol></li>
+</ol>
+<p><em>Svar B: Gevinsten må endres, f.eks. ved at begge får 6 dersom begge samarbeider</em></p>
+<div class="cell" data-tags="[]" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> game_payoff(action_a, action_b):</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> action_a <span class="op">==</span> <span class="st">"L"</span> <span class="kw">and</span> action_b <span class="op">==</span> <span class="st">"L"</span>:</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">3</span>, <span class="dv">3</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> action_a <span class="op">==</span> <span class="st">"L"</span> <span class="kw">and</span> action_b <span class="op">==</span> <span class="st">"T"</span>:</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span>, <span class="dv">5</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> action_a <span class="op">==</span> <span class="st">"T"</span> <span class="kw">and</span> action_b <span class="op">==</span> <span class="st">"L"</span>:</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">5</span>, <span class="dv">0</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span>, <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> strategy_player_a(action_b):</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">#find optimal response, given that the other allways repeats last move:</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    index <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    payoff_L <span class="op">=</span>  game_payoff(<span class="st">"L"</span>, action_b)[index]</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    payoff_T <span class="op">=</span>  game_payoff(<span class="st">"T"</span>, action_b)[index]</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> payoff_L<span class="op">&gt;</span>payoff_T:</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"L"</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"T"</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> strategy_player_b(action_a):</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">#find optimal response, given that the other allways repeats last move:</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    index <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>    payoff_L <span class="op">=</span>  game_payoff(action_a, <span class="st">"L"</span>)[index]</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>    payoff_T <span class="op">=</span>  game_payoff(action_a, <span class="st">"T"</span>)[index]</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> payoff_L<span class="op">&gt;</span>payoff_T:</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"L"</span></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"T"</span></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="co">#A single function:</span></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> strategy(action, player):</span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">"player is 0 for player a and 1 for player b"</span></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>    <span class="co">#find optimal response, given that the other allways repeats last move:</span></span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> player<span class="op">==</span><span class="dv">0</span>:</span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>        payoff_L <span class="op">=</span>  game_payoff(<span class="st">"L"</span>, action)[player]</span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a>        payoff_T <span class="op">=</span>  game_payoff(<span class="st">"T"</span>, action)[player]</span>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a>        payoff_L <span class="op">=</span>  game_payoff(action, <span class="st">"L"</span>)[player]</span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a>        payoff_T <span class="op">=</span>  game_payoff(action, <span class="st">"T"</span>)[player]</span>
+<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> payoff_L<span class="op">&gt;</span>payoff_T:</span>
+<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"L"</span></span>
+<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"T"</span></span>
+<span id="cb28-37"><a href="#cb28-37" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>num_rounds <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Defining history and initial response</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>actions_a <span class="op">=</span> [<span class="st">"L"</span>]</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>actions_b <span class="op">=</span> [<span class="st">"L"</span>]</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>scores_a <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>scores_b <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Iterating over periods</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, num_rounds):</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">#collecting responses and appending to history</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>    next_a <span class="op">=</span> strategy_player_a(actions_b[i<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>    next_b <span class="op">=</span> strategy_player_b(actions_a[i<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">#for a single function (c)</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>    next_a <span class="op">=</span> strategy(actions_b[i<span class="op">-</span><span class="dv">1</span>], <span class="dv">0</span>)</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>    next_b <span class="op">=</span> strategy(actions_a[i<span class="op">-</span><span class="dv">1</span>], <span class="dv">1</span>)</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>    actions_a.append(next_a)</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>    actions_b.append(next_b)</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>    <span class="co">#calculating score</span></span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>    score_a, score_b <span class="op">=</span> game_payoff(next_a, next_b)</span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>    scores_a <span class="op">+=</span> score_a</span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>    scores_b <span class="op">+=</span> score_b</span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Actions A:"</span>, actions_a)</span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Actions B:"</span>, actions_b)</span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Total Score A:"</span>, scores_a)</span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Total Score B:"</span>, scores_b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Actions A: ['L', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T']
+Actions B: ['L', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T']
+Total Score A: 9
+Total Score B: 9</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Finn optimal pris i Eksemplene 11-13 analytisk, i stedet for nummerisk. Finn både for enhetskostnadene som er kjent (et konkret tall) og ukjent (C), og sammenlign resultatet med det nummeriske svaret</li>
+</ol>
+<div class="cell" data-tags="[]" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy.solvers <span class="im">import</span> solve</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>p, C <span class="op">=</span> sp.symbols(<span class="st">"p C"</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> profit(p, C):</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Beregner profitt gitt pris p og kostnad per enhet C."""</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    Q <span class="op">=</span> demand(p)</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> p <span class="op">*</span> Q <span class="op">-</span> C <span class="op">*</span> Q</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> demand(p):</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Returnerer antall enheter solgt gitt en pris p."""</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">100</span> <span class="op">-</span> p</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>foc <span class="op">=</span> sp.Eq(sp.diff(profit(p,C),p), <span class="dv">0</span>)</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>solve(foc,p)[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<p><span class="math inline">\(\displaystyle \frac{C}{2} + 50\)</span></p>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>cost <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>foc <span class="op">=</span> sp.Eq(sp.diff(profit(p,cost),p), <span class="dv">0</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">float</span>(solve(foc,p)[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>52.5</code></pre>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Lag en funksjon som regner ut optimal pris analytisk</li>
+</ol>
+<div class="cell" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> opt_price(C):</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> sp.symbols(<span class="st">"p"</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    foc <span class="op">=</span> sp.Eq(sp.diff(profit(p,C),p), <span class="dv">0</span>)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">float</span>(solve(foc,p)[<span class="dv">0</span>])</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>opt_price(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>52.5</code></pre>
+</div>
+</div>
+<ol start="6" type="1">
+<li>Lag en “Monte Carlo”-simulering der enhetskostnadene er usikre, og plott et stolpediagram for optimal pris</li>
+</ol>
+<div class="cell" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>volatility <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>opt_prices <span class="op">=</span> [opt_price(np.random.normal(<span class="dv">5</span>, volatility)) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)]</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>plt.hist(opt_prices, bins<span class="op">=</span><span class="dv">50</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>, alpha<span class="op">=</span><span class="fl">0.75</span>)</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>plt.gca().get_xaxis().set_major_formatter(plt.FuncFormatter(<span class="kw">lambda</span> x, loc: <span class="st">"{:,}"</span>.<span class="bu">format</span>(<span class="bu">int</span>(x))))</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribusjon av simulert optimal pris"</span>)</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Pris"</span>)</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Antall simuleringer"</span>)</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="7%20-%20løkker%20og%20simulering_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<section id="forrige-neste" class="level5">
+<h5 class="anchored" data-anchor-id="forrige-neste"><a href="6%20-%20pandas%2C%20filtrering%2C%20logikk%20og%20betingelser.ipynb">&lt; Forrige</a> | <span style="color:lightgrey">Neste&gt;</span></h5>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
