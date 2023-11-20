@@ -21,6 +21,9 @@ Denne mappen vil inngå i den endelige karaktervurderingen, men dere får kun go
 på både Mappe1 og Mappe2 før endelig innlevering. 
 
 
+# Forklaring:
+Husk å forklare hva du gjør hele tiden i markedown in jupyterboken. 
+
 # Oppgave 1:
 
 Last ned modulen [download.py](https://uit-sok-1003-h23.github.io/mappe/download.py), og legg den i arbeidsmappen din (samme mappe som der jupyter arbeidsboken du jobber i er). 
@@ -58,6 +61,8 @@ df = df.pivot(columns=<navnet på kolonnen med verdiene du ønsker som kolonnena
 
 Du skal nå ha en DataFrame med minst de to kollonene som du tror det kan være sammenheng mellom.
 
+Husk å forklare hvilke data du har valgt og hvorfor. 
+
 # Oppgave 2:
 
 1. Definer de to kollonnene du har valgt som henholdsvis x og y
@@ -73,7 +78,8 @@ Kovariansmatrisen forteller noe om i hvilken grad det er sammenheng mellom varia
 
 4. Lag en funksjon `f(x, a, b)`, som returnerer `a + b * x`
 5. Lag et nytt plott, som er likt det gamle, men der du legger til et plott av denne funksjonen. Gi plottet av funksjonen etiketten (label) 'predicted',  og sørg for at etiketten vises i plottet.
-6. Definer følgende funksjon
+6. Forklar hva du tror figuren viser.
+7. Definer følgende funksjon
 
 ```
 def sumsq_errs(x, y, f, a, b):
@@ -81,15 +87,17 @@ def sumsq_errs(x, y, f, a, b):
 ```
 Denne funksjonen returnerer et mål på hvor stor forskjelle det er mellom elementene i variabel y og elementene fra funksjonen f(x, a, b)
 
-7. Lag en funksjon `calc_errs(x, y, f, a, b, its)` som regner ut dette avviket for ulike verdier av b. De nye verdiene for b skal være i intervallet b-0.5 til b + 0.5. Antall verdier i intervallet som det skal regnes på, er gitt ved `its`. 
-8. Lag en funksjon plot_and_print(x, y, f, a, b, its)
-    1. lage et scatterplott med de kvadrerte avvikene langs y aksen og verdiene for b langs x-aksen
+# Oppgave 3
+
+1. Lag en funksjon `calc_errs(x, y, f, a, b, its)` som regner ut dette avviket for ulike verdier av b. De nye verdiene for b skal være i intervallet b-0.5 til b + 0.5. Antall verdier i intervallet som det skal regnes på, er gitt ved `its`. 
+2. Lag en funksjon plot_and_print(x, y, f, a, b, its)
+    1. lage et scatterplott med de avvikene fra sumsq_errs langs y aksen og verdiene for b langs x-aksen
     2. Identifiserer for hvilken verdi av b avvikene er minst
-    3. print verdien av denne b'en, verdien av den opprinnelige b'en (fra oppgave 2.2) og differansen mellom disse
-9. Kjør plot_and_print for its =10, its=100 og its= 1000. 
-10. Kommenter resultatet og forklar hva du tror du har gjort. 
-11. Definer b som et sympysymbol og bruk sympy til å minimere `sp.diff(cov[1,1]- 2*cov[0,1]*b + b**2*cov[0,0])`
-12. Legg `sp.diff(cov[1,1]- 2*cov[0,1]*b + b**2*cov[0,0])` inn i plottet i plot_and_print
+    3. print en f-streng med verdien av denne b'en, verdien av den opprinnelige b'en (fra oppgave 2.2) og differansen mellom disse. 
+3. Kjør plot_and_print for its =10, its=100 og its= 1000. 
+4. Kommenter resultatet og forklar hva du tror du har gjort. 
+5. Definer b som et sympysymbol og bruk sympy til å minimere `sp.diff(cov[1,1]- 2*cov[0,1]*b + b**2*cov[0,0])`
+6. Legg `sp.diff(cov[1,1]- 2*cov[0,1]*b + b**2*cov[0,0])` inn i plottet i plot_and_print
 
 
 
