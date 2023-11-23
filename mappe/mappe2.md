@@ -97,7 +97,7 @@ Denne funksjonen returnerer et mål på hvor stor forskjelle det er mellom eleme
 3. Kjør plot_and_print for its =10, its=100 og its= 1000. 
 4. Kommenter resultatet og forklar hva du tror du har gjort. 
 5. Definer b som et sympysymbol og bruk sympy til å minimere `sp.diff(cov[1,1]- 2*cov[0,1]*b + b**2*cov[0,0])`
-6. Legg `sp.diff(cov[1,1]- 2*cov[0,1]*b + b**2*cov[0,0])` inn i plottet i plot_and_print
+6. Legg `cov[1,1]- 2*cov[0,1]*b + b**2*cov[0,0]` inn i plottet i plot_and_print
 
 
 
