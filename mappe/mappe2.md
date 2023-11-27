@@ -93,7 +93,7 @@ Denne funksjonen returnerer et mål på hvor stor forskjelle det er mellom eleme
 2. Lag en funksjon plot_and_print(x, y, f, a, b, its)
     1. lage et scatterplott med de avvikene fra sumsq_errs langs y aksen og verdiene for b langs x-aksen
     2. Identifiserer for hvilken verdi av b avvikene er minst
-    3. print en f-streng med verdien av denne b'en, verdien av den opprinnelige b'en (fra oppgave 2.2) og differansen mellom disse. 
+    3. print en f-streng med verdien av denne b'en, verdien av den opprinnelige b'en (fra oppgave 2.3) og differansen mellom disse. 
 3. Kjør plot_and_print for its =10, its=100 og its= 1000. 
 4. Kommenter resultatet og forklar hva du tror du har gjort. 
 5. Definer b som et sympysymbol og bruk sympy til å minimere `sp.diff(cov[1,1]- 2*cov[0,1]*b + b**2*cov[0,0])`
