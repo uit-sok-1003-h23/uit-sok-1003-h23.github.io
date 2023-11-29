@@ -29,7 +29,7 @@ Du må samtidig registerer når du ønsker å ha presentasjonen (Presentasjonene
     2. repositoriet er delt med faglærer (`espensirnes`) og studentassistent (`DanielFabioG`)
 	3. [Du har registrert brukernavn og presentasjonstidspunkt](https://forms.office.com/Pages/ResponsePage.aspx?id=LSF_Ttt0Y0Wle4rkTtBVJjhP3KMFoaZDp37xqZnsVYtURUlWQkRSNFRKMVNVRzZKUEgzV0xERElMNy4u)
 	(Ingen egen registrering ved endelig levering)
-    4. en zip-fil med repositoriet levert i Wiseflow (gjelder KUN endelig levering )
+    4. LEGG VED EN zip-FIL MED REPOSITORIET i Wiseflow (gjelder KUN endelig levering )
 
 
 # Skriftlig vurdering
