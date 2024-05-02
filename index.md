@@ -23,7 +23,7 @@ Daniel har også kontortid, der studentene kan stille spørsmål om de har behov
 [Interaktive notater i Jupyter](https://espensirnes.github.io/notebooks/){:target="blank"}  
 [Kapittel i DataCamp (se kursplan)](https://app.datacamp.com/groups/sok-1003-python-lab-h2023-bd0d964c-2ffa-4206-bf26-4c2e0cfe9a08/assignments){:target="blank"} 
 
-DataCamp blir tilgjengelig snarlig
+
 
 ## Forkunnskaper  
 Ingen 
